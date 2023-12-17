@@ -1,0 +1,15 @@
+[{
+  "_id": {
+    "$oid": "657f6a61f7c84158de7f55a5"
+  },
+  "id": 1,
+  "password": "pbkdf2_sha256$390000$hJJyzzLhqxO1GdwhVjebxk$TTShP6zFVv7gjfZRc3WECnFHuDQk7VyZg0idweGtacU=",
+  "last_login": {
+    "$date": "2023-12-17T21:39:12.982Z"
+  },
+  "email": "haroldsabogal48@gmail.com",
+  "name": "Harold Sabogal",
+  "type_user": "Superuser",
+  "is_active": true,
+  "is_admin": true
+}]

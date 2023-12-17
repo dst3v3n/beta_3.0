@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/stilo.css' %}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
+	<title>HUMAN TALENT</title>
+</head>
+
+
+<body class="hidden">
+	<div class="centrado" id="onload">
+		<div class="cssload-loader">HUMAN TALENT</div>
+	</div>
+	<header>
+		<div class="container">
+        {% if barra %}
+		<div class="btn-menu">
+			<label for="btn-menu">☰</label>
+		</div>
+        {% endif %}
+			<div class="logo">
+				<h1>HUMAN TALENT</h1>
+			</div>
+			<nav class="menu">
+                {% if boton %}
+				    <a href="{%url 'login'%}">login</a>
+                    <a href="{%url 'registro'%}">Registrate</a>
+                {% endif %}
+                {% if barra %}
+				<a href="#">Ofertas</a>
+                {% endif %}
+				<a href="#contactos">Contacto</a>
+			</nav>
+		</div>
+	</header>
+	<div class="capa"></div>
+{% if barra %}
+    <input type="checkbox" id="btn-menu">
+    <div class="container-menu">
+        <div class="cont-menu">
+            <nav>
+                <a href="{%url 'perfil_user'%}">Perfil</a>
+                {% if empresa %}
+                <a href="#">Crear ofertas</a>
+                {% else %}
+                <a href="#">Empresas</a>
+                <a href="#">Mirar ofertas</a>
+                <a href="{%url 'index_hoja'%}">Crear hoja de vida</a>
+                <a href="{% url 'visualizar_hoja' %}">Ver y Editar hoja de vida</a>
+                <a href="#">Ofertas guardadas</a>
+                {% endif %}
+                <a href="{% url 'cerrar' %}">Cerrar sesion</a>
+            </nav>
+            <label for="btn-menu">✖️</label>
+        </div>
+    </div>
+{% endif %}
+
+<main>
+	{% if barra %}
+		<section class="section">
+			<div class="vertical">
+				<div class="user">
+					<a href="{%url 'perfil_user'%}" class="fa fa-user"></a>
+				</div>
+				<div class="icon">
+                    <a href="#" class="fa fa-share"></a>
+                    <a href="{%url 'busqueda'%}" class="fa fa-search"></a>
+                    <a href="#" class="fa fa-bookmark"></a>
+				</div>
+			</div>
+		</section>
+	{% endif %}
+	<section class="centro">
+			<img src="/static/img/logo.png" alt="" class="imagen">
+		<div class="busqueda">
+			<input type="search" placeholder="Buscar" required>
+		</div>
+	</section>
+</main>
+
+<footer>
+	<div class="buttons" id="contactos">
+		<div class="face">
+			<a href="https://web.facebook.com/?locale=es_LA&_rdc=1&_rdr" class="fa fa-facebook"></a>
+		</div>
+		<div class="twit">
+			<a href="https://twitter.com/" class="fa fa-twitter"></a>
+		</div>
+		<div class="what">
+			<a href="https://web.whatsapp.com/" class="fa fa-whatsapp"></a>
+		</div>
+		<div class="yout">
+			<a href="https://www.youtube.com/" class="fa fa-youtube"></a>
+		</div>
+		<div class="gith">
+			<a href="https://github.com/" class="fa fa-github"></a>
+		</div>
+		<div class="inst">
+			<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+		</div>
+	</div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="/static/js/loader.js"></script>
+</body>
+</html>

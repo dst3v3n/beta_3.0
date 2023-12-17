@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión </title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body class="hidden">
+    <div class="centrado" id="onload">
+		<div class="cssload-loader">HUMAN TALENT</div>
+	</div>
+    <main class="form">
+        <form action="{% url 'verificacion' %}" class="sub-form" method="post">
+            {% csrf_token %}
+            <div class="upper-form">
+                <div class="cabecera">
+                    <a href="{%url 'index'%}" class="atras">
+                        <img src="/static/img/arrow-back-sharp.svg" alt="atras">
+                    </a>
+                    <h2>Formulario Login</h2>
+                </div>
+                <aside class="btn-social">
+                    <button class="btn-facebook">
+                        <picture>
+                            <img src="/static/img/baseline-facebook.svg" alt="" width="25px" height="25px">
+                        </picture>
+                    </button>
+                    <button class="btn-gmail">
+                        <picture>
+                            <img src="/static/img/google-gmail.svg" alt="" width="20px" height="25px">
+                        </picture>
+                    </button>
+                </aside>
+                <div class="separador">
+                    <hr class="izquierda">
+                    <p>o</p>
+                    <hr class="derecha">
+                </div>
+                <label for="Username">Email</label><br>
+                <input type="email" name="username" placeholder="Digite su correo" required><br>
+                <label for="password">Password</label><br>
+                <span class="Eye">
+                <i class="bx bx-hide"></i>
+                </span>
+                <input type="password" class="pass" name="password" placeholder="Digite su contraseña" required>
+                <br>
+
+                <div class="btn">
+                    <button type="submit">Login</button><br>
+                </div>
+            </div>
+            <div class="bottom-form">
+                <div class="no-account">No tienes una cuenta?</div>
+                <a href="{%url 'registro'%}" class="Signup">Registrarse</a>
+            </div>
+        </form>
+    </main>
+    <script src="/static/js/vista.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/static/js/loader.js"></script>
+</body>
+</html>

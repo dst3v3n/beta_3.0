@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{%static 'css/busqueda.css'%}">
+    <title>Busqueda</title>
+</head>
+<body class="hidden">
+	<div class="centrado" id="onload">
+		<div class="cssload-loader">HUMAN TALENT</div>
+	</div>
+    <header class="banner">
+        <a href="{%url 'index'%}">
+            <img class="logo" src="{%static 'img/logo.png'%}" alt="logo" width="100px">
+        </a>
+        <div class="busqueda">
+            <label for="search" class="search">
+            <div class="btn-search">
+                <a href="{%url 'busqueda'%}" class="fa fa-search" ></a>
+            </div>
+                <input id="search" type="search" placeholder="Buscar por cargo, ocupacion, ubicacion ó empresa" class="input-search">
+            </label>
+            <select name="Filtros" id="filtros" class="filtros">
+                <option value="">Seleccionar</option>
+                <option value="">cargo</option>
+                <option value="">ocupacion</option>
+                <option value="">ubicacion</option>
+                <option value="">empresa</option>
+            </select>
+        </div>
+    </header>
+
+    <div class="capa"></div>
+    
+    <nav class="enlaces">
+        <div class="enlaces-btn">
+            <a href="#" class="btn btn-cargo" type="button">Cargo</a>
+            <a href="#" class="btn btn-ocupacion" type="button">Ocupacion</a>
+            <a href="#" class="btn btn-ubicacion" type="button">Ubicacion</a>
+            <a href="#" class="btn btn-empresa" type="button">Empresa</a>
+        </div>
+    </nav> 
+
+    <main>
+        <section class="informacion">
+            <p class="id_oferta">Nombre de la empresa</p>
+            <div class="oferta1 oferta">
+                <h1 class="titulo">Analisis de programacion</h1>
+                <p class="salario">$1.600.000-$2.000.000</p>
+                <p>52 meses de experiencia</p>
+                <p>Tipo contrato: indefinido</p>
+                <p>Teletrabajo: no</p>
+                <p>Ubicacion: Cundinamarca, Soacha  </p>
+            </div>
+            <div class="oferta2 oferta">
+                <div class="date">
+                    <img src="/static/img/person-fill.svg" alt="" width="20px">
+                    <p>Vacantes 2</p>
+                </div>
+                <div class="date">
+                    <img src="/static/img/person-fill-check.svg" alt="" width="20px">
+                    <p>Postulacion 8</p>
+                </div>
+                <div class="date">
+                    <img src="/static/img/calendar3.svg" alt="" width="20px">
+                    <p>Publicado 05/10/2023</p>
+                </div>
+                <div class="date">
+                    <img src="/static/img/calendar3.svg" alt="" width="20px">
+                    <p>Fecha cierre 10/05/2023</p>
+                </div>
+            </div>
+            <div class="postularme">
+                <a href="detalles.html">
+                    <button class="btn-postu">
+                        <p>postularme</p>
+                    </button>
+                </a>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <p>Copyright &#169 2023-Human Talent SENA</p>
+        <div class="btns-a">
+            <div class="gith">
+                <a href="https://github.com/" class="fa fa-github"></a>
+            </div>
+            <div class="inst">
+                <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+            </div>
+        </div>
+        <div class="btns-b">
+            <div class="what">
+                <a href="https://web.whatsapp.com/" class="fa fa-whatsapp"></a>
+            </div>
+            <div class="yout">
+                <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
+            </div>
+        </div>
+        <div class="btns-c">
+            <div class="face">
+                <a href="https://web.facebook.com/?locale=es_LA&_rdc=1&_rdr" class="fa fa-facebook"></a>
+            </div>
+            <div class="twit">
+                <a href="https://twitter.com/" class="fa fa-twitter"></a>
+            </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/static/js/loader.js"></script>
+</body>
+</html> 

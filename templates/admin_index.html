@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/estiloadmin.css' %}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
+	<link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
+	<title>HUMAN TALENT</title>
+</head>
+
+
+<body class="hidden">
+	<div class="centrado" id="onload">
+		<div class="cssload-loader">HUMAN TALENT</div>
+</div>
+	<header>
+		<div class="container">
+		<div class="btn-menu">
+			<label for="btn-menu">☰</label>
+		</div>
+			<div class="logo">
+				<h1>HUMAN TALENT</h1>
+			</div>
+			<nav class="menu">
+				<a href="{%url 'admin_index'%}">Home</a>
+				<a href="{% url 'admin_link' %}" target="_blank">Admin</a>
+				<a href="{% url 'visualizar' %}">Usuarios</a>
+				<a href="#">Empresas</a>
+			</nav>
+		</div>
+	</header>
+	<div class="capa"></div>
+
+<input type="checkbox" id="btn-menu">
+<div class="container-menu">
+	<div class="cont-menu">
+		<nav>
+			<a href="#">Perfil</a>
+			<a href="#">Empresas</a>
+			<a href="{% url 'visualizar' %}">Usuario</a>
+			<a href="{% url 'registro_admin' %}">Crear Administrador</a>
+			<a href="{% url 'cerrar' %}">Cerrar sesion</a>
+		</nav>
+		<label for="btn-menu">✖️</label>
+	</div>
+</div>
+
+<main>
+	<section class="section">
+		<div class="vertical">
+			<div class="user">
+				<a href="#" class="fa fa-user"></a>
+			</div>
+		</div>
+	</section>
+	<section class="centro">
+			<img src="/static/img/logo.png" alt="" class="imagen">
+		<div class="busqueda">
+			<input type="search" placeholder="Buscar" required>
+		</div>
+	</section>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="/static/js/loader.js"></script>
+</body>
+</html>

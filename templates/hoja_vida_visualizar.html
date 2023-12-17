@@ -1,0 +1,569 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoja de vida</title>
+    <link rel="stylesheet" href="{%static 'css/vhoja_vida.css'%}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
+</head>
+<style>
+    #cancelar{
+        font-size: 20px;
+        position: fixed;
+        left: 94%;
+        cursor: pointer;
+        color: #fff;
+        background-color: #1D405C;
+        border: 3px solid #fff;
+        border-radius: 50%;
+        padding: 5px;
+
+    }
+    #cancelar:hover{
+        background-color: red;
+        border-color: red;
+
+    }
+</style>
+<body class="hidden">
+    <div class="centrado" id="onload">
+        <div class="cssload-loader">HUMAN TALENT</div>
+    </div>
+
+    <div class="capa"></div>
+
+    <nav>
+        <div class="barra">
+            <div class="content">
+                <a href="{%url 'index'%}">
+                <p class="p1">HUMAN TALENT <br> Hoja De Vida</p>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="info">
+            <p class="titulo1">Edita tu Informacion</p>
+            <button  class="titulo1" id="open" style="margin: 2%  0 0 45%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Editar</button>
+        </div>
+        <div class="info">
+            <p class="titulo1">Información Personal</p>
+
+            <label for="nombre" class="infop" >Nombre</label>
+            {{form_info.Nombre}}
+
+            <label for="apellido" class="infop" id="ape">Apellidos</label>
+            {{form_info.Apellido}}
+            <br>
+            <br>
+            <label for="direccion" class="infop">Direccion</label>
+            {{form_info.Direccion}}
+
+            <label for="cel" class="infop">Nºcelular</label>
+            {{form_info.Celular}}
+            <br>
+            <br>
+            <label for="email" class="infop">Correo</label>
+            {{form_info.Email}}
+
+            <label for="fechan" class="infop" id="fecha">fecha de nacimiento</label>
+            {{form_info.Fecha}}
+            <br>
+            <br>
+            <label for="tpod" class="infop">Tipo de documento</label>
+            {{form_info.Tipod}}
+
+
+            <label for="ncc" class="infop" id="doc">Nº de documento</label>
+            {{form_info.N_documento}}
+            <br>
+            <br>
+            <label for="genero" class="infop">Genero</label>
+            {{form_info.Genero}}
+
+            <label for="edad" class="infop" id="ed">Edad</label>
+            {{form_info.Edad}}
+
+            <label for="civil" class="infop" id="estado">Estado civil</label>
+            {{form_info.Civil}}
+            <br>
+            <br>
+        </div>
+
+        <div class="info" >
+            <div>
+                {% csrf_token %}
+                <p class="titulo1">Educación</p>
+                {% for form in form_edu %}
+                    <p class="titulo2">Institucion</p>
+                    <label for="titulo" class="infop">Titulo obtenido</label>
+                    {{ form.Archivo }}
+
+                    <label for="cole" class="infop" id="col">Institución</label>
+                    {{form.Nombre_Instituto}}
+                    <br>
+                    <br>
+                    <label for="añ" class="infop">Año de gradución</label>
+                    {{form.Ano_graduacion}}
+
+                    <label for="tim" class="infop" id="tie">timpo en la institucion</label>
+                    {{form.Tiempo}}
+                    <br>
+                    <br>
+                    <br>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="info" >
+            <div>
+                <p class="titulo1">Experiencia laboral</p>
+                {% for form in form_empresa %}
+                    <p class="titulo2">Empresa</p>
+
+                    <label for="emp" class="infop">Empresa</label>
+                    {{form.Nombre_empresa}}
+
+                    <label for="car" class="infop" id="car">Cargo</label>
+                    {{form.Cargo}}
+                    <br>
+                    <br>
+                    <label for="fechai" class="infop">Fecha de inicio</label>
+                    {{form.Fecha_Inicio}}
+
+                    <label for="fechaf" class="infop">Fecha de FInalización</label>
+                    {{form.Fecha_Finalizacion}}
+                    <br>
+                    <br>
+                    <label for="dsr" class="infop">Describa sus fuciones</label>
+                    {{form.Funciones}}
+                    <br>
+                    <br>
+                    <br>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="info">
+            <p class="titulo1">Otros datos</p>
+
+            {% for form in form_person %}
+                <p class="titulo2">Referencias personales</p>
+
+                <label for="nombre" class="infop" >Nombre</label>
+                {{form.Nombre_person}}
+
+                <label for="apellido" class="infop" id="ape">Apellidos</label>
+                {{form.Apellido_person}}
+                <br>
+                <br>
+                <label for="direccion" class="infop">Direccion</label>
+                {{form.Direccion}}
+
+                <label for="cel" class="infop">Nºcelular</label>
+                {{form.N_celular}}
+                <br>
+                <br>
+                <br>
+            {% endfor %}
+            {% for form in form_empresarial %}
+                <p class="titulo2">Referencias empresariales</p>
+
+                <label for="empr" class="infop" >Empresa</label>
+                {{form.Nombre_Empresa}}
+
+                <label for="nombref" class="infop" id="ape">Nombre jefe</label>
+                {{form.Nombre_Jefe}}
+
+                <br>
+                <br>
+                <label for="direccion" class="infop">Direccion</label>
+                {{form.Direccion}}
+
+                <label for="tel" class="infop" id="telf">Nºtelefono</label>
+                {{form.N_celular}}
+                <br>
+                <br>
+                <br>
+            {% endfor %}
+        </div>
+
+        <div class="info">
+            <p class="titulo1">Informacion adicional</p>
+            <br>
+            {{form_adicio.Inforamcion_adi}}
+            <br>
+            <br>
+        </div>
+
+
+
+        <dialog id="modal" class="info" style="width: auto;">
+            <button  id="cancelar" >✖️</button>
+            {% if veri_info %}
+                <div class="info">
+                    <form action="{% url 'editar_info' %}" method="post">
+                        {% csrf_token %}
+                        <p class="titulo1">Información Personal</p>
+
+                        <label for="nombre" class="infop" >Nombre</label>
+                        {{form_adicion_info.Nombre}}
+
+                        <label for="apellido" class="infop" id="ape">Apellidos</label>
+                        {{form_adicion_info.Apellido}}
+                        <br>
+                        <br>
+                        <label for="direccion" class="infop">Direccion</label>
+                        {{form_adicion_info.Direccion}}
+
+                        <label for="cel" class="infop">Nºcelular</label>
+                        {{form_adicion_info.Celular}}
+                        <br>
+                        <br>
+                        <label for="email" class="infop">Correo</label>
+                        {{form_adicion_info.Email}}
+
+                        <label for="fechan" class="infop" id="fecha">fecha de nacimiento</label>
+                        {{form_adicion_info.Fecha}}
+                        <br>
+                        <br>
+                        <label for="tpod" class="infop">Tipo de documento</label>
+                        {{form_adicion_info.Tipod}}
+
+
+                        <label for="ncc" class="infop" id="doc">Nºdocumento</label>
+                        {{form_info.N_documento}}
+                        <br>
+                        <br>
+                        <label for="genero" class="infop">Genero</label>
+                        {{form_info.Genero}}
+
+                        <label for="edad" class="infop" id="ed">Edad</label>
+                        {{form_info.Edad}}
+                        <br>
+                        <br>
+                        <label for="civil" class="infop" id="estado">Estado civil</label>
+                        {{form_info.Civil}}
+                        <br>
+                        <br>
+                        <p class="titulo2">No olvide guardar sus datos </p>
+                        <button  class="titulo1" id="open" type="submit" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                        <a href="{% url 'eliminar_info' %}" class="titulo1" id="open" style="margin: 2% 0 0 4%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;" >Eliminar</a>
+                    </form>
+                </div>
+            {% else %}
+                <div class="info">
+                    <p class="titulo1">Información Personal</p>
+
+                    <label for="nombre" class="infop" >Nombre</label>
+                    {{form_info.Nombre}}
+
+                    <label for="apellido" class="infop" id="ape">Apellidos</label>
+                    {{form_info.Apellido}}
+                    <br>
+                    <br>
+                    <label for="direccion" class="infop">Direccion</label>
+                    {{form_info.Direccion}}
+
+                    <label for="cel" class="infop">Nºcelular</label>
+                    {{form_info.Celular}}
+                    <br>
+                    <br>
+                    <label for="email" class="infop">Correo</label>
+                    {{form_info.Email}}
+
+                    <label for="fechan" class="infop" id="fecha">fecha de nacimiento</label>
+                    {{form_info.Fecha}}
+                    <br>
+                    <br>
+                    <label for="tpod" class="infop">Tipo de documento</label>
+                    {{form_info.Tipod}}
+
+
+                    <label for="ncc" class="infop" id="doc">Nº de documento</label>
+                    {{form_info.N_documento}}
+                    <br>
+                    <br>
+                    <label for="genero" class="infop">Genero</label>
+                    {{form_info.Genero}}
+
+                    <label for="edad" class="infop" id="ed">Edad</label>
+                    {{form_info.Edad}}
+
+                    <label for="civil" class="infop" id="estado">Estado civil</label>
+                    {{form_info.Civil}}
+                    <br>
+                    <br>
+                </div>
+            {% endif %}
+
+            {% if veri_edu %}
+                <div class="info" >
+                    <div>
+                        <p class="titulo1">Educación</p>
+                        {% for form in form_adicion_edu %}
+                            <form action="{%url 'ediar_educacion' form.instance.id%}" method="post" enctype="multipart/form-data" id="edu">
+                                {% csrf_token %}
+                                <p class="titulo2">Institucion</p>
+                                <label for="titulo" class="infop">Titulo obtenido</label>
+                                {{form.Archivo}}
+                                <label for="cole" class="infop" id="col">Institución</label>
+                                {{form.Nombre_Instituto}}
+                                <br>
+                                <br>
+                                <label for="añ" class="infop">Año de gradución</label>
+                                {{form.Ano_graduacion}}
+
+                                <label for="tim" class="infop" id="tie">timpo en la institucion</label>
+                                {{form.Tiempo}}
+                                <br>
+                                <br>
+                                <br>
+                                <div>
+                                    <p class="titulo2">No olvide guardar sus datos </p>
+                                    <button class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                                    <a href="{% url 'eliminar_educacion' form.instance.id %}" class="titulo1" id="open" style="margin: 2% 0 0 4%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</a>
+                                </div>
+                            </form>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="info" >
+                    <div>
+                    <p class="titulo1">Educación</p>
+                    {% for form in form_edu %}
+                        <p class="titulo2">Institucion</p>
+                        <label for="titulo" class="infop">Titulo obtenido</label>
+                        {{ form.Archivo }}
+
+                        <label for="cole" class="infop" id="col">Institución</label>
+                        {{form.Nombre_Instituto}}
+                        <br>
+                        <br>
+                        <label for="añ" class="infop">Año de gradución</label>
+                        {{form.Ano_graduacion}}
+
+                        <label for="tim" class="infop" id="tie">timpo en la institucion</label>
+                        {{form.Tiempo}}
+                        <br>
+                        <br>
+                        <br>
+                    {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
+
+            {% if veri_empresa %}
+                <div class="info" >
+                    <div>
+                        <p class="titulo1">Experiencia laboral</p>
+                        {% for form in form_adicion_empresa %}
+                            <form action="{% url 'ediar_empresa' form.instance.id%}" method="post" id="edu1">
+                                {% csrf_token %}
+                                <p class="titulo2">Empresa</p>
+                                <label for="emp" class="infop">Empresa</label>
+                                {{form.Nombre_empresa}}
+
+                                <label for="car" class="infop" id="car">Cargo</label>
+                                {{form.Cargo}}
+                                <br>
+                                <br>
+                                <label for="fechai" class="infop">Fecha de inicio</label>
+                                {{form.Fecha_Inicio}}
+
+                                <label for="fechaf" class="infop">Fecha de FInalización</label>
+                                {{form.Fecha_Finalizacion}}
+                                <br>
+                                <br>
+                                <label for="dsr" class="infop">Describa sus fuciones</label>
+                                {{form.Funciones}}
+                                <br>
+                                <br>
+                                <br>
+                                <div>
+                                    <p class="titulo2">No olvide guardar sus datos </p>
+                                    <button  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                                    <a href="{% url 'eliminar_empresa' form.instance.id %}"  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</a>
+                                </div>
+                            </form>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="info" >
+                    <div>
+                        <p class="titulo1">Experiencia laboral</p>
+                        {% for form in form_empresa %}
+                            <p class="titulo2">Empresa</p>
+
+                            <label for="emp" class="infop">Empresa</label>
+                            {{form.Nombre_empresa}}
+
+<<<<<<< HEAD
+                <label for="cel" class="infop">Nºcelular</label>
+                {{form_person.N_celular}}
+                <br>
+                <br>
+                <br>
+                <p class="titulo2"> Referencias personales</p>
+=======
+                            <label for="car" class="infop" id="car">Cargo</label>
+                            {{form.Cargo}}
+                            <br>
+                            <br>
+                            <label for="fechai" class="infop">Fecha de inicio</label>
+                            {{form.Fecha_Inicio}}
+>>>>>>> a8b59e40387f108fe7fe8da6577ef93df8f8e8e0
+
+                            <label for="fechaf" class="infop">Fecha de FInalización</label>
+                            {{form.Fecha_Finalizacion}}
+                            <br>
+                            <br>
+                            <label for="dsr" class="infop">Describa sus fuciones</label>
+                            {{form.Funciones}}
+                            <br>
+                            <br>
+                            <br>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if veri_person %}
+                <div class="info">
+                    <p class="titulo1">Otros datos</p>
+                    {% for form in form_adicion_person %}
+                        <form action="{% url 'ediar_referencias_personales' form.instance.id%}" method="post">
+                        {% csrf_token %}
+                            <p class="titulo2">Referencias personales</p>
+
+                            <label for="nombre" class="infop" >Nombre</label>
+                            {{form.Nombre_person}}
+
+                            <label for="apellido" class="infop" id="ape">Apellidos</label>
+                            {{form.Apellido_person}}
+                            <br>
+                            <br>
+                            <label for="direccion" class="infop">Direccion</label>
+                            {{form.Direccion}}
+
+                            <label for="cel" class="infop">Nºcelular</label>
+                            {{form.N_celular}}
+                            <br>
+                            <button  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                            <a href="{% url 'eliminar_referencias_personales' form.instance.id %}"  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</a>
+                        </form>
+                        {% endfor %}
+                    </div>
+
+                {% else %}
+                    <div class="info">
+                        <p class="titulo1">Otros datos</p>
+
+                        {% for form in form_person %}
+                            <p class="titulo2">Referencias personales</p>
+
+                            <label for="nombre" class="infop" >Nombre</label>
+                            {{form.Nombre_person}}
+
+                            <label for="apellido" class="infop" id="ape">Apellidos</label>
+                            {{form.Apellido_person}}
+                            <br>
+                            <br>
+                            <label for="direccion" class="infop">Direccion</label>
+                            {{form.Direccion}}
+
+                            <label for="cel" class="infop">Nºcelular</label>
+                            {{form.N_celular}}
+                            <br>
+                            <br>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if veri_empre %}
+                    <div class="info">
+                        {% for form in form_empresarial %}
+                            <form action="{% url 'ediar_referencias_empresariales' form.instance.id%}" method="post">
+                            {% csrf_token %}
+                                <p class="titulo2">Referencias empresariales</p>
+
+                                <label for="empr" class="infop" >Empresa</label>
+                                {{form.Nombre_Empresa}}
+
+                                <label for="nombref" class="infop" id="ape">Nombre jefe</label>
+                                {{form.Nombre_Jefe}}
+
+                                <br>
+                                <br>
+                                <label for="direccion" class="infop">Direccion</label>
+                                {{form.Direccion}}
+
+                                <label for="tel" class="infop" id="telf">Nºtelefono</label>
+                                {{form.N_celular}}
+                                <br>
+                                <button  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                                <a href="{% url 'eliminar_referencias_empresariales' form.instance.id %}"  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</a>
+                            </form>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="info">
+                        {% for form in form_empresarial %}
+                            <p class="titulo2">Referencias empresariales</p>
+
+                            <label for="empr" class="infop" >Empresa</label>
+                            {{form.Nombre_Empresa}}
+
+                            <label for="nombref" class="infop" id="ape">Nombre jefe</label>
+                            {{form.Nombre_Jefe}}
+
+                            <br>
+                            <br>
+                            <label for="direccion" class="infop">Direccion</label>
+                            {{form.Direccion}}
+
+                            <label for="tel" class="infop" id="telf">Nºtelefono</label>
+                            {{form.N_celular}}
+                            <br>
+                            <br>
+                            <br>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if veri_adicio %}
+                <div class="info">
+                        <form action="{% url 'ediar_adicional' %}" method="post">
+                        {% csrf_token %}
+                        <p class="titulo1">Informacion adicional</p>
+                        <br>
+                        {{form_adicion_adicio.Inforamcion_adi}}
+                        <br>
+                        <br>
+                        <button  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                        <a href="{% url 'eliminar_adicional' %}"  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</a>
+                    </div>
+                {% else %}
+                    <div class="info">
+                        <p class="titulo1">Informacion adicional</p>
+                        <br>
+                        {{form_adicio.Inforamcion_adi}}
+                        <br>
+                        <br>
+                    </div>
+                {% endif %}
+
+            </dialog>
+
+        </main>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="/static/js/loader.js"></script>
+        <script src="/static/js/modal.js"></script>
+</body>

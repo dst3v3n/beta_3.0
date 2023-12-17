@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;600;700&family=Tilt+Prism&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Akshar', sans-serif;
+}
+body{
+	background-color: #404040;
+	height: 100% ;
+	width: 100%;
+	background-repeat: no-repeat;
+}
+
+.capa{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  z-index: -1;
+  top: 0;left: 0;
+}
+
+.btn-retornos{
+  width: 80px;
+  height: 25px;
+  background-color: #ffd731;
+  border-color: #fff;
+  border-radius: 20px;
+  font-family: 'Akshar', sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all .4s ease-in-out;
+}
+
+.btn-retornos:hover{
+  transform: perspective(15px,15px);
+  transition: all 20px;
+  background-color: rgb(255, 206, 12);
+  color: #000;
+  border-color:#000 ;
+  transform: scale(1.2);
+}
+
+.btn-retorn{
+  width: 80px;
+  height: 25px;
+  background-color: #d84237;
+  border-color: #fff;
+  border-radius: 20px;
+  font-family: 'Akshar', sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all .4s ease-in-out;
+}
+
+.btn-retorn:hover{
+  transform: perspective(15px,15px);
+  transition: all 20px;
+  background-color: #ee0808;
+  color: #000;
+  border-color:#000 ;
+  transform: scale(1.2);
+}
+
+
+.btn-retorno{
+  width: 100px;
+  height: 40px;
+  border-color: #171515;
+  border-radius: 20px;
+  translate: 30px -45px ;
+  font-family: 'Akshar', sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.btn-retorno:hover{
+  transform: perspective(15px,15px);
+  transition: all 20px;
+  background-color: #171515;
+  color: #fff;
+  border-color:#fff ;
+  
+}
+
+a {
+  text-decoration: none;
+  color: #404040;
+}
+
+a:hover{
+  color: #fff;
+}
+
+
+.table-container {
+    width: 100%;
+}
+
+table {
+    display: flex;
+    width: 100%;
+    border-collapse: collapse;
+    justify-content: center;
+    align-items: center;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    color: #ddd
+}
+
+th {
+    background-color: #404040;
+    color:#fff;
+}
+
+
+header {
+    background-color: #404040;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+
+
+  /* .btnedelet */
+
+  /*styls scroll*/
+
+body::-webkit-scrollbar {
+  width: 25px;   
+ 
+}
+     
+body::-webkit-scrollbar-track {
+  border: 7px solid #232943;
+  box-shadow: 0 0 5px 5px rgba(0,0,0,0.6) inset;
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background: #005B8F;
+  border-radius: 5px;
+}

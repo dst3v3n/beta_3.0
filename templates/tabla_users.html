@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Usuarios</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{%static 'css/tabla_users.css'%}" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
+</head>
+<body>
+    <header>
+    <h1>Tabla de Usuarios</h1>
+    </header>
+
+    <div class="capa"></div>
+
+    <nav>
+        <button class="btn-retorno" type="submit"> 
+            <a href="{%url 'admin_index' %}">Inicio</a>
+        </button>
+        <button class="btn-retorno" type="submit"> 
+            <a href="{%url 'registro' %}">Nuevo Usuario</a>
+        </button>
+    </nav>
+
+    
+    <!-- Tab panes -->
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="tab1Id" role="tabpanel"></div>
+        <div class="tab-pane fade" id="tab2Id" role="tabpanel"></div>
+        <div class="tab-pane fade" id="tab3Id" role="tabpanel"></div>
+        <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
+        <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
+    </div>
+    
+    <!-- (Optional) - Place this js code after initializing bootstrap.min.js or bootstrap.bundle.min.js -->
+    <script>
+        var triggerEl = document.querySelector('#navId a')
+        bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
+    </script>
+    
+    <main>
+      <div class="table-container">
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+
+            {%for user in get_usuarios%}
+            <tr>
+              <td>{{user.Nombre}}</td>
+              <td>{{user.Apellido}}</td>
+              <td>{{user.Email}}</td>
+              <td>{{user.Password}}</td>
+              <th> <button class="btn-retornos" type="submit">
+                <a href="{% url 'editar_usuario' user.id %}">Editar</a>
+            </button> </th>
+            <th> <button class="btn-retorn" type="submit">
+                <a href="{% url 'eliminar_usuario' user.id %}">Eliminar</a>
+            </button> </th>
+            </tr>
+            {%endfor%}
+        </table>
+      </div>
+    </main>
+    <footer>
+        <div class="buttons" id="contactos">
+            <div class="face">
+                <a href="https://web.facebook.com/?locale=es_LA&_rdc=1&_rdr" class="fa fa-facebook"></a>
+            </div>
+            <div class="twit">
+                <a href="https://twitter.com/" class="fa fa-twitter"></a>
+            </div>
+            <div class="what">
+                <a href="https://web.whatsapp.com/" class="fa fa-whatsapp"></a>
+            </div>
+            <div class="yout">
+                <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
+            </div>
+            <div class="gith">
+                <a href="https://github.com/" class="fa fa-github"></a>
+            </div>
+            <div class="inst">
+                <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+            </div>	
+        </div>
+    </footer>
+  </body>
+</html>
