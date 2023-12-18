@@ -3,3 +3,5 @@ HumanTalent/__pycache__
 HumanTalent/static/python/__pycache__
 admins/__pycache__
 admins/migrations/__pycache__
+usuarios/__pycache__
+usuarios/migrations/__pycache__
