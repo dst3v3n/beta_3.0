@@ -32,7 +32,7 @@ class MyUserManager (BaseUserManager):
         return user
 
 class Myuser (AbstractBaseUser):
-    email = models.EmailField ( verbose_name = 'email address' , max_length = 255 ,unique = True)
+    email = models.EmailField (verbose_name = 'email address' , max_length = 255 ,unique = True)
     name = models.CharField (max_length = 25 , blank = False , null = False)
     type_user = models.CharField (max_length = 50 , blank = False , null = False , choices = type_user , default = 'User')
 
@@ -44,8 +44,8 @@ class Myuser (AbstractBaseUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name' , 'type_user']
 
-    def __str__(self) -> str:
-        return self.email
+    def __str__(self):
+        return self.name
 
     def has_perm (self, perm, obj = None):
         return True

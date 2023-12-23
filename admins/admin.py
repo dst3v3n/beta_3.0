@@ -9,12 +9,20 @@ from admins.models import Myuser
 # Register your models here.
 
 class UserCreationForm (forms.ModelForm):
-    password2 = forms.CharField (label = "password confirmation" , widget=forms.PasswordInput)
-    password1 = forms.CharField (label = "password" , widget=forms.PasswordInput)
+    password2 = forms.CharField (label = "password confirmation" , widget=forms.PasswordInput(attrs={
+        'Placeholder' : 'Digite de nuevo la contraseña',
+        'id' : 'passw',
+        'class' : 'pass'
+    }))
+    password1 = forms.CharField (label = "password" , widget=forms.PasswordInput(attrs={
+        'Placeholder' : 'Ingrese su contraseña, con un mínimo de 8 caracteres.',
+        'id' : 'passw',
+        'class' : 'pass'
+    }))
 
     class Meta :
         model = Myuser
-        fields = '__all__'
+        fields = ['name' , 'email' ]
 
     def clean_password2 (self):
         password1 = self.cleaned_data.get ('password1')

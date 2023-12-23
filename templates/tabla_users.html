@@ -17,15 +17,18 @@
     <div class="capa"></div>
 
     <nav>
-        <button class="btn-retorno" type="submit"> 
-            <a href="{%url 'admin_index' %}">Inicio</a>
+        <button class="btn-retorno" type="submit">
+            <a href="{%url 'AdminIndex' %}">Inicio</a>
         </button>
-        <button class="btn-retorno" type="submit"> 
-            <a href="{%url 'registro' %}">Nuevo Usuario</a>
+        <button class="btn-retorno" type="submit">
+            <a href="{% url 'registro_user1' %}">Nuevo Usuario</a>
+        </button>
+        <button class="btn-retorno" type="submit">
+            <a href="{% url 'registro_company1' %}">Nueva Empresa</a>
         </button>
     </nav>
 
-    
+
     <!-- Tab panes -->
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="tab1Id" role="tabpanel"></div>
@@ -34,38 +37,37 @@
         <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
         <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
     </div>
-    
-    <!-- (Optional) - Place this js code after initializing bootstrap.min.js or bootstrap.bundle.min.js -->
+
     <script>
         var triggerEl = document.querySelector('#navId a')
         bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
     </script>
-    
+
     <main>
       <div class="table-container">
         <table>
             <tr>
                 <th>Nombre</th>
-                <th>Apellido</th>
                 <th>Email</th>
                 <th>Password</th>
+                <th>Tipo Usuario</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
 
             {%for user in get_usuarios%}
-            <tr>
-              <td>{{user.Nombre}}</td>
-              <td>{{user.Apellido}}</td>
-              <td>{{user.Email}}</td>
-              <td>{{user.Password}}</td>
-              <th> <button class="btn-retornos" type="submit">
-                <a href="{% url 'editar_usuario' user.id %}">Editar</a>
-            </button> </th>
-            <th> <button class="btn-retorn" type="submit">
-                <a href="{% url 'eliminar_usuario' user.id %}">Eliminar</a>
-            </button> </th>
-            </tr>
+                <tr>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.password}}</td>
+                <td>{{user.type_user}}</td>
+                <th> <button class="btn-retornos" type="submit">
+                    <a href="{% url 'edit_user' user.id %}">Editar</a>
+                </button> </th>
+                <th> <button class="btn-retorn" type="submit">
+                    <a href="{% url 'delete_user' user.id %}">Eliminar</a>
+                </button> </th>
+                </tr>
             {%endfor%}
         </table>
       </div>
@@ -89,7 +91,7 @@
             </div>
             <div class="inst">
                 <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
-            </div>	
+            </div>
         </div>
     </footer>
   </body>

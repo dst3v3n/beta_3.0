@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'admins.apps.AdminsConfig',
     'users.apps.UsersConfig',
+    'company.apps.CompanyConfig',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,7 @@ APPEND_SLASH = False
 
 
 AUTH_USER_MODEL = 'admins.Myuser'
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/'

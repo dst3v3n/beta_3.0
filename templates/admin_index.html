@@ -25,9 +25,9 @@
 				<h1>HUMAN TALENT</h1>
 			</div>
 			<nav class="menu">
-				<a href="{%url 'admin_index'%}">Home</a>
+				<a href="{%url 'AdminIndex'%}">Home</a>
 				<a href="{% url 'admin_link' %}" target="_blank">Admin</a>
-				<a href="{% url 'visualizar' %}">Usuarios</a>
+				<a href="{% url 'view' %}">Usuarios</a>
 				<a href="#">Empresas</a>
 			</nav>
 		</div>
@@ -40,9 +40,9 @@
 		<nav>
 			<a href="#">Perfil</a>
 			<a href="#">Empresas</a>
-			<a href="{% url 'visualizar' %}">Usuario</a>
-			<a href="{% url 'registro_admin' %}">Crear Administrador</a>
-			<a href="{% url 'cerrar' %}">Cerrar sesion</a>
+			<a href="#">Usuario</a>
+			<a href="{% url 'registro_admin1' %}">Crear Administrador</a>
+			<a href="{% url 'logout' %}">Cerrar sesion</a>
 		</nav>
 		<label for="btn-menu">✖️</label>
 	</div>

@@ -14,7 +14,7 @@
 		<div class="cssload-loader">HUMAN TALENT</div>
 	</div>
     <main class="form">
-        <form action="{% url 'verificacion' %}" class="sub-form" method="post">
+        <form action="{% url 'acceso' %}" class="sub-form" method="post">
             {% csrf_token %}
             <div class="upper-form">
                 <div class="cabecera">
@@ -41,12 +41,12 @@
                     <hr class="derecha">
                 </div>
                 <label for="Username">Email</label><br>
-                <input type="email" name="username" placeholder="Digite su correo" required><br>
+                {{form.email}}
                 <label for="password">Password</label><br>
                 <span class="Eye">
                 <i class="bx bx-hide"></i>
                 </span>
-                <input type="password" class="pass" name="password" placeholder="Digite su contraseña" required>
+                {{form.password}}
                 <br>
 
                 <div class="btn">

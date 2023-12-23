@@ -12,16 +12,16 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='User_normal',
+            name='Company',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('id_myuser', models.PositiveIntegerField(unique=True)),
-                ('last_name', models.CharField(max_length=25)),
+                ('nit', models.CharField(max_length=15)),
             ],
             options={
-                'verbose_name': 'user_normal',
-                'verbose_name_plural': 'users_normal',
-                'db_table': 'user_normal',
+                'verbose_name': 'Company',
+                'verbose_name_plural': 'companies',
+                'db_table': 'Company',
             },
         ),
     ]
