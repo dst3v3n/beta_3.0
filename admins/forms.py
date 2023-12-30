@@ -12,7 +12,12 @@ class Form_Acceso (forms.Form):
         'class' : 'pass'
     }))
 
-class Form_new_user (forms.Form):
+class Form_Name (forms.ModelForm):
     class Meta:
         model = Myuser
-        fileds = ['email' , ' name' , 'type_user']
+        fields = ['name' , 'email']
+
+        widgets = {
+            'email': forms.TextInput(attrs={'class': 'inp'}),
+            'name': forms.TextInput(attrs={'class': 'inp'}),
+                }

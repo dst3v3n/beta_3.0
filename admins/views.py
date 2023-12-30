@@ -34,7 +34,6 @@ class acceso :
             else:
                 return redirect('login')
 
-    @login_required(redirect_field_name="index")
     def logout (request):
         logout (request)
         response = redirect("index")
@@ -49,12 +48,12 @@ class acceso :
         if request.method == 'POST':
             password1 = request.POST ['password1']
             password2 = request.POST ['password2']
-            form = UserCreationForm(request.POST)
+            form = UserCreationForm (request.POST)
             if password1 and password2 and password1 != password2:
                 raise ValidationError ("La contraseña no coincide")
             else:
                 if form.is_valid():
-                    info1 = form.save(commit=False)
+                    info1 = form.save(commit = False)
                     info1.type_user = 'Admin'
                     info1.save ()
                     return redirect('index')
@@ -124,9 +123,9 @@ class Edicion :
         if password1 and password2 and password1 != password2:
             raise ValidationError ("La contraseña no coincide")
         usuario = Myuser.objects.get(pk=id_usuario)
-        form = UserCreationForm(request.POST,instance=usuario)
-        usuario1 = User_normal.objects.get(id_myuser=id_usuario)
-        form = forms_user(request.POST,instance=usuario1)
+        form = UserCreationForm(request.POST , instance=usuario)
+        usuario1 = User_normal.objects.get(id_myuser = id_usuario)
+        form = forms_user(request.POST , instance = usuario1)
         if form.is_valid():
             form.save()
             return redirect ('view')

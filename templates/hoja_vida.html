@@ -1,5 +1,4 @@
 {% load static %}
-{% load crispy_forms_tags %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,47 +27,47 @@
     </nav>
     <main>
         <div class="info">
-            <form action="{% url 'save_info' %}" method="post">
+            <form action="{% url 'save_info_hoja' %}" method="post">
                 {% csrf_token %}
                 <p class="titulo1">Información Personal</p>
 
                 <label for="nombre" class="infop" >Nombre</label>
-                {{form_info.Nombre}}
+                {{form_name.name}}
 
                 <label for="apellido" class="infop" id="ape">Apellidos</label>
-                {{form_info.Apellido}}
+                {{form_last.last_name}}
                 <br>
                 <br>
                 <label for="direccion" class="infop">Direccion</label>
-                {{form_info.Direccion}}
+                {{form_info.address}}
 
                 <label for="cel" class="infop">Nºcelular</label>
-                {{form_info.Celular}}
+                {{form_info.cell_phone}}
                 <br>
                 <br>
                 <label for="email" class="infop">Correo</label>
-                {{form_info.Email}}
+                {{form_name.email}}
 
                 <label for="fechan" class="infop" id="fecha">fecha de nacimiento</label>
-                {{form_info.Fecha}}
+                {{form_info.date}}
                 <br>
                 <br>
                 <label for="tpod" class="infop">Tipo de documento</label>
-                {{form_info.Tipod}}
+                {{form_info.type_d}}
 
 
                 <label for="ncc" class="infop" id="doc">Nº de documento</label>
-                {{form_info.N_documento}}
+                {{form_info.n_document}}
                 <br>
                 <br>
                 <label for="genero" class="infop">Genero</label>
-                {{form_info.Genero}}
+                {{form_info.gender}}
 
                 <label for="edad" class="infop" id="ed">Edad</label>
-                {{form_info.Edad}}
+                {{form_info.age}}
 
                 <label for="civil" class="infop" id="estado">Estado civil</label>
-                {{form_info.Civil}}
+                {{form_info.civil}}
                 <br>
                 <br>
                 <p class="titulo2">No olvide guardar sus datos </p>
@@ -78,23 +77,26 @@
 
         <div class="info" >
             <div>
-                <form action="{% url 'save_educacion'%}" method="post" enctype="multipart/form-data" id="edu">
+                <form action="{% url 'save_education_hoja' %}" method="post" enctype="multipart/form-data" id="edu">
                     {% csrf_token %}
                     <p class="titulo1">Educación</p>
                     {% for form in form_edu %}
                         <p class="titulo2">Institucion</p>
                         <label for="titulo" class="infop">Titulo obtenido</label>
-                        {{ form.Archivo }}
-
+                        {% if form.instance.id == None %}
+                            {{form.archive}}
+                        {% else %}
+                            <a href="{{form.archive.value.url}}" target="_blank">Ver</a>
+                        {% endif %}
                         <label for="cole" class="infop" id="col">Institución</label>
-                        {{form.Nombre_Instituto}}
+                        {{form.name_institution}}
                         <br>
                         <br>
                         <label for="añ" class="infop">Año de gradución</label>
-                        {{form.Ano_graduacion}}
+                        {{form.graduation_year}}
 
                         <label for="tim" class="infop" id="tie">timpo en la institucion</label>
-                        {{form.Tiempo}}
+                        {{form.time}}
                         <br>
                         <br>
                         <br>
@@ -111,28 +113,28 @@
 
             <div class="info" >
                 <div>
-                    <form action="{% url 'save_empresa' %}" method="post" id="edu1">
+                    <form action="{% url 'save_experience_hoja' %}" method="post" id="edu1">
                         {% csrf_token %}
                         <p class="titulo1">Experiencia laboral</p>
                         {% for form in form_empresa %}
                             <p class="titulo2">Empresa</p>
 
                             <label for="emp" class="infop">Empresa</label>
-                            {{form.Nombre_empresa}}
+                            {{form.company_name}}
 
                             <label for="car" class="infop" id="car">Cargo</label>
-                            {{form.Cargo}}
+                            {{form.company_position}}
                             <br>
                             <br>
                             <label for="fechai" class="infop">Fecha de inicio</label>
-                            {{form.Fecha_Inicio}}
+                            {{form.start_date}}
 
                             <label for="fechaf" class="infop">Fecha de FInalización</label>
-                            {{form.Fecha_Finalizacion}}
+                            {{form.end_date}}
                             <br>
                             <br>
                             <label for="dsr" class="infop">Describa sus fuciones</label>
-                            {{form.Funciones}}
+                            {{form.functions}}
                             <br>
                             <br>
                             <br>
@@ -148,60 +150,93 @@
 
 
             <div class="info">
-                <form action="{% url 'save_referencias' %}" method="post">
+                <form action="{% url 'save_reference_hoja' %}" method="post">
                     {% csrf_token %}
                     <p class="titulo1">Otros datos</p>
+                    <p class="titulo2">Referencias personales</p>
 
-                    {% for form in form_person %}
-                        <p class="titulo2">Referencias personales</p>
+                    <label for="nombre" class="infop" >Nombre</label>
+                    {{form_person.0.person_name}}
 
-                        <label for="nombre" class="infop" >Nombre</label>
-                        {{form.Nombre_person}}
+                    <label for="apellido" class="infop" id="ape">Apellidos</label>
+                    {{form_person.0.last_person_name}}
+                    <br>
+                    <br>
+                    <label for="direccion" class="infop">Direccion</label>
+                    {{form_person.0.address}}
 
-                        <label for="apellido" class="infop" id="ape">Apellidos</label>
-                        {{form.Apellido_person}}
-                        <br>
-                        <br>
-                        <label for="direccion" class="infop">Direccion</label>
-                        {{form.Direccion}}
+                    <label for="cel" class="infop">Nºcelular</label>
+                    {{form_person.0.cell_number}}
+                    <br>
+                    <br>
+                    <br>
 
-                        <label for="cel" class="infop">Nºcelular</label>
-                        {{form.N_celular}}
-                        <br>
-                        <br>
-                        <br>
-                    {% endfor %}
-                    {% for form in form_empresarial %}
-                        <p class="titulo2">Referencias empresariales</p>
 
-                        <label for="empr" class="infop" >Empresa</label>
-                        {{form.Nombre_Empresa}}
+                    <p class="titulo2">Referencias personales</p>
 
-                        <label for="nombref" class="infop" id="ape">Nombre jefe</label>
-                        {{form.Nombre_Jefe}}
+                    <label for="nombre" class="infop" >Nombre</label>
+                    {{form_person.1.person_name}}
 
-                        <br>
-                        <br>
-                        <label for="direccion" class="infop">Direccion</label>
-                        {{form.Direccion}}
+                    <label for="apellido" class="infop" id="ape">Apellidos</label>
+                    {{form_person.1.last_person_name}}
+                    <br>
+                    <br>
+                    <label for="direccion" class="infop">Direccion</label>
+                    {{form_person.1.address}}
 
-                        <label for="tel" class="infop" id="telf">Nºtelefono</label>
-                        {{form.N_celular}}
-                        <br>
-                        <br>
-                        <br>
-                    {% endfor %}
+                    <label for="cel" class="infop">Nºcelular</label>
+                    {{form_person.1.cell_number}}
+                    <br>
+                    <br>
+                    <br>
+                    <p class="titulo2">Referencias empresariales</p>
+
+                    <label for="empr" class="infop" >Empresa</label>
+                    {{form_empresarial.0.company_name}}
+
+                    <label for="nombref" class="infop" id="ape">Nombre jefe</label>
+                    {{form_empresarial.0.boss_name}}
+
+                    <br>
+                    <br>
+                    <label for="direccion" class="infop">Direccion</label>
+                    {{form_empresarial.0.address}}
+
+                    <label for="tel" class="infop" id="telf">Nºtelefono</label>
+                    {{form_empresarial.0.cell_number}}
+                    <br>
+                    <br>
+                    <br>
+
+                    <p class="titulo2">Referencias empresariales</p>
+
+                    <label for="empr" class="infop" >Empresa</label>
+                    {{form_empresarial.1.company_name}}
+
+                    <label for="nombref" class="infop" id="ape">Nombre jefe</label>
+                    {{form_empresarial.1.boss_name}}
+
+                    <br>
+                    <br>
+                    <label for="direccion" class="infop">Direccion</label>
+                    {{form_empresarial.1.address}}
+
+                    <label for="tel" class="infop" id="telf">Nºtelefono</label>
+                    {{form_empresarial.1.cell_number}}
+                    <br>
+                    <br>
+                    <br>
                     <p class="titulo2">No olvide guardar sus datos </p>
                     <button type="submit" class="btn-guardar">Guardar</button>
                 </form>
             </div>
 
             <div class="info">
-                <form action="{% url 'save_adicional' %}" method="post">
+                <form action="{% url 'save_aditional_hoja' %}" method="post">
                     {% csrf_token %}
                     <p class="titulo1">Informacion adicional</p>
                     <br>
-                    {{form_adicio.Inforamcion_adi}}
+                    {{form_adicio.information_adi}}
                     <br>
                     <br>
                     <p class="titulo2">No olvide guardar sus datos </p>
@@ -227,15 +262,15 @@
             newForm.innerHTML = `
                 <p class="titulo2">Institución</p>
                 <label for="titulo" class="infop">Titulo obtenido</label>
-                {{form_edu_in.Archivo }}
+                {{in_edu.archive }}
                 <label for="cole" class="infop" id="col">Institución</label>
-                {{form_edu_in.Nombre_Instituto}}
+                {{in_edu.name_institution}}
                 <br>
                 <br>
                 <label for="añ" class="infop">Año de gradución</label>
-                {{form_edu_in.Ano_graduacion}}
+                {{in_edu.graduation_year}}
                 <label for="tim" class="infop" id="tie">timpo en la institucion</label>
-                {{form_edu_in.Tiempo}}
+                {{in_edu.time}}
                 <br>
                 <br>
                 <br>
@@ -289,19 +324,19 @@
             newForm.innerHTML = `
             <p class="titulo2">Empresa</p>
             <label for="emp" class="infop">Empresa</label>
-            {{form_empresa_in.Nombre_empresa}}
+            {{in_exp.company_name}}
             <label for="car" class="infop" id="car">Cargo</label>
-            {{form_empresa_in.Cargo}}
+            {{in_exp.company_position}}
             <br>
             <br>
             <label for="fechai" class="infop">Fecha de inicio</label>
-            {{form_empresa_in.Fecha_Inicio}}
+            {{in_exp.start_date}}
             <label for="fechaf" class="infop">Fecha de FInalización</label>
-            {{form_empresa_in.Fecha_Finalizacion}}
+            {{in_exp.end_date}}
             <br>
             <br>
             <label for="dsr" class="infop">Describa sus fuciones</label>
-            {{form_empresa_in.Funciones}}
+            {{in_exp.functions}}
             <br>
             <br>
             <br>

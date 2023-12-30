@@ -12,4 +12,19 @@
   "type_user": "Superuser",
   "is_active": true,
   "is_admin": true
+},
+{
+  "_id": {
+    "$oid": "658b4c618ee768739a5ba882"
+  },
+  "id": 2,
+  "password": "pbkdf2_sha256$390000$EoyNMe6Er2DZWjrGTkmKEe$h1/5xS14LWnVnqEVwvVTZ4JIc894jp8IyKxToC1XlWE=",
+  "last_login": {
+    "$date": "2023-12-26T21:58:07.345Z"
+  },
+  "email": "hablack10@gmail.com",
+  "name": "Harold Steven",
+  "type_user": "User",
+  "is_active": true,
+  "is_admin": false
 }]

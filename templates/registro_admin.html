@@ -26,9 +26,15 @@
 
             <div class="upper-form">
                 <div class="cabecera">
+                    {% if admin %}
                         <a href="{%url 'AdminIndex'%}" class="atras">
-                        <img src="/static/img/arrow-back-sharp.svg" alt="atras">
-                    </a>
+                            <img src="/static/img/arrow-back-sharp.svg" alt="atras">
+                        </a>
+                    {% else %}
+                        <a href="{%url 'view'%}" class="atras">
+                            <img src="/static/img/arrow-back-sharp.svg" alt="atras">
+                        </a>
+                    {% endif %}
                     <h2>Formulario Registro</h2>
                 </div>
                 <aside class="btn-social">
