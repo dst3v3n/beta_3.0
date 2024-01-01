@@ -43,14 +43,14 @@
     <div class="container-menu">
         <div class="cont-menu">
             <nav>
-                <a href="#">Perfil</a>
+                <a href="{% url 'view_perfil' %}">Perfil</a>
                 {% if empresa %}
                 <a href="#">Crear ofertas</a>
                 {% else %}
                 <a href="#">Empresas</a>
                 <a href="#">Mirar ofertas</a>
-                <a href="{% url 'view_hoja' %}">Crear hoja de vida</a>
-                <a href="#">Ver y Editar hoja de vida</a>
+                <a href="{% url 'create_hoja' %}">Crear hoja de vida</a>
+                <a href="{% url 'view_hoja' %}">Ver hoja de vida</a>
                 <a href="#">Ofertas guardadas</a>
                 {% endif %}
                 <a href="{% url 'logout' %}">Cerrar sesion</a>
@@ -65,7 +65,7 @@
 		<section class="section">
 			<div class="vertical">
 				<div class="user">
-					<a href="#" class="fa fa-user"></a>
+					<a href="{% url 'view_perfil' %}" class="fa fa-user"></a>
 				</div>
 				<div class="icon">
                     <a href="#" class="fa fa-share"></a>

@@ -57,7 +57,7 @@ class Personal_references (models.Model):
     person_name = models.CharField (max_length = 50)
     last_person_name = models.CharField (max_length = 50)
     address = models.CharField (max_length = 50)
-    cell_number = models.IntegerField ()
+    cell_number = models.CharField (max_length = 11)
     id_myuser = models.PositiveIntegerField (null=True)
 
     class Meta:
@@ -71,8 +71,8 @@ class Personal_references (models.Model):
 class Business_references (models.Model):
     company_name = models.CharField (max_length = 50 , blank=True , null=False)
     boss_name = models.CharField (max_length = 50, blank=True , null=False)
-    address = models.CharField (max_length = 50 , blank=True , null=False)
-    cell_number = models.IntegerField (blank=True , null=False)
+    address_company = models.CharField (max_length = 50 , blank=True , null=False)
+    cell_number_busi = models.CharField (max_length = 11 , blank=True , null=False)
     id_myuser = models.PositiveIntegerField (blank=True , null=True)
 
     class Meta:

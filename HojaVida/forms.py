@@ -57,18 +57,18 @@ class Form_Person_Refe (forms.ModelForm):
             'person_name' : forms.TextInput (attrs={'class': 'inp',}),
             'last_person_name' : forms.TextInput (attrs={'class' : 'inp'}),
             'address' : forms.TextInput (attrs={'class' : 'inp'}),
-            'cell_number' : forms.NumberInput (attrs={'class': 'inp1'}),
+            'cell_number' : forms.TextInput (attrs={'class': 'inp1'}),
         }
 
 class Form_Business_Refe (forms.ModelForm):
     class Meta:
         model = Business_references
-        fields = ['company_name' , 'boss_name' , 'address' , 'cell_number']
+        fields = ['company_name' , 'boss_name' , 'address_company' , 'cell_number_busi']
         widgets = {
             'company_name' : forms.TextInput (attrs={'class': 'inp' , "required" : False}),
             'boss_name' : forms.TextInput (attrs={'class' : 'inp' , "required" : False}),
-            'address' : forms.TextInput (attrs={'class' : 'inp' , "required" : False}),
-            'cell_number' : forms.NumberInput (attrs={'class': 'inp1' , "required" : False}),
+            'address_company' : forms.TextInput (attrs={'class' : 'inp' , "required" : False}),
+            'cell_number_busi' : forms.TextInput (attrs={'class': 'inp1' , "required" : False}),
         }
 
 class Form_Aditional (forms.ModelForm):

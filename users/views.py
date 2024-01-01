@@ -30,3 +30,8 @@ class Acceso_User:
         else:
             form = UserCreationForm()
         return render(request, 'register.html', {'form': form})
+
+class view_user:
+
+    def perfil (request):
+        return render (request , 'perfiluser.html')
