@@ -33,6 +33,7 @@ class visualizar:
                 x =Experience.objects.get(id = id_empresa)
                 form_empresa_instance = Form_Experience (instance= x)
                 list_empresa.append(form_empresa_instance)
+
         else:
             list_empresa.append (Form_Experience (prefix = 'formulario0'))
 
@@ -44,6 +45,16 @@ class visualizar:
                 x = Personal_references.objects.get(id = id_person)
                 form_personales_instance = Form_Person_Refe (instance = x)
                 list_personales.append(form_personales_instance)
+
+        elif len(instancia_2) == 1:
+            for i in instancia_2:
+                id_person = i['id']
+                x = Personal_references.objects.get(id = id_person)
+                form_personales_instance = Form_Person_Refe (instance = x , prefix = 'formulario1')
+                list_personales.append(form_personales_instance)
+                list_personales.append(Form_Person_Refe (prefix = 'formulario2'))
+                pass
+
         else:
             list_personales = [Form_Person_Refe (prefix = 'formulario1') , Form_Person_Refe (prefix = 'formulario2') ]
 
@@ -196,14 +207,20 @@ class save_hj:
         if request.method == 'POST':
             form1 = Form_Person_Refe (request.POST , prefix = 'formulario1')
             form2 = Form_Person_Refe (request.POST , prefix = 'formulario2')
-            if form1.is_valid () :
-                info1 = form1.save(commit=False)
-                info1.id_myuser = request.COOKIES.get('User_id')
-                info1.save()
-            if form2.is_valid () :
-                info2 = form2.save(commit=False)
-                info2.id_myuser = request.COOKIES.get('User_id')
-                info2.save()
+            getlist = request.POST.getlist('formulario1-last_person_name')
+            getlist1 = request.POST.getlist('formulario2-last_person_name')
+            if not (getlist[0] == ""):
+                if len(Personal_references.objects.filter(id_myuser = request.COOKIES.get('User_id'))) < 1:
+                    if form1.is_valid () :
+                        info1 = form1.save(commit=False)
+                        info1.id_myuser = request.COOKIES.get('User_id')
+                        info1.save()
+
+            if not (getlist1[0] == ""):
+                if form2.is_valid () :
+                    info2 = form2.save(commit=False)
+                    info2.id_myuser = request.COOKIES.get('User_id')
+                    info2.save()
 
 
             form3 = Form_Business_Refe (request.POST , prefix = 'formulario1')
@@ -211,8 +228,9 @@ class save_hj:
             getlist = request.POST.getlist('formulario1-company_name')
             getlist1 = request.POST.getlist('formulario2-company_name')
 
-            if len(getlist) == 1 :
-                if not (getlist[0] == ""):
+
+            if not (getlist[0] == ""):
+                if len(Business_references.objects.filter(id_myuser = request.COOKIES.get('User_id'))) < 1:
                     if form3.is_valid () :
                         info3 = form3.save(commit=False)
                         info3.id_myuser = request.COOKIES.get('User_id')

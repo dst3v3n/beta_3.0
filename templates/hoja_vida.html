@@ -193,45 +193,6 @@
                         <br>
                     {% endfor %}
 
-                    {%if form_empresarial_refe.0.instance.id and not form_empresarial_refe.1.instance.id%}
-                        <p class="titulo2">Referencias empresariales</p>
-
-                        <label for="empr" class="infop" >Empresa</label>
-                        <input type="text" class="inp" value="{{form_empresarial_refe.0.company_name.value}}" disabled>
-
-                        <label for="nombref" class="infop" id="ape">Nombre jefe</label>
-                        <input type="text" class="inp" value="{{form_empresarial_refe.0.boss_name.value}}" disabled>
-
-                        <br>
-                        <br>
-                        <label for="direccion" class="infop">Direccion</label>
-                        <input type="text" class="inp" value="{{form_empresarial_refe.0.address_company.value}}" disabled>
-
-                        <label for="tel" class="infop" id="telf">Nºtelefono</label>
-                        <input type="text" class="inp1" value="{{form_empresarial_refe.0.cell_number_busi.value}}" disabled>
-                        <br>
-                        <br>
-                        <br>
-
-                        <p class="titulo2">Referencias empresariales</p>
-
-                        <label for="empr" class="infop" >Empresa</label>
-                        {{form_empresarial_refe.1.company_name}}
-
-                        <label for="nombref" class="infop" id="ape">Nombre jefe</label>
-                        {{form_empresarial_refe.1.boss_name}}
-
-                        <br>
-                        <br>
-                        <label for="direccion" class="infop">Direccion</label>
-                        {{form_empresarial_refe.1.address_company}}
-
-                        <label for="tel" class="infop" id="telf">Nºtelefono</label>
-                        {{form_empresarial_refe.1.cell_number_busi}}
-                        <br>
-                        <br>
-                        <br>
-                    {% else %}
                         {% for form in form_empresarial_refe %}
                         <p class="titulo2">Referencias empresariales</p>
 
@@ -252,7 +213,6 @@
                         <br>
                         <br>
                         {% endfor %}
-                    {% endif %}
                     {% if form_empresarial_refe.0.instance.id == None or form_empresarial_refe.1.instance.id == None%}
                         <p class="titulo2">No olvide guardar sus datos </p>
                         <button type="submit" class="btn-guardar">Guardar</button>
@@ -520,6 +480,7 @@
                                     {{form.cell_number}}
                                     <br>
                                     <button  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                                    <a href="{% url 'delete_personal_reference_hoja' form.instance.id %}" class="titulo1" id="open" style="margin: 2% 0 0 4%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</a>
                                 </form>
                             {% else %}
                                 <p class="titulo2">Referencias personales</p>
