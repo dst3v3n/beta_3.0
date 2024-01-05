@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'company.apps.CompanyConfig',
     'HojaVida.apps.HojavidaConfig',
+    'axes',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'axes.middleware.AxesMiddleware',
 ]
 
 ROOT_URLCONF = 'HumanTalent.urls'
@@ -70,6 +72,11 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+   'axes.backends.AxesBackend',
+   'django.contrib.auth.backends.ModelBackend',
+]
+
 WSGI_APPLICATION = 'HumanTalent.wsgi.application'
 
 
@@ -77,12 +84,15 @@ WSGI_APPLICATION = 'HumanTalent.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'HumanTalent',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "HumanTalent",
+        "USER": "root",
+        "PASSWORD": "",
+        "HOST": "localhost",
+        "PORT": "3306",
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -136,3 +146,22 @@ LOGOUT_REDIRECT_URL = '/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_SSL = False
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "haroldsabogal48@gmail.com"
+EMAIL_HOST_PASSWORD = "ypad bcfq hkuy ndda"
+DEFAULT_FROM_EMAIL = "haroldsabogal48@gmail.com"
+
+AXES_FAILURE_LIMIT: 3 # INTENTOS PERMITIDOS
+AXES_COOLOFF_TIME: 2 # TIEMPO DE BLOQUE EN HORAS
+AXES_RESET_ON_SUCCESS = True # RESETEO DE INTENTOS
+
+AXES_LOCKOUT_TEMPLATE = 'Account_lockout.html' # TEMPLATE
+AXES_LOCKOUT_URL = 'lockout' # URL DEL TEMPLATE
+# AXES_LOCKOUT_PARAMETERS = ["username", "user_agent"]
+# AXES_LOCK_OUT_AT_FAILURE = False # ! OPCION DE BLOQUEO
+AXES_ENABLE_ACCESS_FAILURE_LOG = True

@@ -12,6 +12,12 @@
 
 
 <body class="hidden">
+    <!-- ! Este es el codigo para que aparezca el link por si no ha verificado el email -->
+    <!-- * *{% if request.COOKIES.Login_status %}
+            * *{% if user.email_is_verified != True %}
+               * * <a href="{% url 'verify-email' %}">HOLA</a>
+           * * {%endif%}
+        * * {% endif %} -->
 	<div class="centrado" id="onload">
 		<div class="cssload-loader">HUMAN TALENT</div>
 	</div>

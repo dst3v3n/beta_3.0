@@ -26,7 +26,7 @@ class Acceso_Company:
                         h = Myuser.objects.filter (email = email).values ('id')
                         for i in h:
                             x =  i['id']
-                        info.id_myuser = x
+                        info.id_myuser_id  = x
                         info.save ()
                         return redirect('index')
         else:

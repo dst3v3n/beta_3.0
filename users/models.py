@@ -1,9 +1,10 @@
 from django.db import models
+from admins.models import Myuser
 
 # Create your models here.
 
 class User_normal (models.Model):
-    id_myuser = models.PositiveIntegerField (unique = True)
+    id_myuser = models.OneToOneField (Myuser , on_delete=models.CASCADE)
     last_name =models.CharField (max_length = 25 , blank = False , null = False)
 
     class Meta:

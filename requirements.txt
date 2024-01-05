@@ -1,5 +1,5 @@
-djongo
-pymongo == 3.12.3
+mysqlclient
 pytz
 django
-sqlparse ==0.2.4
+six
+django-axes
