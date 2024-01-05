@@ -54,7 +54,7 @@ Instalar los paquetes y dependencias
 
 <br>
 
-Ejecutar django
+Ejecutar el servidor local
 ```bash
    python manage.py runserver
 ```
