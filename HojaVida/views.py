@@ -15,7 +15,7 @@ class visualizar:
     def create_hoja (request):
 
         list_educacion = []
-        instancia = Education.objects.filter(id_myuser = request.COOKIES.get('User_id')).values ()
+        instancia = Education.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
         if len(instancia) >= 1:
             for i in instancia:
                 id_educacion = i['id']
@@ -26,7 +26,7 @@ class visualizar:
             list_educacion.append (Form_Education (prefix = 'formulario0'))
 
         list_empresa = []
-        instancia_1 = Experience.objects.filter(id_myuser = request.COOKIES.get('User_id')).values ()
+        instancia_1 = Experience.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
         if len(instancia_1) >= 1:
             for i in instancia_1:
                 id_empresa = i['id']
@@ -37,7 +37,7 @@ class visualizar:
             list_empresa.append (Form_Experience (prefix = 'formulario0'))
 
         list_personales = []
-        instancia_2 = Personal_references.objects.filter(id_myuser = request.COOKIES.get('User_id')).values ()
+        instancia_2 = Personal_references.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
         if len(instancia_2) == 2:
             for i in instancia_2:
                 id_person = i['id']
@@ -48,7 +48,7 @@ class visualizar:
             list_personales = [Form_Person_Refe (prefix = 'formulario1') , Form_Person_Refe (prefix = 'formulario2') ]
 
         list_empresariales = []
-        instancia_3 = Business_references.objects.filter(id_myuser = request.COOKIES.get('User_id')).values ()
+        instancia_3 = Business_references.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
         if len(instancia_3) == 2:
             for i in instancia_3:
                 id_person = i['id']
@@ -67,17 +67,17 @@ class visualizar:
             list_empresariales = [Form_Business_Refe (prefix = 'formulario1') , Form_Business_Refe (prefix = 'formulario2')]
 
         try:
-            form_person = Form_Person_Info (instance = Personal_information.objects.get (id_myuser = request.COOKIES.get ('User_id')))
+            form_person = Form_Person_Info (instance = Personal_information.objects.get (id_myuser_id  = request.COOKIES.get ('User_id')))
         except:
             form_person = Form_Person_Info ()
         try:
-            form_aditional = Form_Aditional (instance = Additional_information.objects.get (id_myuser = request.COOKIES.get ('User_id')))
+            form_aditional = Form_Aditional (instance = Additional_information.objects.get (id_myuser_id  = request.COOKIES.get ('User_id')))
         except:
             form_aditional = Form_Aditional ()
 
         data =  {
                 'form_name' : Form_Name (instance = Myuser.objects.get(pk = request.COOKIES.get ('User_id'))),
-                'form_last' : forms_user (instance = User_normal.objects.get (id_myuser = request.COOKIES.get ('User_id'))),
+                'form_last' : forms_user (instance = User_normal.objects.get (id_myuser_id  = request.COOKIES.get ('User_id'))),
                 'form_info' : form_person,
                 'form_edu' : list_educacion,
                 'form_empresa' : list_empresa,
@@ -93,7 +93,7 @@ class visualizar:
     @login_required(redirect_field_name="index")
     def view_hoja (request):
         list_educacion = []
-        instancia = Education.objects.filter(id_myuser = request.COOKIES.get('User_id')).values ()
+        instancia = Education.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
         if len(instancia) >= 1:
             for i in instancia:
                 id_educacion = i['id']
@@ -104,7 +104,7 @@ class visualizar:
             list_educacion.append (Form_Education ())
 
         list_empresa = []
-        instancia_1 = Experience.objects.filter(id_myuser = request.COOKIES.get('User_id')).values ()
+        instancia_1 = Experience.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
         if len(instancia_1) >= 1:
             for i in instancia_1:
                 id_empresa = i['id']
@@ -115,7 +115,7 @@ class visualizar:
             list_empresa.append (Form_Experience ())
 
         list_personales = []
-        instancia_2 = Personal_references.objects.filter(id_myuser = request.COOKIES.get('User_id')).values ()
+        instancia_2 = Personal_references.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
         if len(instancia_2) == 1:
             for i in instancia_2:
                 id_person = i['id']
@@ -126,7 +126,7 @@ class visualizar:
             list_personales = [Form_Person_Refe (prefix = 'formulario1') , Form_Person_Refe (prefix = 'formulario2') ]
 
         list_empresariales = []
-        instancia_3 = Business_references.objects.filter(id_myuser = request.COOKIES.get('User_id')).values ()
+        instancia_3 = Business_references.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
         if len(instancia_3) >= 1:
             for i in instancia_3:
                 id_person = i['id']
@@ -137,17 +137,17 @@ class visualizar:
             list_empresariales = [Form_Business_Refe (prefix = 'formulario1') , Form_Business_Refe (prefix = 'formulario2')]
 
         try:
-            form_person = Form_Person_Info (instance = Personal_information.objects.get (id_myuser = request.COOKIES.get ('User_id')))
+            form_person = Form_Person_Info (instance = Personal_information.objects.get (id_myuser_id  = request.COOKIES.get ('User_id')))
         except:
             form_person = Form_Person_Info ()
         try:
-            form_aditional = Form_Aditional (instance = Additional_information.objects.get (id_myuser = request.COOKIES.get ('User_id')))
+            form_aditional = Form_Aditional (instance = Additional_information.objects.get (id_myuser_id  = request.COOKIES.get ('User_id')))
         except:
             form_aditional = Form_Aditional ()
 
         data =  {
                 'form_name' : Form_Name (instance = Myuser.objects.get(pk = request.COOKIES.get ('User_id'))),
-                'form_last' : forms_user (instance = User_normal.objects.get (id_myuser = request.COOKIES.get ('User_id'))),
+                'form_last' : forms_user (instance = User_normal.objects.get (id_myuser_id  = request.COOKIES.get ('User_id'))),
                 'form_info' : form_person,
                 'form_edu' : list_educacion,
                 'form_empresa' : list_empresa,
@@ -164,7 +164,7 @@ class save_hj:
             form2 = Form_Person_Info (request.POST)
             if form2.is_valid() :
                 info = form2.save(commit = False)
-                info.id_myuser = request.COOKIES.get ('User_id')
+                info.id_myuser_id  = request.COOKIES.get ('User_id')
                 info.save ()
                 return redirect ('create_hoja')
 
@@ -174,7 +174,7 @@ class save_hj:
                 form = Form_Education(request.POST , request.FILES , prefix = f'formulario{i}')
                 if form.is_valid():
                     info = form.save(commit=False)
-                    info.id_myuser = request.COOKIES.get('User_id')
+                    info.id_myuser_id  = request.COOKIES.get('User_id')
                     info.save()
                 # else:
                 #     return redirect ('create_hoja')
@@ -186,7 +186,7 @@ class save_hj:
                 form = Form_Experience(request.POST , prefix = f'formulario{i}')
                 if form.is_valid():
                     info = form.save(commit=False)
-                    info.id_myuser = request.COOKIES.get('User_id')
+                    info.id_myuser_id  = request.COOKIES.get('User_id')
                     info.save()
                 else:
                     return redirect ('create_hoja')
@@ -198,11 +198,11 @@ class save_hj:
             form2 = Form_Person_Refe (request.POST , prefix = 'formulario2')
             if form1.is_valid () :
                 info1 = form1.save(commit=False)
-                info1.id_myuser = request.COOKIES.get('User_id')
+                info1.id_myuser_id  = request.COOKIES.get('User_id')
                 info1.save()
             if form2.is_valid () :
                 info2 = form2.save(commit=False)
-                info2.id_myuser = request.COOKIES.get('User_id')
+                info2.id_myuser_id  = request.COOKIES.get('User_id')
                 info2.save()
 
 
@@ -215,12 +215,12 @@ class save_hj:
                 if not (getlist[0] == ""):
                     if form3.is_valid () :
                         info3 = form3.save(commit=False)
-                        info3.id_myuser = request.COOKIES.get('User_id')
+                        info3.id_myuser_id  = request.COOKIES.get('User_id')
                         info3.save ()
             if not (getlist1[0] == ""):
                 if form4.is_valid () :
                     info4 = form4.save(commit=False)
-                    info4.id_myuser = request.COOKIES.get('User_id')
+                    info4.id_myuser_id  = request.COOKIES.get('User_id')
                     info4.save ()
             return redirect ('create_hoja')
 
@@ -229,14 +229,14 @@ class save_hj:
             form1 = Form_Aditional (request.POST)
             if form1.is_valid () :
                 info1 = form1.save(commit=False)
-                info1.id_myuser = request.COOKIES.get('User_id')
+                info1.id_myuser_id  = request.COOKIES.get('User_id')
                 info1.save ()
             return redirect ('create_hoja')
 
     def edit_information  (request):
         if request.method == 'POST':
-            informacion = Personal_information.objects.get (id_myuser = request.COOKIES.get ('User_id'))
-            informacion2 = User_normal.objects.get (id_myuser = request.COOKIES.get ('User_id'))
+            informacion = Personal_information.objects.get (id_myuser_id  = request.COOKIES.get ('User_id'))
+            informacion2 = User_normal.objects.get (id_myuser_id  = request.COOKIES.get ('User_id'))
             form = Form_Person_Info (request.POST , instance = informacion)
             form1 = Form_Name (request.POST , instance = Myuser.objects.get(pk = request.COOKIES.get ('User_id')))
             form2 = forms_user (request.POST , instance = informacion2)
@@ -285,14 +285,14 @@ class save_hj:
 
     def edit_aditional (request):
         if request.method == 'POST':
-            informacion = Additional_information.objects.filter(id_myuser = request.COOKIES.get ('User_id')).first()
+            informacion = Additional_information.objects.filter(id_myuser_id  = request.COOKIES.get ('User_id')).first()
             form = Form_Aditional(request.POST , instance=informacion)
             if form.is_valid():
                 form.save()
                 return redirect ('create_hoja')
 
     def delete_information (request):
-        Personal_information.objects.get (id_myuser = request.COOKIES.get('User_id')).delete ()
+        Personal_information.objects.get (id_myuser_id  = request.COOKIES.get('User_id')).delete ()
         return redirect ('create_hoja')
 
     def delete_education (request , id_usuario):
@@ -317,5 +317,5 @@ class save_hj:
         return redirect ('create_hoja')
 
     def delete_aditional (request):
-        Additional_information.objects.get (id_myuser = request.COOKIES.get('User_id')).delete ()
+        Additional_information.objects.get (id_myuser_id  = request.COOKIES.get('User_id')).delete ()
         return redirect ('create_hoja')

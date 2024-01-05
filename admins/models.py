@@ -35,6 +35,7 @@ class Myuser (AbstractBaseUser):
     email = models.EmailField (verbose_name = 'email address' , max_length = 255 ,unique = True)
     name = models.CharField (max_length = 25 , blank = False , null = False)
     type_user = models.CharField (max_length = 50 , blank = False , null = False , choices = type_user , default = 'User')
+    email_is_verified = models.BooleanField(default=False)
 
     is_active = models.BooleanField (default = True)
     is_admin = models.BooleanField (default = False)

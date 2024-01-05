@@ -1,5 +1,6 @@
 from django.db import models
 from . select import Informacion_Per
+from admins.models import Myuser
 
 # Create your models here.
 
@@ -12,7 +13,7 @@ class Personal_information (models.Model):
     gender = models.CharField (max_length = 50 , choices=Informacion_Per.genero() , default = 'Masculino')
     age = models.IntegerField ()
     civil = models.CharField (max_length = 50 , choices=Informacion_Per.estado_civil() , default = 'Soltero')
-    id_myuser = models.PositiveIntegerField (null=True , unique = True)
+    id_myuser = models.OneToOneField (Myuser , null=True , on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Personal_information'
@@ -27,7 +28,7 @@ class Education (models.Model):
     name_institution = models.CharField (max_length = 50)
     graduation_year = models.DateField ()
     time = models.IntegerField ()
-    id_myuser = models.PositiveIntegerField (null=True)
+    id_myuser = models.ForeignKey (Myuser , null=True , on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Education'
@@ -43,7 +44,7 @@ class Experience (models.Model):
     start_date = models.DateField ()
     end_date = models.DateField ()
     functions = models.TextField (null=True , blank=True)
-    id_myuser = models.PositiveIntegerField (null=True)
+    id_myuser = models.ForeignKey (Myuser , null=True , on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Experience'
@@ -58,7 +59,7 @@ class Personal_references (models.Model):
     last_person_name = models.CharField (max_length = 50)
     address = models.CharField (max_length = 50)
     cell_number = models.CharField (max_length = 11)
-    id_myuser = models.PositiveIntegerField (null=True)
+    id_myuser = models.ForeignKey (Myuser , null=True , on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'personal_references'
@@ -73,7 +74,7 @@ class Business_references (models.Model):
     boss_name = models.CharField (max_length = 50, blank=True , null=False)
     address_company = models.CharField (max_length = 50 , blank=True , null=False)
     cell_number_busi = models.CharField (max_length = 11 , blank=True , null=False)
-    id_myuser = models.PositiveIntegerField (blank=True , null=True)
+    id_myuser = models.ForeignKey (Myuser , blank=True , null=True , on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'business_references'
@@ -85,7 +86,7 @@ class Business_references (models.Model):
 
 class Additional_information (models.Model):
     information_adi = models.TextField ()
-    id_myuser = models.PositiveIntegerField (null=True , unique = True)
+    id_myuser = models.OneToOneField (Myuser , null=True , on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'additional_information'

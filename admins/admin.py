@@ -27,8 +27,12 @@ class UserCreationForm (forms.ModelForm):
     def clean_password2 (self):
         password1 = self.cleaned_data.get ('password1')
         password2 = self.cleaned_data.get ('password2')
+        email = self.cleaned_data.get ('email')
         if password1 and password2 and password1 != password2:
             raise ValidationError ("La contraseña no coincide")
+        email_check = Myuser.objects.filter(email=email)
+        if email_check.exists():
+            raise forms.ValidationError('This Email already exists')
         return password2
 
     def save (self, commit = True):
@@ -50,13 +54,13 @@ class UserAdmin (BaseUserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
 
-    list_display = ['email' , 'name' , 'type_user' , 'is_admin']
+    list_display = ['email' , 'name' , 'type_user' , 'is_admin' , 'email_is_verified']
     list_filter = ['is_admin']
     fieldsets = [
         (None, {"fields": ["email", "password"]}),
         ("Personal info", {"fields": ['name']}),
         ("Typer", {"fields": ['type_user']}),
-        ("Permissions", {"fields": ["is_admin"]}),
+        ("Permissions", {"fields": ["is_admin" , 'email_is_verified']}),
     ]
 
     add_fieldsets = [

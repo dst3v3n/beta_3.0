@@ -11,7 +11,7 @@ class Index:
         if request.COOKIES.get ('type_user') == 'Admin' or request.COOKIES.get ('type_user') == 'Superuser':
             return redirect ('AdminIndex')
         else:
-            if request.COOKIES.get('Login_status'):
+            if request.COOKIES.get('Login_status') == 'True':
                 botones = False
                 barra = True
             else:
@@ -28,8 +28,8 @@ class Index:
                 'barra' : barra ,
                 'empresa' : acceso_empresa,
             }
-
-            return render (request , 'index.html' , data)
+            response = render (request , 'index.html' , data)
+            return response
 
     def registro (request):
         if request.COOKIES.get ('Login_status') == 'True':
