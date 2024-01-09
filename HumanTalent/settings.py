@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -140,10 +141,6 @@ APPEND_SLASH = False
 
 AUTH_USER_MODEL = 'admins.Myuser'
 
-LOGIN_REDIRECT_URL = '/'
-
-LOGOUT_REDIRECT_URL = '/'
-
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
@@ -165,3 +162,21 @@ AXES_LOCKOUT_URL = 'lockout' # URL DEL TEMPLATE
 # AXES_LOCKOUT_PARAMETERS = ["username", "user_agent"]
 # AXES_LOCK_OUT_AT_FAILURE = False # ! OPCION DE BLOQUEO
 AXES_ENABLE_ACCESS_FAILURE_LOG = True
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Human Talent Admin",
+    "site_header": "Human Talent",
+    "site_brand": "Human Talent",
+    "site_logo": "/img/logo.png",
+    "copyright": "Human Talent SENA",
+    "login_logo_dark": None,
+    "login_logo": None,
+    "welcome_sign": "Welcome a Human Talen Administrator",
+    # "user_avatar": None,  # Nombre del campo en el modelo de usuario que contiene el avatar ImageField/URLField/Charfield o un callable que recibe el usuario
+    "custom_css": "css/admin.css",
+    "search_model": ["admins.Myuser"],
+    }
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "flatly",
+}

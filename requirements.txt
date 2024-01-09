@@ -3,3 +3,4 @@ pytz
 django
 six
 django-axes
+django-jazzmin

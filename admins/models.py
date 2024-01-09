@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser , AbstractUser
 
 type_user = [
             ('Admin' , 'Admin'),
@@ -31,11 +31,16 @@ class MyUserManager (BaseUserManager):
         user.save (using = self._db)
         return user
 
-class Myuser (AbstractBaseUser):
+class Myuser (AbstractUser):
     email = models.EmailField (verbose_name = 'email address' , max_length = 255 ,unique = True)
     name = models.CharField (max_length = 25 , blank = False , null = False)
     type_user = models.CharField (max_length = 50 , blank = False , null = False , choices = type_user , default = 'User')
     email_is_verified = models.BooleanField(default=False)
+    username = None
+    last_login = None
+    first_name = None
+    last_name = None
+    date_joined = None
 
     is_active = models.BooleanField (default = True)
     is_admin = models.BooleanField (default = False)
@@ -48,7 +53,7 @@ class Myuser (AbstractBaseUser):
     def __str__(self):
         return self.name
 
-    def has_perm (self, perm, obj = None):
+    def has_perm(self, perm, obj=None):
         return True
 
     def has_module_perms (self , app_lable):
