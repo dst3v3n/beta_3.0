@@ -154,17 +154,21 @@ class Edicion :
             return redirect ('view')
 
     def deleteUsuario(request, id_usuario):
-        user=Myuser.objects.get(pk=id_usuario)
+        user = Myuser.objects.get(pk=id_usuario)
         user.delete()
         if user.type_user == 'User':
-            user1=User_normal.objects.get(id_myuser_id = id_usuario)
-            user1.delete()
+            try:
+                user1 = User_normal.objects.get(id_myuser_id=id_usuario)
+                user1.delete()
+            except User_normal.DoesNotExist:
+                pass
+            return redirect('view')
         elif user.type_user == 'Superuser':
-            raise ValidationError ('No se puede eliminar Superusuarios')
+            raise ValidationError('No se puede eliminar Superusuarios')
         else:
-            user2 = Company.objects.get (id_myuser_id = id_usuario)
+            user2 = Company.objects.get(id_myuser_id=id_usuario)
             user2.delete()
-        return redirect ('view')
+            return redirect('view')
 
 User = get_user_model()
 

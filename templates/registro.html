@@ -1,7 +1,8 @@
 {% load static %}
+{% load sweetify %}
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,6 +52,7 @@
                     <hr class="derecha">
                 </div>
 
+
                 <div class="name">
                     <div class="subname nombre">
                         <label for="nombre">Nombre</label>
@@ -79,6 +81,10 @@
 
                 <div class="btn">
                     <button type="submit" id="btnregistro">Registrarse</button><br>
+                </div>
+                <div class="bottom-form">
+                    <div class="no-account">Ya tienes una cuenta?</div>
+                    <a href="{%url 'login'%}" class="Signup">Login</a>
                 </div>
             </div>
             </form>
@@ -140,6 +146,10 @@
                 <div class="btn">
                     <button type="submit" id="btnregistro">Registrarse</button><br>
                 </div>
+                <div class="bottom-form">
+                    <div class="no-account">Ya tienes una cuenta?</div>
+                    <a href="{%url 'login'%}" class="Signup">Login</a>
+                </div>
             </form>
             <div class="welcome-back">
                 <div class="message">
@@ -150,13 +160,12 @@
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
         <script src="/static/js/registros.js"></script>
         <script src="/static/js/vista.js"></script>
         <script src="/static/js/vista1.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="/static/js/loader.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        {% sweetify %}
 </body>
 </html>
