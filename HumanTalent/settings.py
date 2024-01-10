@@ -154,7 +154,7 @@ EMAIL_HOST_PASSWORD = "ypad bcfq hkuy ndda"
 DEFAULT_FROM_EMAIL = "haroldsabogal48@gmail.com"
 
 AXES_FAILURE_LIMIT: 3 # INTENTOS PERMITIDOS
-AXES_COOLOFF_TIME: 2 # TIEMPO DE BLOQUE EN HORAS
+AXES_COOLOFF_TIME: 0.02 # TIEMPO DE BLOQUE EN HORAS
 AXES_RESET_ON_SUCCESS = True # RESETEO DE INTENTOS
 
 AXES_LOCKOUT_TEMPLATE = 'Account_lockout.html' # TEMPLATE
@@ -180,3 +180,5 @@ JAZZMIN_SETTINGS = {
 JAZZMIN_UI_TWEAKS = {
     "theme": "flatly",
 }
+
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"

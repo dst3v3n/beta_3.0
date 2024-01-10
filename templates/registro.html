@@ -51,6 +51,7 @@
                     <hr class="derecha">
                 </div>
 
+
                 <div class="name">
                     <div class="subname nombre">
                         <label for="nombre">Nombre</label>
@@ -158,5 +159,22 @@
         <script src="/static/js/vista1.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="/static/js/loader.js"></script>
+        <!-- sweetalert2 -->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        {% if messages %}
+            {% for i in messages %}
+                <script>
+                    Swal.fire ({
+                        "title" : "{{i.tittle}}",
+                        "text" : "{{i}}",
+                        "icon" : "error",
+                    })
+                </script>
+            {% endfor %}
+        {% endif %}
+        {% block js %}
+        {% endblock%}
+
 </body>
 </html>
