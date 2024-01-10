@@ -27,12 +27,8 @@ class UserCreationForm (forms.ModelForm):
     def clean_password2 (self):
         password1 = self.cleaned_data.get ('password1')
         password2 = self.cleaned_data.get ('password2')
-        email = self.cleaned_data.get ('email')
         if password1 and password2 and password1 != password2:
             raise ValidationError ("La contraseña no coincide")
-        email_check = Myuser.objects.filter(email=email)
-        if email_check.exists():
-            raise forms.ValidationError('This Email already exists')
         return password2
 
     def save (self, commit = True):

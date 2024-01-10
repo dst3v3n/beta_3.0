@@ -2,10 +2,8 @@ from django.shortcuts import render , redirect
 from admins.admin import UserCreationForm
 from .forms import forms_user
 from admins.models import Myuser
-from django.contrib import messages
-from company.forms import forms_company
 from admins.admin import UserCreationForm
-from admins.forms import Form_Acceso
+import sweetify
 
 # Create your views here.
 
@@ -27,12 +25,14 @@ class Acceso_User:
                             x =  i['id']
                         info.id_myuser_id = x
                         info.save ()
-                        return redirect('index')
+                        sweetify.success (request, 'Cuenta creada', text='Tu cuenta ha sido creada', persistent='ok')
+                        return redirect ("registro")
             else:
-                messages.success (request , "Las contraseñas no son iguales")
+                sweetify.error (request , "Las contraseñas no son iguales" ,  persistent='Ok')
                 return redirect ("registro")
-        else:
-            return render ('registro')
+
+        sweetify.warning (request , "El correo ya existe" , persistent='Ok')
+        return redirect ("registro")
 
 class view_user:
 

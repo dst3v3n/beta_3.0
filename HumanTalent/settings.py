@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'company.apps.CompanyConfig',
     'HojaVida.apps.HojavidaConfig',
     'axes',
+    'sweetify',
 ]
 
 MIDDLEWARE = [
@@ -182,3 +183,5 @@ JAZZMIN_UI_TWEAKS = {
 }
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
+
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
