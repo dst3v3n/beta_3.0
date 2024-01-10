@@ -1,11 +1,74 @@
-<!DOCTYPE html>
-<html lang="es">
+{% load static %}
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hoja de vida</title>
+    <link rel="stylesheet" href="{%static 'css/acceso.css'%}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
 </head>
-<body>
+<body class="hidden">
+    <div class="centrado" id="onload">
+		<div class="cssload-loader">HUMAN TALENT</div>
+	</div>
+
+    <div class="capa"></div>
+
+    <div>
+        <img src="/static/img/logo.png" alt="Human Talent">
+    </div>
+
     <h1>You acoount has been blocked</h1>
+
+    <div class="main">
+
+        <section class="cuenta-regresiva">
+            <div class="cr-block">
+                <div class="cr-time">
+                    <span id="cre-dia">
+                        00
+                    </span>
+                </div>
+                <div class="cr-desc">
+                    Dia
+                </div>
+            </div>
+            <div class="cr-block">
+                <div class="cr-time">
+                    <span id="cre-hora">
+                        00
+                    </span>
+                </div>
+                <div class="cr-desc">
+                    Hora
+                </div>
+            </div>
+            <div class="cr-block">
+                <div class="cr-time">
+                    <span id="cre-minuto">
+                        00
+                    </span>
+                </div>
+                <div class="cr-desc">
+                    Minuto
+                </div>
+            </div>
+            <div class="cr-block">
+                <div class="cr-time">
+                    <span id="cre-segundo">
+                        00
+                    </span>
+                </div>
+                <div class="cr-desc">
+                    Segundo
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="contador.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/static/js/loader.js"></script>
 </body>
 </html>
