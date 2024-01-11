@@ -23,8 +23,52 @@
     #cancelar:hover{
         background-color: red;
         border-color: red;
-
     }
+    
+    #verpdf{
+            background-color: #1D405C;
+            color: #fff;
+            font-size: large;
+            text-align: center;     
+            font-weight: bolder;
+            margin:20px ;  
+            border: 3px solid #fff; 
+            border-radius:20px;
+            padding:5px ; 
+            display:block;
+            cursor: pointer;
+    }
+
+    #eliminarpdf{
+            background-color: #1D405C;
+            color: #fff;
+            font-size: large;
+            text-align: center;     
+            font-weight: bolder;
+            margin:20px ;  
+            border: 3px solid #fff; 
+            border-radius:20px;
+            padding:5px ; 
+            display:block;
+            cursor: pointer;
+    }
+    #cancelarpdf{
+            background-color: #1D405C;
+            color: #fff;
+            font-size: large;
+            text-align: center;     
+            font-weight: bolder;
+            margin:20px ;  
+            border: 3px solid #fff; 
+            border-radius:20px;
+            padding:5px ; 
+            display:flexbox;
+            cursor: pointer;
+    }
+    
+    
+
+    
 </style>
 <body class="hidden">
     <div class="centrado" id="onload">
@@ -353,11 +397,11 @@
                                         {% csrf_token %}
                                         <p class="titulo2">Institucion</p>
                                         <label for="titulo" class="infop">Titulo obtenido</label>
-                                        <a href="{{form.archive.value.url}}" target="_blank">Ver</a>
-                                        <a href="#" onclick="openForm()">Eliminar</a>
+                                        <a href="{{form.archive.value.url}}" target="_blank" id="verpdf">Ver</a>
+                                        <a href="#" onclick="openForm(),ocultar();" id="eliminarpdf">Eliminar</a>
                                         <div id="myForm" style="display: none;">
                                                 {{in_edu.archive}}
-                                                <input type="button" value="Close" onclick="closeForm()">
+                                                <input type="button" value="Cancelar" onclick="closeForm(),mostrar();" id="cancelarpdf">
                                         </div>
                                         <label for="cole" class="infop" id="col">Institución</label>
                                         {{form.name_institution}}
@@ -708,6 +752,18 @@
                 document.getElementById('myForm').style.display = 'none';
             }
 
+        </script>
+        <script>
+            function ocultar(){
+                document.getElementById("eliminarpdf").style.display = 'none'
+                document.getElementById("verpdf").style.display = 'none'
+            }
+            
+            function mostrar(){
+                document.getElementById("eliminarpdf").style.display = 'block'
+                document.getElementById("verpdf").style.display = 'block'
+            }
+                
         </script>
         <script src="/static/js/modal.js"></script>
     </main>
