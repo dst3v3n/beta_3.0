@@ -7,6 +7,8 @@ from users.models import User_normal
 from users.forms import forms_user
 from django.contrib.auth.decorators import login_required
 from pathlib import Path
+from .alerta import alertas
+from django.contrib import messages
 
 # Create your views here.
 
@@ -177,6 +179,7 @@ class save_hj:
                 info = form2.save(commit = False)
                 info.id_myuser_id  = request.COOKIES.get ('User_id')
                 info.save ()
+                alertas.save (request , 'Informacion Personal')
                 return redirect ('create_hoja')
 
     def save_education (request):
@@ -187,8 +190,11 @@ class save_hj:
                     info = form.save(commit=False)
                     info.id_myuser_id  = request.COOKIES.get('User_id')
                     info.save()
-                # else:
-                #     return redirect ('create_hoja')
+                else:
+                    if i > 0:
+                        alertas.save (request , 'Educacion')
+                        return redirect ('create_hoja')
+            alertas.save (request , 'Educacion')
             return redirect ('create_hoja')
 
     def save_experience (request):
@@ -200,7 +206,10 @@ class save_hj:
                     info.id_myuser_id  = request.COOKIES.get('User_id')
                     info.save()
                 else:
-                    return redirect ('create_hoja')
+                    if i > 0:
+                        alertas.save (request , 'Experiencia')
+                        return redirect ('create_hoja')
+            alertas.save (request , 'Experiencia')
             return redirect ('create_hoja')
 
     def save_reference (request):
@@ -249,6 +258,7 @@ class save_hj:
                 info1 = form1.save(commit=False)
                 info1.id_myuser_id  = request.COOKIES.get('User_id')
                 info1.save ()
+                alertas.save (request , 'Informacion Adicional')
             return redirect ('create_hoja')
 
     def edit_information  (request):
