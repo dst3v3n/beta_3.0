@@ -117,13 +117,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-co'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_L10N = True
+
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -161,7 +163,7 @@ AXES_RESET_ON_SUCCESS = True # RESETEO DE INTENTOS
 AXES_LOCKOUT_TEMPLATE = 'Account_lockout.html' # TEMPLATE
 AXES_LOCKOUT_URL = 'lockout' # URL DEL TEMPLATE
 #AXES_LOCKOUT_PARAMETERS = ["username", "user_agent"]
-AXES_LOCK_OUT_AT_FAILURE = False # ! OPCION DE BLOQUEO
+AXES_LOCK_OUT_AT_FAILURE = True # ! OPCION DE BLOQUEO
 AXES_ENABLE_ACCESS_FAILURE_LOG = True
 
 JAZZMIN_SETTINGS = {
