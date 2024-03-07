@@ -51,7 +51,7 @@
             <nav>
                 <a href="{% url 'view_perfil' %}">Perfil</a>
                 {% if empresa %}
-                <a href="#">Crear ofertas</a>
+                <a href="{% url 'crearrequisicion_company' %}">Crear ofertas</a>
                 {% else %}
                 <a href="#">Empresas</a>
                 <a href="#">Mirar ofertas</a>
