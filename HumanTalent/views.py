@@ -11,25 +11,13 @@ class Index:
         if request.COOKIES.get ('type_user') == 'Admin' or request.COOKIES.get ('type_user') == 'Superuser':
             return redirect ('AdminIndex')
         else:
-            if request.COOKIES.get('Login_status') == 'True':
-                botones = False
-                barra = True
+            if not (request.user.is_authenticated):
+                    response = render (request , 'index.html')
+                    response.set_cookie ('Login_status' , False , secure=True , httponly=True , samesite='None')
+                    return response
             else:
-                botones = True
-                barra = False
-
-            if request.COOKIES.get('type_user') == 'Company':
-                acceso_empresa =  True
-            else:
-                acceso_empresa = False
-
-            data = {
-                'boton': botones ,
-                'barra' : barra ,
-                'empresa' : acceso_empresa,
-            }
-            response = render (request , 'index.html' , data)
-            return response
+                response = render (request , 'index.html')
+                return response
 
     def registro (request):
         if request.COOKIES.get ('Login_status') == 'True':

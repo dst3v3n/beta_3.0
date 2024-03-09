@@ -8,16 +8,22 @@ from users.forms import forms_user
 from django.contrib.auth.decorators import login_required
 from pathlib import Path
 from .alerta import alertas
-from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
+from .mixin import EmailVerificadoMixin
+from django.views.generic import View , TemplateView
+
 
 # Create your views here.
 
-class visualizar:
-    @login_required(redirect_field_name="index")
-    def create_hoja (request):
+class create_hoja (LoginRequiredMixin , EmailVerificadoMixin, TemplateView):
 
+    template_name = 'hoja_vida.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         list_educacion = []
-        instancia = Education.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
+        instancia = Education.objects.filter(id_myuser_id  = self.request.COOKIES.get('User_id')).values ()
         if len(instancia) >= 1:
             for i in instancia:
                 id_educacion = i['id']
@@ -28,7 +34,7 @@ class visualizar:
             list_educacion.append (Form_Education (prefix = 'formulario0'))
 
         list_empresa = []
-        instancia_1 = Experience.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
+        instancia_1 = Experience.objects.filter(id_myuser_id  = self.request.COOKIES.get('User_id')).values ()
         if len(instancia_1) >= 1:
             for i in instancia_1:
                 id_empresa = i['id']
@@ -40,7 +46,7 @@ class visualizar:
             list_empresa.append (Form_Experience (prefix = 'formulario0'))
 
         list_personales = []
-        instancia_2 = Personal_references.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
+        instancia_2 = Personal_references.objects.filter(id_myuser_id  = self.request.COOKIES.get('User_id')).values ()
         if len(instancia_2) == 2:
             for i in instancia_2:
                 id_person = i['id']
@@ -61,7 +67,7 @@ class visualizar:
             list_personales = [Form_Person_Refe (prefix = 'formulario1') , Form_Person_Refe (prefix = 'formulario2') ]
 
         list_empresariales = []
-        instancia_3 = Business_references.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
+        instancia_3 = Business_references.objects.filter(id_myuser_id  = self.request.COOKIES.get('User_id')).values ()
         if len(instancia_3) == 2:
             for i in instancia_3:
                 id_person = i['id']
@@ -80,33 +86,38 @@ class visualizar:
             list_empresariales = [Form_Business_Refe (prefix = 'formulario1') , Form_Business_Refe (prefix = 'formulario2')]
 
         try:
-            form_person = Form_Person_Info (instance = Personal_information.objects.get (id_myuser_id  = request.COOKIES.get ('User_id')))
+            form_person = Form_Person_Info (instance = Personal_information.objects.get (id_myuser_id  = self.request.COOKIES.get ('User_id')))
         except:
             form_person = Form_Person_Info ()
         try:
-            form_aditional = Form_Aditional (instance = Additional_information.objects.get (id_myuser_id  = request.COOKIES.get ('User_id')))
+            form_aditional = Form_Aditional (instance = Additional_information.objects.get (id_myuser_id  = self.request.COOKIES.get ('User_id')))
         except:
             form_aditional = Form_Aditional ()
 
-        data =  {
-                'form_name' : Form_Name (instance = Myuser.objects.get(pk = request.COOKIES.get ('User_id'))),
-                'form_last' : forms_user (instance = User_normal.objects.get (id_myuser_id  = request.COOKIES.get ('User_id'))),
-                'form_info' : form_person,
-                'form_edu' : list_educacion,
-                'form_empresa' : list_empresa,
-                'form_person_refe' : list_personales,
-                'form_empresarial_refe' : list_empresariales,
-                'form_adicio' : form_aditional,
-                'in_edu' : Form_Education (prefix = 'formulario1') ,
-                'in_exp' : Form_Experience (prefix = 'formulario1') ,
-                }
+        data = {
+            'form_name': Form_Name(instance=Myuser.objects.get(pk=self.request.COOKIES.get('User_id'))),
+            'form_last': forms_user(instance=User_normal.objects.get(id_myuser_id=self.request.COOKIES.get('User_id'))),
+            'form_info': form_person,
+            'form_edu': list_educacion,
+            'form_empresa': list_empresa,
+            'form_person_refe': list_personales,
+            'form_empresarial_refe': list_empresariales,
+            'form_adicio': form_aditional,
+            'in_edu': Form_Education(prefix='formulario1'),
+            'in_exp': Form_Experience(prefix='formulario1'),
+        }
 
-        return render (request , 'hoja_vida.html' , data)
+        context.update(data)
+        return context
 
-    @login_required(redirect_field_name="index")
-    def view_hoja (request):
+class Visualizar_hoja (LoginRequiredMixin , EmailVerificadoMixin, TemplateView):
+
+    template_name = 'hoja_vida.html'
+
+    def get_context_data (self , **kwargs):
+        context = super().get_context_data(**kwargs)
         list_educacion = []
-        instancia = Education.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
+        instancia = Education.objects.filter(id_myuser_id  = self.request.COOKIES.get('User_id')).values ()
         if len(instancia) >= 1:
             for i in instancia:
                 id_educacion = i['id']
@@ -117,7 +128,7 @@ class visualizar:
             list_educacion.append (Form_Education ())
 
         list_empresa = []
-        instancia_1 = Experience.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
+        instancia_1 = Experience.objects.filter(id_myuser_id  = self.request.COOKIES.get('User_id')).values ()
         if len(instancia_1) >= 1:
             for i in instancia_1:
                 id_empresa = i['id']
@@ -128,7 +139,7 @@ class visualizar:
             list_empresa.append (Form_Experience ())
 
         list_personales = []
-        instancia_2 = Personal_references.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
+        instancia_2 = Personal_references.objects.filter(id_myuser_id  = self.request.COOKIES.get('User_id')).values ()
         if len(instancia_2) == 1:
             for i in instancia_2:
                 id_person = i['id']
@@ -139,7 +150,7 @@ class visualizar:
             list_personales = [Form_Person_Refe (prefix = 'formulario1') , Form_Person_Refe (prefix = 'formulario2') ]
 
         list_empresariales = []
-        instancia_3 = Business_references.objects.filter(id_myuser_id  = request.COOKIES.get('User_id')).values ()
+        instancia_3 = Business_references.objects.filter(id_myuser_id  = self.request.COOKIES.get('User_id')).values ()
         if len(instancia_3) >= 1:
             for i in instancia_3:
                 id_person = i['id']
@@ -150,17 +161,17 @@ class visualizar:
             list_empresariales = [Form_Business_Refe (prefix = 'formulario1') , Form_Business_Refe (prefix = 'formulario2')]
 
         try:
-            form_person = Form_Person_Info (instance = Personal_information.objects.get (id_myuser_id  = request.COOKIES.get ('User_id')))
+            form_person = Form_Person_Info (instance = Personal_information.objects.get (id_myuser_id  = self.request.COOKIES.get ('User_id')))
         except:
             form_person = Form_Person_Info ()
         try:
-            form_aditional = Form_Aditional (instance = Additional_information.objects.get (id_myuser_id  = request.COOKIES.get ('User_id')))
+            form_aditional = Form_Aditional (instance = Additional_information.objects.get (id_myuser_id  = self.request.COOKIES.get ('User_id')))
         except:
             form_aditional = Form_Aditional ()
 
         data =  {
-                'form_name' : Form_Name (instance = Myuser.objects.get(pk = request.COOKIES.get ('User_id'))),
-                'form_last' : forms_user (instance = User_normal.objects.get (id_myuser_id  = request.COOKIES.get ('User_id'))),
+                'form_name' : Form_Name (instance = Myuser.objects.get(pk = self.request.COOKIES.get ('User_id'))),
+                'form_last' : forms_user (instance = User_normal.objects.get (id_myuser_id  = self.request.COOKIES.get ('User_id'))),
                 'form_info' : form_person,
                 'form_edu' : list_educacion,
                 'form_empresa' : list_empresa,
@@ -168,7 +179,9 @@ class visualizar:
                 'form_empresarial' : list_empresariales,
                 'form_adicio' : form_aditional,
                 }
-        return render (request , 'hoja_vida_visualizar.html' , data)
+        context.update(data)
+        return context
+
 
 class save_hj:
 

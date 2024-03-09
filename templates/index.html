@@ -12,18 +12,18 @@
 
 
 <body class="hidden">
-    <!-- ! Este es el codigo para que aparezca el link por si no ha verificado el email -->
-    <!-- * *{% if request.COOKIES.Login_status %}
-            * *{% if user.email_is_verified != True %}
-               * * <a href="{% url 'verify-email' %}">HOLA</a>
-           * * {%endif%}
-        * * {% endif %} -->
 	<div class="centrado" id="onload">
 		<div class="cssload-loader">HUMAN TALENT</div>
 	</div>
 	<header>
+        <!-- ! Este es el codigo para que aparezca el link por si no ha verificado el email -->
+        {% if request.COOKIES.Login_status == "True" %}
+            {% if user.email_is_verified != "True" %}
+                <a href="{% url 'verify-email' %}" class="link">HOLA</a>
+            {%endif%}
+        {% endif %}
 		<div class="container">
-        {% if barra %}
+        {% if request.COOKIES.Login_status == "True" %}
 		<div class="btn-menu">
 			<label for="btn-menu">☰</label>
 		</div>
@@ -32,11 +32,11 @@
 				<h1>HUMAN TALENT</h1>
 			</div>
 			<nav class="menu">
-                {% if boton %}
+                {% if request.COOKIES.Login_status != "True" %}
 				    <a href="{%url 'login'%}">login</a>
                     <a href="{%url 'registro'%}">Registrate</a>
                 {% endif %}
-                {% if barra %}
+                {% if request.COOKIES.Login_status == "True"%}
 				<a href="#">Ofertas</a>
                 {% endif %}
 				<a href="#contactos">Contacto</a>
@@ -44,13 +44,13 @@
 		</div>
 	</header>
 	<div class="capa"></div>
-{% if barra %}
+{% if request.COOKIES.Login_status == "True" %}
     <input type="checkbox" id="btn-menu">
     <div class="container-menu">
         <div class="cont-menu">
             <nav>
                 <a href="{% url 'view_perfil' %}">Perfil</a>
-                {% if empresa %}
+                {% if request.COOKIES.type_user == "Company" %}
                 <a href="#">Crear ofertas</a>
                 {% else %}
                 <a href="#">Empresas</a>
@@ -67,7 +67,7 @@
 {% endif %}
 
 <main>
-	{% if barra %}
+	{% if request.COOKIES.Login_status == "True" %}
 		<section class="section">
 			<div class="vertical">
 				<div class="user">

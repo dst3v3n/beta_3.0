@@ -13,7 +13,7 @@
 
 <body class="hidden">
     <main class="form">
-        {% if usuario.type_user == User %}
+        {% if request.COOKIES.type_user == "User" %}
             <form action="{% url 'update_company' usuario.id %}" class="sub-form" id="form" method="post"> {%csrf_token%}
         {% else %}
             <form action="{% url 'update_user' usuario.id %}" class="sub-form" id="form" method="post"> {%csrf_token%}

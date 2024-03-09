@@ -41,6 +41,7 @@ class acceso :
             else:
                 return redirect('login')
 
+
     def logout (request):
         logout (request)
         response = redirect("index")

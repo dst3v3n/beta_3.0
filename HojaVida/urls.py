@@ -1,11 +1,11 @@
-from django.urls import path , include
-from .views import visualizar , save_hj
+from django.urls import path
+from .views import save_hj , create_hoja ,Visualizar_hoja
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('create/hoja/', visualizar.create_hoja ,  name='create_hoja'),
-    path('view/hoja/', visualizar.view_hoja ,  name='view_hoja'),
+    path('create/hoja/', create_hoja.as_view() ,  name='create_hoja'),
+    path('view/hoja/', Visualizar_hoja.as_view() ,  name='view_hoja'),
 
     path('save/personal_information/', save_hj.save_info ,  name='save_info_hoja'),
     path('save/education/', save_hj.save_education ,  name='save_education_hoja'),

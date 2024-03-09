@@ -18,15 +18,15 @@ body {
 /*styls scroll*/
 
 body::-webkit-scrollbar {
-    width: 25px;   
-   
+    width: 25px;
+
 }
-       
+
 body::-webkit-scrollbar-track {
     border: 7px solid #232943;
     box-shadow: 0 0 5px 5px rgba(0,0,0,0.6) inset;
 }
-   
+
 body::-webkit-scrollbar-thumb {
     background: #005B8F;
     border-radius: 5px;
@@ -198,6 +198,10 @@ body::-webkit-scrollbar-thumb {
 	top: 0;
 	left: 0;
 	z-index: 1;
+}
+
+.link {
+    z-index: 100;
 }
 
 .container {
@@ -568,4 +572,3 @@ footer {
 			#f72a67 93.75%,
 			#f63157 100%);
 }
-
