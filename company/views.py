@@ -32,3 +32,7 @@ class Acceso_Company:
         else:
             form = UserCreationForm()
         return render(request, 'register.html', {'form': form})
+
+class vistas :
+    def requisicion (request):
+        return render (request,'crearrequisicion.html')
