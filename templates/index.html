@@ -18,7 +18,7 @@
 	<header>
         <!-- ! Este es el codigo para que aparezca el link por si no ha verificado el email -->
         {% if request.COOKIES.Login_status == "True" %}
-            {% if user.email_is_verified != "True" %}
+            {% if request.COOKIES.email_verified != "True" %}
                 <a href="{% url 'verify-email' %}" class="link">HOLA</a>
             {%endif%}
         {% endif %}

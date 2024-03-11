@@ -29,13 +29,16 @@ class acceso :
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
-                for i in Myuser.objects.filter (email=email).values_list('id' , 'type_user'):
+                for i in Myuser.objects.filter (email=email).values_list('id' , 'type_user', 'email_is_verified'):
+                    print(i)
                     id_user = i[0]
                     type_user = i[1]
+                    verified = i[2]
                 response = redirect ('index')
                 response.set_cookie ('User_id' , id_user , secure=True , httponly=True , samesite='None')
                 response.set_cookie ('Email' , email , secure=True , httponly=True , samesite='None')
                 response.set_cookie ('type_user' , type_user , secure=True , httponly=True , samesite='None')
+                response.set_cookie ('email_verified' , verified , secure=True , httponly=True , samesite='None')
                 response.set_cookie ('Login_status' , True , secure=True , httponly=True , samesite='None')
                 return response
             else:
