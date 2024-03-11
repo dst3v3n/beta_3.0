@@ -5,3 +5,4 @@ six
 django-axes
 django-jazzmin
 sweetify
+pillow
