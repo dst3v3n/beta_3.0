@@ -28,6 +28,7 @@ urlpatterns = [
 
     path('users/' , include('users.urls')),
     path('company/' , include('company.urls')),
+    path('perfil/' , include('perfil_user.urls')),
     path('admins/' , include('admins.urls')),
     path('curriculum/' , include('HojaVida.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

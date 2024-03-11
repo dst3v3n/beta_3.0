@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'company.apps.CompanyConfig',
     'HojaVida.apps.HojavidaConfig',
+    'perfil_user.apps.PerfilUserConfig',
+    'requisicion.apps.RequisicionConfig',
     'axes',
     'sweetify',
 ]
@@ -92,11 +94,12 @@ DATABASES = {
         "USER": "root",
         "PASSWORD": "",
         "HOST": "localhost",
-        "PORT": "3307",
+        "PORT": "3306",
     }
 }
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
