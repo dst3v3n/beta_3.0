@@ -9,23 +9,102 @@
     <link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
 	<title>crear</title>
 </head>
-<body>
-    <div class="capa"></div>
-    <nav>
-        <div class="barra">
-            <div class="content">
-                <a href="{%url 'index'%}">
-                    <p class="p1">HUMAN TALENT <br> Crear ofertas</p>
-                </a>
-            </div>
-            
-        </div>
-    </nav>
-    
-    <main>
-        
-        
-    </main>
-    
-</body>
 
+<body>
+<div class="centrado" id="onload">
+    <div class="cssload-loader">HUMAN TALENT</div>
+</div>
+
+<div class="capa"></div>
+
+<nav>
+    <div class="barra">
+        <div class="content">
+            <a href="{%url 'index'%}">
+            <p class="p1">HUMAN TALENT <br> Crear Oferta</p>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div class="info">
+        <form action="#" method="#">
+            <p class="titulo1">Datos de la oferta</p>
+
+            <p class="titulod">Fechas de la oferta</p>
+
+            <label for="finicio" class="infop" style="margin-left: 140px" >Fecha de inicio</label>
+            <input type="date" class="inp3">
+
+            <label for="apellido" class="infop" id="ape" style="margin-left: 150px">Fecha final</label>
+            <input type="date" class="inp3" >
+
+            <p class="titulod">Datos de la Empresa</p>
+
+            <label for="direccion" class="infop" style="margin-left: 100px;">Nombre</label>
+            <input type="text" class="inp2">
+
+            <label for="cel" class="infop">Dirrecion</label>
+            <input type="text" class="inp2">
+
+            <label for="email" class="infop">Nit</label>
+            <input type="email" class="inp3">
+
+            <br>
+            <br>
+            <label for="fechan" class="infop" id="fecha" style="margin-left:50px;">Ubicación</label>
+            <input type="text" class="inp2">
+
+            <label for="tpod" class="infop">Codigo CNO</label>
+            <input type="text" class="inp3">
+
+
+            <label for="ncc" class="infop" id="doc">Telefono</label>
+            <input type="tel" class="inp3">
+
+            <p class="titulod">Datos de la oferta</p>
+
+            <label for="genero" class="infop" style="margin-left: 140px;">Nombre del cargo</label>
+            <input type="text" class="inp2">
+
+            <label for="edad" class="infop" id="ed" style="margin-left: 120px;">Educación</label>
+            <input type="text" class="inp2">
+
+            <br>
+            <br>
+            <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Tipo de contrato</label>
+            <input type="text" class="inp3">
+            
+            <label for="civil" class="infop" id="estado">Experiencia</label>
+            <input type="text" class="inp3">
+            
+            <label for="civil" class="infop" id="estado">Tipo de salario</label>
+            <input type="text" class="inp3">
+
+            <br>
+            <br>
+            <label for="civil" class="infop" id="estado" style="margin-left:  100px;">Habilidaddes</label>
+            <input type="text" class="inp3">
+
+            <label for="civil" class="infop" id="estado">salario</label>
+            <input type="number" class="inp3">
+
+            <label for="civil" class="infop" id="estado">Jornada laboral</label>
+            <input type="text" class="inp3">
+
+            <p class="titulod">Descriccion</p>
+
+            <input type="text" style="margin-left:410px; width:450px; height:150px; border-radius: 15px; ">
+
+            <br>
+            <br>
+            
+                <p class="titulo2">No olvide guardar tu nueva oferta</p>
+                <button type="submit" class="btn-guardar">Guardar</button>
+        </form>
+    </div>
+
+        <script src="/static/js/loader.js"></script>
+    </main>
+</body>
