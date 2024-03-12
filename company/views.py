@@ -36,3 +36,5 @@ class Acceso_Company:
 class vistas :
     def requisicion (request):
         return render (request,'crearrequisicion.html')
+    def verrequisicionm (request):
+        return render (request,'verrequisicion.html')

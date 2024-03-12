@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/crearrequisicion.css' %}">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
-	<title>crear</title>
+	<title>Crear ofertas</title>
 </head>
 
 <body class="hidden">
@@ -95,16 +95,17 @@
 
             <p class="titulod">Descriccion</p>
 
-            <input type="text" style="margin-left:410px; width:450px; height:150px; border-radius: 15px; ">
+            <textarea name="information_adi" cols="40" rows="10" id="infoa" required="" style="height: 300px;width: 35%; margin-left:33%; border-radius:5%;"></textarea>
 
             <br>
             <br>
 
                 <p class="titulo2">No olvide guardar tu nueva oferta</p>
-                <button type="submit" class="btn-guardar">Guardar</button>
+                <button class="titulo1" id="#" style="margin: 2%  0 0 38%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                <button class="titulo1" id="open" style="margin: 2%  0 0 5%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Cancelar</button>
         </form>
     </div>
-
+    
         <script src="/static/js/loader.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     </main>

@@ -1,0 +1,231 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/crearrequisicion.css' %}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
+	<title>Ofeertas creadas</title>
+</head>
+<style>
+    #cancelaras{
+        font-size: 20px;
+        position: fixed;
+        left: 94%;
+        cursor: pointer;
+        color: #fff;
+        background-color: #1D405C;
+        border: 3px solid #fff;
+        border-radius: 50%;
+        padding: 5px;
+    
+    }
+    #cancelaras:hover{
+        background-color: red;
+        border-color: red;
+    }
+</style>
+
+<body class="hidden">
+    <div class="centrado" id="onload">
+        <div class="cssload-loader">HUMAN TALENT</div>
+    </div>
+
+<div class="capa"></div>
+
+<nav>
+    <div class="barra">
+        <div class="content">
+            <a href="{%url 'index'%}">
+            <p class="p1">HUMAN TALENT <br> Oferta creadas</p>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div class="info">
+        <form action="#" method="#">
+            <p class="titulo1">Datos de la oferta</p>
+
+            <p class="titulod">Fechas de la oferta</p>
+
+            <label for="finicio" class="infop" style="margin-left: 140px" >Fecha de inicio</label>
+            <input type="date" class="inp3">
+
+            <label for="apellido" class="infop" id="ape" style="margin-left: 150px">Fecha final</label>
+            <input type="date" class="inp3" >
+
+            <p class="titulod">Datos de la Empresa</p>
+
+            <label for="direccion" class="infop" style="margin-left: 100px;">Nombre</label>
+            <input type="text" class="inp2">
+
+            <label for="cel" class="infop">Dirrecion</label>
+            <input type="text" class="inp2">
+
+            <label for="email" class="infop">Nit</label>
+            <input type="email" class="inp3">
+
+            <br>
+            <br>
+            <label for="fechan" class="infop" id="fecha" style="margin-left:50px;">Ubicación</label>
+            <input type="text" class="inp2">
+
+            <label for="tpod" class="infop">Codigo CNO</label>
+            <input type="text" class="inp3">
+
+
+            <label for="ncc" class="infop" id="doc">Telefono</label>
+            <input type="tel" class="inp3">
+
+            <p class="titulod">Datos de la oferta</p>
+
+            <label for="genero" class="infop" style="margin-left: 140px;">Nombre del cargo</label>
+            <input type="text" class="inp2">
+
+            <label for="edad" class="infop" id="ed" style="margin-left: 120px;">Educación</label>
+            <input type="text" class="inp2">
+
+            <br>
+            <br>
+            <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Tipo de contrato</label>
+            <input type="text" class="inp3">
+
+            <label for="civil" class="infop" id="estado">Experiencia</label>
+            <input type="text" class="inp3">
+
+            <label for="civil" class="infop" id="estado">Tipo de salario</label>
+            <input type="text" class="inp3">
+
+            <br>
+            <br>
+            <label for="civil" class="infop" id="estado" style="margin-left:  100px;">Habilidaddes</label>
+            <input type="text" class="inp3">
+
+            <label for="civil" class="infop" id="estado">salario</label>
+            <input type="number" class="inp3">
+
+            <label for="civil" class="infop" id="estado">Jornada laboral</label>
+            <input type="text" class="inp3">
+
+            <p class="titulod">Descriccion</p>
+
+            <textarea name="information_adi" cols="40" rows="10" id="infoa" style="height: 300px;width: 35%; margin-left:33%; border-radius:5%;"></textarea>
+
+            <br>
+            <br>
+
+                <p class="titulo2">No olvide guardar tu nueva oferta</p>
+                <button class="titulo1" id="#" style="margin: 2%  0 0 31%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                <button class="titulo1" id="open" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Editar</button>
+                <button class="titulo1" id="openas" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Aspirantes</button>
+        </form>
+    </div>
+
+<!-- --------------------------------------------------------------------------------------- -->
+<dialog id="modal" class="info" style="width: auto;">
+    <button  id="cancelar" >✖️</button>
+    <div class="info">
+        <form action="#" method="#">
+            <p class="titulo1">Datos de la oferta</p>
+
+            <p class="titulod">Fechas de la oferta</p>
+
+            <label for="finicio" class="infop" style="margin-left: 140px" >Fecha de inicio</label>
+            <input type="date" class="inp3">
+
+            <label for="apellido" class="infop" id="ape" style="margin-left: 150px">Fecha final</label>
+            <input type="date" class="inp3" >
+
+            <p class="titulod">Datos de la Empresa</p>
+
+            <label for="direccion" class="infop" style="margin-left: 100px;">Nombre</label>
+            <input type="text" class="inp2">
+
+            <label for="cel" class="infop">Dirrecion</label>
+            <input type="text" class="inp2">
+
+            <label for="email" class="infop">Nit</label>
+            <input type="email" class="inp3">
+
+            <br>
+            <br>
+            <label for="fechan" class="infop" id="fecha" style="margin-left:50px;">Ubicación</label>
+            <input type="text" class="inp2">
+
+            <label for="tpod" class="infop">Codigo CNO</label>
+            <input type="text" class="inp3">
+
+
+            <label for="ncc" class="infop" id="doc">Telefono</label>
+            <input type="tel" class="inp3">
+
+            <p class="titulod">Datos de la oferta</p>
+
+            <label for="genero" class="infop" style="margin-left: 140px;">Nombre del cargo</label>
+            <input type="text" class="inp2">
+
+            <label for="edad" class="infop" id="ed" style="margin-left: 120px;">Educación</label>
+            <input type="text" class="inp2">
+
+            <br>
+            <br>
+            <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Tipo de contrato</label>
+            <input type="text" class="inp3">
+
+            <label for="civil" class="infop" id="estado">Experiencia</label>
+            <input type="text" class="inp3">
+
+            <label for="civil" class="infop" id="estado">Tipo de salario</label>
+            <input type="text" class="inp3">
+
+            <br>
+            <br>
+            <label for="civil" class="infop" id="estado" style="margin-left:  100px;">Habilidaddes</label>
+            <input type="text" class="inp3">
+
+            <label for="civil" class="infop" id="estado">salario</label>
+            <input type="number" class="inp3">
+
+            <label for="civil" class="infop" id="estado">Jornada laboral</label>
+            <input type="text" class="inp3">
+
+            <p class="titulod">Descriccion</p>
+
+            <textarea name="information_adi" cols="40" rows="10" id="infoa" required="" style="height: 300px;width: 35%; margin-left:33%; border-radius:5%;"></textarea>
+
+            <br>
+            <br>
+
+                <p class="titulo2">No olvide guardar los cambios de tu oferta</p>
+                <button class="titulo1" id="#" style="margin: 2%  0 0 38%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                <button class="titulo1" id="#" style="margin: 2%  0 0 5%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</button>
+        </form>
+    </div>
+
+    </dialog>
+<!-- --------------------------------------------------------------------------------------- -->
+
+<!-- --------------------------------------------------------------------------------------- -->
+<dialog id="modalas" class="info" style="width: auto;">
+    <button  id="cancelaras" >✖️</button>
+    <div class="info">
+        <form action="#" method="#">
+                <p class="titulo2">No olvide guardar los cambios de tu oferta</p>
+                <button class="titulo1" id="#" style="margin: 2%  0 0 38%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                <button class="titulo1" id="#" style="margin: 2%  0 0 5%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</button>
+        </form>
+    </div>
+
+    </dialog>
+<!-- --------------------------------------------------------------------------------------- -->
+        <script src="/static/js/loader.js"></script>
+        <script src="/static/js/modal.js"></script>
+        <script src="/static/js/modalas.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    </main>
+</body>

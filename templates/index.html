@@ -52,6 +52,7 @@
                 <a href="{% url 'view_perfil' %}">Perfil</a>
                 {% if request.COOKIES.type_user == "Company" %}
                 <a href="{% url 'crearrequisicion_company' %}">Crear ofertas</a>
+                <a href="{% url 'verrequisicion_company' %}">Ver ofertas creadas</a>
                 {% else %}
                 <a href="#">Empresas</a>
                 <a href="#">Mirar ofertas</a>
