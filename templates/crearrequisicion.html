@@ -1,4 +1,5 @@
 {% load static %}
+{% load sweetify %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,74 +30,93 @@
 
 <main>
     <div class="info">
-        <form action="#" method="#">
+        <form action="{% url 'save_info_requi' %}" method="post">
+            {% csrf_token %}
             <p class="titulo1">Datos de la oferta</p>
 
             <p class="titulod">Fechas de la oferta</p>
 
             <label for="finicio" class="infop" style="margin-left: 140px" >Fecha de inicio</label>
+            {{form.date_inicio}}
             <input type="date" class="inp3">
 
             <label for="apellido" class="infop" id="ape" style="margin-left: 150px">Fecha final</label>
+            {{form.date_fin}}
             <input type="date" class="inp3" >
 
             <p class="titulod">Datos de la Empresa</p>
 
             <label for="direccion" class="infop" style="margin-left: 100px;">Nombre</label>
+            {{form.company_name}}
+            
             <input type="text" class="inp2">
 
             <label for="cel" class="infop">Dirrecion</label>
+            {{form.location}}
             <input type="text" class="inp2">
 
             <label for="email" class="infop">Nit</label>
+            {{form.nit}}
             <input type="email" class="inp3">
 
             <br>
             <br>
             <label for="fechan" class="infop" id="fecha" style="margin-left:50px;">Ubicación</label>
+            {{form.ubication}}
             <input type="text" class="inp2">
 
             <label for="tpod" class="infop">Codigo CNO</label>
+            {{form.codigo_cno}}
             <input type="text" class="inp3">
 
 
             <label for="ncc" class="infop" id="doc">Telefono</label>
+            {{form.cell_number}}
             <input type="tel" class="inp3">
 
             <p class="titulod">Datos de la oferta</p>
 
             <label for="genero" class="infop" style="margin-left: 140px;">Nombre del cargo</label>
+            {{form.name_cargo}}
             <input type="text" class="inp2">
 
             <label for="edad" class="infop" id="ed" style="margin-left: 120px;">Educación</label>
+            {{form.nivel_edu}}
             <input type="text" class="inp2">
 
             <br>
             <br>
             <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Tipo de contrato</label>
+            {{form.type_contrato}}
             <input type="text" class="inp3">
 
             <label for="civil" class="infop" id="estado">Experiencia</label>
+            {{form.experiencia}}
             <input type="text" class="inp3">
 
             <label for="civil" class="infop" id="estado">Tipo de salario</label>
+            {{form.type_salario}}
             <input type="text" class="inp3">
 
             <br>
             <br>
             <label for="civil" class="infop" id="estado" style="margin-left:  100px;">Habilidaddes</label>
+            {{form.type_habilidades}}
             <input type="text" class="inp3">
 
             <label for="civil" class="infop" id="estado">salario</label>
+            {{form.salario}}
             <input type="number" class="inp3">
 
             <label for="civil" class="infop" id="estado">Jornada laboral</label>
+            {{form.jornada_laboral}}
             <input type="text" class="inp3">
 
-            <p class="titulod">Descriccion</p>
+            <p class="titulod">Descripcion</p>
+
 
             <input type="text" style="margin-left:410px; width:450px; height:150px; border-radius: 15px; ">
-
+            {{form.descripcion}}
             <br>
             <br>
 
