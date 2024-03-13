@@ -17,7 +17,9 @@ class Acceso_Company:
             if password1 and password2 and password1 == password2:
                 if form.is_valid():
                     if form1.is_valid ():
-                        form.save()
+                        info1 =  form.save(commit=False)
+                        info1.type_user = 'Company'
+                        info1.save ()
                         info = form1.save(commit=False)
                         h = Myuser.objects.filter (email = email).values ('id')
                         for i in h:
