@@ -14,6 +14,14 @@ from .mixin import EmailVerificadoMixin
 from django.views.generic import View , TemplateView
 
 # Create your views here.
+
+class vista:
+
+    def crear(request):
+        return render (request, 'crearrequisicion.html')
+
+    def ver(request):
+        return render (request, 'verrequisicion.html')
 class create_oferta (LoginRequiredMixin , EmailVerificadoMixin, TemplateView):
 
     template_name = 'crearrequisicion.html'
