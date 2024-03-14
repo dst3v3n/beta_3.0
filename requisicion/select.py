@@ -19,3 +19,12 @@ class Selec_requi ():
                             ]
 
         return select_contrato
+    def pago ():
+
+        select_pago = [('Mensual' , 'Mensual'),
+                            ('Quincenal' , 'Quincenal'),
+                            ('Semanal' , 'Semanal'),
+                            ('Bisemanal' , 'Bisemanal')
+                            ]
+
+        return select_pago

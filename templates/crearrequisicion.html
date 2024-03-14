@@ -37,85 +37,66 @@
             <p class="titulod">Fechas de la oferta</p>
 
             <label for="finicio" class="infop" style="margin-left: 140px" >Fecha de inicio</label>
-            {{form.date_inicio}}
-            <input type="date" class="inp3">
+            {{form_requi.fecha_inicio}}
 
             <label for="apellido" class="infop" id="ape" style="margin-left: 150px">Fecha final</label>
-            {{form.date_fin}}
-            <input type="date" class="inp3" >
+            {{form_requi.fecha_finalizacion}}
 
             <p class="titulod">Datos de la Empresa</p>
 
             <label for="direccion" class="infop" style="margin-left: 100px;">Nombre</label>
-            {{form.company_name}}
-            
-            <input type="text" class="inp2">
+            <input type="text" class="inp2" value="{{form_name.name.value}}">
 
             <label for="cel" class="infop">Dirrecion</label>
-            {{form.location}}
-            <input type="text" class="inp2">
+            {{form_requi.direccion}}
 
             <label for="email" class="infop">Nit</label>
-            {{form.nit}}
-            <input type="email" class="inp3">
+            <input type="number" class="inp3" value="{{form_company.nit.value}}">
 
             <br>
             <br>
             <label for="fechan" class="infop" id="fecha" style="margin-left:50px;">Ubicación</label>
-            {{form.ubication}}
-            <input type="text" class="inp2">
+            {{form_requi.departamento}}
 
             <label for="tpod" class="infop">Codigo CNO</label>
-            {{form.codigo_cno}}
-            <input type="text" class="inp3">
+            {{form_requi.codigo_cno}}
 
 
             <label for="ncc" class="infop" id="doc">Telefono</label>
-            {{form.cell_number}}
-            <input type="tel" class="inp3">
+            {{form_requi.telefono}}
 
             <p class="titulod">Datos de la oferta</p>
 
             <label for="genero" class="infop" style="margin-left: 140px;">Nombre del cargo</label>
-            {{form.name_cargo}}
-            <input type="text" class="inp2">
+            {{form_requi.nombre_cargo}}
 
             <label for="edad" class="infop" id="ed" style="margin-left: 120px;">Educación</label>
-            {{form.nivel_edu}}
-            <input type="text" class="inp2">
+            {{form_requi.educacion}}
 
             <br>
             <br>
             <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Tipo de contrato</label>
-            {{form.type_contrato}}
-            <input type="text" class="inp3">
+            {{form_requi.tipo_contrato}}
 
             <label for="civil" class="infop" id="estado">Experiencia</label>
-            {{form.experiencia}}
-            <input type="text" class="inp3">
+            {{form_requi.experiencia_laboral}}
 
             <label for="civil" class="infop" id="estado">Tipo de salario</label>
-            {{form.type_salario}}
-            <input type="text" class="inp3">
+            {{form_requi.forma_pago}}
 
             <br>
             <br>
             <label for="civil" class="infop" id="estado" style="margin-left:  100px;">Habilidaddes</label>
-            {{form.type_habilidades}}
-            <input type="text" class="inp3">
+            {{form_requi.habilidades}}
 
             <label for="civil" class="infop" id="estado">salario</label>
-            {{form.salario}}
-            <input type="number" class="inp3">
+            {{form_requi.salario}}
 
             <label for="civil" class="infop" id="estado">Jornada laboral</label>
-            {{form.jornada_laboral}}
-            <input type="text" class="inp3">
+            {{form_requi.jornada_laboral}}
 
             <p class="titulod">Descripcion</p>
-
-
-            <input type="text" style="margin-left:410px; width:450px; height:150px; border-radius: 15px; ">
+            {{form_requi.descripcion}}
 
             <br>
             <br>
@@ -125,7 +106,6 @@
                 <button class="titulo1" id="open" style="margin: 2%  0 0 5%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Cancelar</button>
         </form>
     </div>
-    
         <script src="/static/js/loader.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     </main>

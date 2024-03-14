@@ -7,24 +7,24 @@ class Date (forms.DateInput):
 class Form_Requi (forms.ModelForm):
     class Meta:
         model = Requisicion
-        fields = ['date_inicio' , 'date_fin', 'company_name' , 'location' ,'nit','ubication','codigo_cno','cell_number','name_cargo','nivel_edu','type_contrato','type_salario','experiencia','habilidades','salario','jornada_laboral','descripcion']
+        fields = ['fecha_inicio','fecha_finalizacion','direccion','departamento','telefono','codigo_cno','nombre_cargo','educacion','experiencia_laboral','habilidades','salario','forma_pago','jornada_laboral','tipo_contrato','descripcion']
         widgets = {
-            'date_inicio' : Date (attrs={'class': 'inp2'}),
-            'date_fin' : Date (attrs={'class': 'inp2'}),
-            'company_name' : forms.TextInput (attrs={'class': 'inp' , "required" : False}),
-            'location' : forms.TextInput (attrs={'class' : 'inp' , "required" : False}),
-            'nit' : forms.TextInput (attrs={'class' : 'inp' , "required" : False}),
-            'ubication' : forms.TextInput (attrs={'class' : 'inp' , "required" : False}),
-            'codigo_cno' : forms.TextInput (attrs={'class' : 'inp' , "required" : False}),
-            'cell_number' : forms.TextInput (attrs={'class': 'inp1' , "required" : False}),
-            'name_cargo' : forms.TextInput (attrs={'class': 'inp',}),
-            'nivel_edu': forms.Select(attrs={'class': 'inp2'}),
-            'type_contrato': forms.Select(attrs={'class': 'inp2'}),
-            'type_salario' : forms.TextInput (attrs={'class': 'inp',}),
-            'experiencia' : forms.TextInput (attrs={'class': 'inp',}),
-            'habilidades' : forms.TextInput (attrs={'class': 'inp',}),
-            'salario' : forms.TextInput (attrs={'class': 'inp',}),
-            'jornada_laboral' : forms.TextInput (attrs={'class': 'inp',}),
-            'descripcion' : forms.TextInput (attrs={'class': 'inp',}),
+            'fecha_inicio': Date (attrs={'class': 'inp3'}),
+            'fecha_finalizacion': Date (attrs={'class': 'inp3'}),
+            'direccion':forms.TextInput (attrs={'class' : 'inp2'}),
+            'departamento': forms.TextInput (attrs={'class' : 'inp2'}),
+            'telefono': forms.TextInput (attrs={'class': 'inp3'}),
+            'codigo_cno': forms.TextInput (attrs={'class' : 'inp3'}),
+            'nombre_cargo':forms.TextInput (attrs={'class': 'inp2',}),
+            'educacion':forms.Select(attrs={'class': 'inp2'}),
+            'experiencia_laboral': forms.TextInput (attrs={'class': 'inp3',}),
+            'habilidades': forms.TextInput (attrs={'class': 'inp3',}),
+            'salario':forms.TextInput (attrs={'class': 'inp3',}),
+            'forma_pago': forms.Select (attrs={'class': 'inp3',}),
+            'jornada_laboral': forms.TextInput (attrs={'class': 'inp3',}),
+            'tipo_contrato':forms.Select(attrs={'class': 'inp3'}),
+            'descripcion': forms.TextInput (attrs={'id': 'infoa',
+                                                   'style' : "height: 300px;width: 35%; margin-left:33%; border-radius:5%;",
+                                                   'rows':"10",
+                                                   'cols':"40"}),
         }
-        
