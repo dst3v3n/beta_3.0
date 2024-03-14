@@ -34,9 +34,3 @@ class Acceso_Company:
 
         sweetify.warning (request , "El correo ya existe" , persistent='Ok')
         return redirect ("registro")
-
-class vistas :
-    def requisicion (request):
-        return render (request,'crearrequisicion.html')
-    def verrequisicionm (request):
-        return render (request,'verrequisicion.html')
