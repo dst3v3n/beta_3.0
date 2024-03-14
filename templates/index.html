@@ -51,11 +51,11 @@
             <nav>
                 <a href="{% url 'view_perfil' %}">Perfil</a>
                 {% if request.COOKIES.type_user == "Company" %}
-                <a href="{% url 'crearrequisicion' %}">Crear ofertas</a>
+                <a href="{% url 'create_oferta' %}">Crear ofertas</a>
                 <a href="{% url 'veroferta' %}">Ver ofertas creadas</a>
                 {% else %}
                 <a href="#">Empresas</a>
-                <a href="{% url 'verofertazp' %}">Mirar ofertas</a>
+                <a href="{% url 'visualizar_ofertas' %}">Mirar ofertas</a>
                 <a href="{% url 'create_hoja' %}">Crear hoja de vida</a>
                 <a href="{% url 'view_hoja' %}">Ver hoja de vida</a>
                 <a href="#">Ofertas guardadas</a>

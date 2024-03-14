@@ -3,6 +3,10 @@ from admins.admin import UserCreationForm
 from .forms import forms_user
 from admins.models import Myuser
 from admins.admin import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView
+from HojaVida.mixin import EmailVerificadoMixin
+from requisicion.models import Requisicion
 import sweetify
 
 # Create your views here.
@@ -38,3 +42,9 @@ class view_user:
 
     def perfil (request):
         return render (request , 'perfiluser.html')
+
+
+class visualizar_ofertas (LoginRequiredMixin , EmailVerificadoMixin, ListView):
+    model = Requisicion
+    template_name = 'ofertazp.html'
+    paginate_by = 2
