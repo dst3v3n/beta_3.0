@@ -7,4 +7,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('ver/' , vista.ver , name='verrequisicion'),
     path('crear/' , vista.crear , name='crearrequisicion'),
+    path('oferta/' , vista.ofertascy , name='veroferta'),
+    path('mirar ofertas/' , vista.ofertaszp , name='verofertazp'),
 ]

@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/veroferta.css' %}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
+	<title>Ofeertas creadas</title>
+</head>
+<style>
+    .icon {
+	min-width: 45px;
+	justify-content: space-around;
+    margin-left: 10px;
+}
+
+.icon a {
+	text-decoration: none;
+	font-size: 28px;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	margin: 3px;
+	background: #1D405C;
+	color: #f1f1f1;
+	border-radius: 50%;
+	transition: all 0.4s ease-in-out;
+}
+
+.icon a:hover {
+	transform: scale(1.2);
+	color: yellow;
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	-o-transform: scale(1.2);
+}
+</style>
+<body class="hidden">
+    <div class="centrado" id="onload">
+        <div class="cssload-loader">HUMAN TALENT</div>
+    </div>
+
+<div class="capa"></div>
+
+<nav>
+    <div class="barra">
+        <div class="content">
+            <a href="{%url 'index'%}">
+            <p class="p1">HUMAN TALENT <br> Ofertas de empleo</p>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div class="info">
+        <div class="nav" style="margin-bottom:20px ; display: flex;"> 
+            <h1 style="margin-left: 50%;"> Ofertas </h1> 
+        </div>
+        <div class="container">
+            <h2 class="tex" style="margin-left: 20px;">Nombrede de la Oferta</h2>
+            <h2 class="tex" style="margin-left:70px ;">00/00/00</h2>
+            <h2 class="tex" style="margin-left:70px ;">00/00/00</h2>
+            <h2 class="tex" style="margin-left:70px ;">00000000</h2>
+
+            <button style="width: 130px;margin-left:300px;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;color: #fff; font-weight: bold; font-size:large;">ver oferta</button>
+            <div class="icon">
+                <a href="#" class="fa fa-bookmark"></a> 
+            </div>
+            
+
+        </div>
+    </div>
+
+        <script src="/static/js/loader.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    </main>
+</body>
