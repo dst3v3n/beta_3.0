@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 class EmailVerificadoMixin(PermissionRequiredMixin):
 
     permission_required = 'correo_electronico_verificado'
-    login_url = '/curriculum/create/hoja/'
+    login_url = None
 
     def handle_no_permission(self):
         return redirect("verify-email")

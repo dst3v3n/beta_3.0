@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/veroferta.css' %}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
+	<title>Ofeertas creadas</title>
+</head>
+
+<body class="hidden">
+    <div class="centrado" id="onload">
+        <div class="cssload-loader">HUMAN TALENT</div>
+    </div>
+
+<div class="capa"></div>
+
+<nav>
+    <div class="barra">
+        <div class="content">
+            <a href="{%url 'index'%}">
+            <p class="p1">HUMAN TALENT <br> Oferta creadas</p>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div class="info">
+        <div class="nav" style="margin-bottom:20px ; display: flex;"> <h1 style="margin-left: 20px;">Mis ofertas </h1>
+            <button style="width: 180px;margin-left:70%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;color: #fff; font-weight: bold; font-size:large; font-weight: bold;">➕Crear Oferta</button>    
+        </div>
+        <div class="container">
+            {% for Requisicion in page_obj %}
+            <div class="container">
+                <h2 class="tex" style="margin-left: 20px;">{{ Requisicion.nombre_cargo }}</h2>
+                <h2 class="tex" style="margin-left:70px ;">{{ Requisicion.fecha_inicio }}</h2>
+                <h2 class="tex" style="margin-left:70px ;">{{ Requisicion.fecha_finalizacion }}</h2>
+                <h2 class="tex" style="margin-left:70px ;">{{ Requisicion.educacion }}</h2>
+
+                <button style="width: 130px;margin-left:300px;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;color: #fff; font-weight: bold; font-size:large;">ver oferta</button>
+                <div class="icon">
+                    <a href="#" class="fa fa-bookmark"></a>
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="pagination">
+            <span class="step-links">
+
+                <!-- {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %} -->
+
+                {% for page_number in page_obj.paginator.page_range %}
+                    {% if page_number == page_obj.number %}
+                        <span class="current">{{ page_number }}</span>
+                    {% elif page_number > page_obj.number|add:-3 and page_number < page_obj.number|add:3 %}
+                <a href="?page={{ page_number }}">{{ page_number }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                <!-- {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %} -->
+            </span>
+
+        </div>
+
+            <button style="width: 130px;margin-left:200px;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;color: #fff; font-weight: bold; font-size:large;">ver oferta</button>
+            
+            <button style="width: 130px;margin-left:30px;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;color: #fff; font-weight: bold; font-size:large;">Eliminar</button>
+            
+
+        </div>
+    </div>
+
+        <script src="/static/js/loader.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    </main>
+</body>
