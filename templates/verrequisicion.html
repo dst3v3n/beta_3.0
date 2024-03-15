@@ -47,82 +47,83 @@
 
 <main>
     <div class="info">
-        <form action="#" method="#">
+        
             <p class="titulo1">Datos de la oferta</p>
 
             <p class="titulod">Fechas de la oferta</p>
 
             <label for="finicio" class="infop" style="margin-left: 140px" >Fecha de inicio</label>
-            <input type="date" class="inp3">
+            <input type="date" class="inp3" value="{{form_requi.fecha_inicio.value}}" disabled>
 
             <label for="apellido" class="infop" id="ape" style="margin-left: 150px">Fecha final</label>
-            <input type="date" class="inp3" >
+            <input type="date" class="inp3" value="{{form_requi.fecha__finalizacion.value}}" disabled >
 
             <p class="titulod">Datos de la Empresa</p>
 
             <label for="direccion" class="infop" style="margin-left: 100px;">Nombre</label>
-            <input type="text" class="inp2">
+            <input type="text" class="inp2" value="{{form_name.name.value}}" disabled>
+            <input type="text" class="inp2" value="{{form_name.name.value}}" disabled>
 
-            <label for="cel" class="infop">Dirección</label>
-            <input type="text" class="inp2">
+            <label for="cel" class="infop">Dirrecion</label>
+            <input type="text" class="inp2" value="{{form_requi.direccion.value}}" disabled>
 
-            <label for="#" class="infop">Nit</label>
-            <input type="email" class="inp3">
+            <label for="email" class="infop">Nit</label>
+            <input type="email" class="inp3" value="{{form_company.nit.value}}" disabled>
+            <input type="email" class="inp3" value="{{form_company.nit.value}}" disabled>
 
             <br>
             <br>
             <label for="fechan" class="infop" id="fecha" style="margin-left:50px;">Ubicación</label>
-            <input type="text" class="inp2">
+            <input type="text" class="inp2" value="{{form_requi.departamento.value}}" disabled>
 
-            <label for="tpod" class="infop">Código CNO</label>
-            <input type="text" class="inp3">
+            <label for="tpod" class="infop">Codigo CNO</label>
+            <input type="text" class="inp3" value="{{form_requi.departamento.value}}" disabled>
 
 
-            <label for="ncc" class="infop" id="doc">Teléfono</label>
-            <input type="tel" class="inp3">
+            <label for="ncc" class="infop" id="doc">Telefono</label>
+            <input type="tel" class="inp3" value="{{form_requi.departamento.value}}" disabled>
 
             <p class="titulod">Datos de la oferta</p>
 
             <label for="genero" class="infop" style="margin-left: 140px;">Nombre del cargo</label>
-            <input type="text" class="inp2">
+            <input type="text" class="inp2" value="{{form_requi.departamento.value}}" disabled>
 
             <label for="edad" class="infop" id="ed" style="margin-left: 120px;">Educación</label>
-            <input type="text" class="inp2">
+            <input type="text" class="inp2" value="{{form_requi.departamento.value}}" disabled>
 
             <br>
             <br>
             <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Tipo de contrato</label>
-            <input type="text" class="inp3">
+            <input type="text" class="inp3" value="{{form_requi.departamento.value}}" disabled>
 
             <label for="civil" class="infop" id="estado">Experiencia</label>
-            <input type="text" class="inp3">
+            <input type="text" class="inp3" value="{{form_requi.departamento.value}}" disabled>
 
             <label for="civil" class="infop" id="estado">Tipo de salario</label>
-            <input type="text" class="inp3">
+            <input type="text" class="inp3" value="{{form_requi.departamento.value}}" disabled>
 
             <br>
             <br>
             <label for="civil" class="infop" id="estado" style="margin-left:  100px;">Habilidaddes</label>
-            <input type="text" class="inp3">
+            <input type="text" class="inp3" value="{{form_requi.departamento.value}}" disabled>
 
-            <label for="civil" class="infop" id="estado">Salario</label>
-            <input type="number" class="inp3">
+            <label for="civil" class="infop" id="estado">salario</label>
+            <input type="number" class="inp3" value="{{form_requi.departamento.value}}" disabled>
 
             <label for="civil" class="infop" id="estado">Jornada laboral</label>
-            <input type="text" class="inp3">
+            <input type="text" class="inp3" value="{{form_requi.departamento.value}}" disabled>
 
-            <p class="titulod">Descripción</p>
-
-            <textarea name="information_adi" cols="40" rows="10" id="infoa" style="height: 300px;width: 35%; margin-left:33%; border-radius:5%;"></textarea>
+            <p class="titulod">Descriccion</p>
+            {{form_requi.descripcion.value}}
+            
 
             <br>
             <br>
 
                 <p class="titulo2">No olvide guardar tu nueva oferta</p>
-                <button class="titulo1" id="#" style="margin: 2%  0 0 31%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
                 <button class="titulo1" id="open" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Editar</button>
                 <button class="titulo1" id="openas" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Aspirantes</button>
-        </form>
+        
     </div>
 
 <!-- --------------------------------------------------------------------------------------- -->
@@ -201,7 +202,7 @@
             <br>
 
                 <p class="titulo2">No olvide guardar los cambios de tu oferta</p>
-                <button class="titulo1" id="#" style="margin: 2%  0 0 38%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                <button class="titulo1" id="#" style="margin: 2%  0 0 38%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;" onclick="window.location.href = '{% url 'edit_info_requi' %}'">Guardar</button>
                 <button class="titulo1" id="#" style="margin: 2%  0 0 5%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</button>
         </form>
     </div>
