@@ -16,8 +16,8 @@ class Date (forms.DateInput):
 class Form_Requi (forms.ModelForm):
     class Meta:
         model = Requisicion
-        fields = ['fecha_inicio','fecha_finalizacion','direccion','departamento','telefono','codigo_cno',
-                  'nombre_cargo','educacion','experiencia_laboral','habilidades','salario','forma_pago',
+        fields = ['fecha_inicio','fecha_finalizacion','direccion','departamento','ciudad','telefono','codigo_cno',
+                  'nombre_cargo','educacion','experiencia_laboral','profesion','habilidades','salario','forma_pago',
                   'jornada_laboral','tipo_contrato','descripcion']
         # fields = "__all__"
 
@@ -31,6 +31,7 @@ class Form_Requi (forms.ModelForm):
                                             }),
             'direccion':forms.TextInput (attrs={'class' : 'inp2'}),
             'departamento': forms.TextInput (attrs={'class' : 'inp2'}),
+            'ciudad': forms.TextInput (attrs={'class' : 'inp2'}),
             'telefono': forms.TextInput (attrs={'class': 'inp3'}),
             'codigo_cno': forms.NumberInput (attrs={'class' : 'inp3'}),
             'nombre_cargo':forms.TextInput (attrs={'class': 'inp2',}),

@@ -11,6 +11,7 @@ class Requisicion (models.Model):
     id_myuser = models.ForeignKey(Myuser, on_delete = models.CASCADE, null=True)
     direccion = models.CharField(max_length = 30)
     departamento = models.CharField(max_length = 20)
+    ciudad = models.CharField(max_length = 20)
     telefono = models.CharField(max_length = 10)
     codigo_cno = models.IntegerField()
     nombre_cargo = models.CharField(max_length = 50)
