@@ -345,6 +345,7 @@ button {
     border-radius: 50px;
     color: #fff;
     margin-top: 1rem;
+    margin-bottom: 1rem;
     cursor: pointer;
     outline: none;
     border-width: 0;
@@ -361,6 +362,25 @@ button:hover {
     color: aliceblue;
 }
 
+.abtn{
+    color: aliceblue; 
+    text-decoration: none; 
+    background-color: black;  
+    cursor: pointer;
+    padding: 10px 220px 10px 215px; 
+    translate: 100% 100%;
+    font-weight: 600;
+    border-radius: 50px;
+    border-width: 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+}
+
+.abtn:hover {
+    opacity: 0.8;
+    transition: .6s;
+	transform: scale(1.03);
+    color: aliceblue;
+}
 .name {
     display: flex;
     justify-content: center;
