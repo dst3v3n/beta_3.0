@@ -36,6 +36,7 @@ class Form_Requi (forms.ModelForm):
             'nombre_cargo':forms.TextInput (attrs={'class': 'inp2',}),
             'educacion':forms.Select(attrs={'class': 'inp2'}),
             'experiencia_laboral': forms.TextInput (attrs={'class': 'inp3',}),
+            'profesion':forms.TextInput (attrs={'class': 'inp2',}),
             'salario':forms.NumberInput (attrs={'class': 'inp3',
                                               'step': 0.50}),
             'forma_pago': forms.Select (attrs={'class': 'inp3',}),
