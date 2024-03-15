@@ -1,5 +1,35 @@
-<h1>Necesita verificar su correo electrónico</h1>
-<form method="post">
-    {% csrf_token %}
-    <input class="btn btn-primary max-btn" type="submit" value="Verificar">
-</form>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/validaremail.css' %}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
+	<title>Verifica tu talento humano</title>
+</head>
+<body class="hidden">
+    <div class="centrado" id="onload">
+        <div class="cssload-loader">HUMAN TALENT</div>
+    </div>
+
+    <div class="capa"></div>
+
+    <div class="container">
+        <img src="/static/img/logo.png" alt="HUMAN TALENT" class="imagen">
+        <h1>HUMAN TALENT </h1>
+        <br>
+        </br>
+        <h2>Necesita verificar tu correo electrónico</h2>
+        <br><br><br>
+        <form method="post">
+            {% csrf_token %}
+            <input class="btn btn-primary max-btn" type="submit" value="Verificar">
+        </form>
+    </div>
+
+    <script src="/static/js/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</body>
+</html>
