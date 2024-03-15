@@ -6,7 +6,6 @@ from company.forms import forms_company
 from company.models import Company
 from .alerta import alertas
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect
 from HojaVida.mixin import EmailVerificadoMixin
 from django.views.generic import TemplateView , ListView
 from .models import Requisicion
