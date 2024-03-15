@@ -54,14 +54,14 @@ class save_requi:
     def edit_requi (request , id):
         if request.method == 'POST':
             usuario = Requisicion.objects.get (pk = id)
-            form = Form_Requi (request.POST , instance= usuario)
+            form = Form_Requi (request.POST , request.FILES, instance= usuario)
             if form.is_valid ():
                 form.save ()
-                return redirect ('ver_requi')        
+                return redirect ('ver_info_requi')        
             
     def delete_requi (request , id):
         Requisicion.objects.get (pk = id).delete ()
-        return redirect ('ver_requi')
+        return redirect ('ver_info_requi')
 
 class consultar_ofer (LoginRequiredMixin , EmailVerificadoMixin, ListView):
     model = Requisicion

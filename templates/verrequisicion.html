@@ -1,4 +1,5 @@
 {% load static %}
+{% load sweetify %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,73 +50,80 @@
     <div class="info">
         
             <p class="titulo1">Datos de la oferta</p>
-
+        
             <p class="titulod">Fechas de la oferta</p>
-
+            
             <label for="finicio" class="infop" style="margin-left: 140px" >Fecha de inicio</label>
             <input type="date" class="inp3" value="{{form_requi.fecha_inicio.value}}" disabled>
 
             <label for="apellido" class="infop" id="ape" style="margin-left: 150px">Fecha final</label>
             <input type="date" class="inp3" value="{{form_requi.fecha__finalizacion.value}}" disabled >
-
+            
             <p class="titulod">Datos de la Empresa</p>
 
             <label for="direccion" class="infop" style="margin-left: 100px;">Nombre</label>
-            <input type="text" class="inp2" value="{{form_name.name.value}}" disabled>
             <input type="text" class="inp2" value="{{form_name.name.value}}" disabled>
 
             <label for="cel" class="infop">Dirrecion</label>
             <input type="text" class="inp2" value="{{form_requi.direccion.value}}" disabled>
 
             <label for="email" class="infop">Nit</label>
-            <input type="email" class="inp3" value="{{form_company.nit.value}}" disabled>
-            <input type="email" class="inp3" value="{{form_company.nit.value}}" disabled>
+            <input type="number" class="inp3" value="{{form_company.nit.value}}" disabled>
 
             <br>
             <br>
-            <label for="fechan" class="infop" id="fecha" style="margin-left:50px;">Ubicación</label>
+            <label for="fechan" class="infop" id="fecha" style="margin-left:50px;">Departamento</label>
             <input type="text" class="inp2" value="{{form_requi.departamento.value}}" disabled>
 
+            <label for="fechan" class="infop" id="fecha" style="margin-left:50px;">Ciudad</label>
+            <input type="text" class="inp2" value="{{form_requi.ciudad.value}}" disabled>
+
             <label for="tpod" class="infop">Codigo CNO</label>
-            <input type="text" class="inp3" value="{{form_requi.departamento.value}}" disabled>
+            <input type="text" class="inp3" value="{{form_requi.codigo_cno.value}}" disabled>
 
 
             <label for="ncc" class="infop" id="doc">Telefono</label>
-            <input type="tel" class="inp3" value="{{form_requi.departamento.value}}" disabled>
+            <input type="tel" class="inp3" value="{{form_requi.telefono.value}}" disabled>
 
             <p class="titulod">Datos de la oferta</p>
 
             <label for="genero" class="infop" style="margin-left: 140px;">Nombre del cargo</label>
-            <input type="text" class="inp2" value="{{form_requi.departamento.value}}" disabled>
+            <input type="text" class="inp2" value="{{form_requi.nombre_cargo.value}}" disabled>
 
             <label for="edad" class="infop" id="ed" style="margin-left: 120px;">Educación</label>
-            <input type="text" class="inp2" value="{{form_requi.departamento.value}}" disabled>
+            <input type="text" class="inp2" value="{{form_requi.educacion.value}}" disabled>
 
             <br>
             <br>
             <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Tipo de contrato</label>
-            <input type="text" class="inp3" value="{{form_requi.departamento.value}}" disabled>
+            <input type="text" class="inp3" value="{{form_requi.tipo_contrato.value}}" disabled>
 
             <label for="civil" class="infop" id="estado">Experiencia</label>
-            <input type="text" class="inp3" value="{{form_requi.departamento.value}}" disabled>
+            <input type="text" class="inp3" value="{{form_requi.experiencia_laboral.value}}" disabled>
+
+            <label for="civil" class="infop" id="estado">Profesion</label>
+            <input type="text" class="inp2" value="{{form_requi.profesion}}" disabled>
 
             <label for="civil" class="infop" id="estado">Tipo de salario</label>
-            <input type="text" class="inp3" value="{{form_requi.departamento.value}}" disabled>
+            <input type="text" class="inp3" value="{{form_requi.forma_pago.value}}" disabled>
 
             <br>
             <br>
-            <label for="civil" class="infop" id="estado" style="margin-left:  100px;">Habilidaddes</label>
-            <input type="text" class="inp3" value="{{form_requi.departamento.value}}" disabled>
+            
 
             <label for="civil" class="infop" id="estado">salario</label>
-            <input type="number" class="inp3" value="{{form_requi.departamento.value}}" disabled>
+            <input type="number" class="inp3" value="{{form_requi.salario.value}}" disabled>
 
             <label for="civil" class="infop" id="estado">Jornada laboral</label>
-            <input type="text" class="inp3" value="{{form_requi.departamento.value}}" disabled>
+            <input type="text" class="inp3" value="{{form_requi.jornada_laboral.value}}" disabled>
 
-            <p class="titulod">Descriccion</p>
-            {{form_requi.descripcion.value}}
             
+
+            <p class="titulod2">Descripcion</p>
+            {{form_requi.descripcion.value}}
+
+            <p class="titulod1">habilidades</p>
+            {{form_requi.habilidades.value}}
 
             <br>
             <br>
@@ -130,81 +138,194 @@
 <dialog id="modal" class="info" style="width: auto;">
     <button  id="cancelar" >✖️</button>
     <div class="info">
-        <form action="#" method="#">
+        {% if form_requi.instance.id != None %}
+        <form action="{% url 'edit_info_requi' form_requi.instance.id %}" method="post">
+            {% csrf_token %}
             <p class="titulo1">Datos de la oferta</p>
 
             <p class="titulod">Fechas de la oferta</p>
 
             <label for="finicio" class="infop" style="margin-left: 140px" >Fecha de inicio</label>
-            <input type="date" class="inp3">
+            {% if form_requi.instance.id != None %}
+                {%if form_requi.fecha_inicio.value.day > 9 %}
+                    {% if form.fecha_inicio.value.month < 9  %}
+                    <input type="date" class="inp3" value="{{form_requi.fecha_inicio.value.year}}-0{{form_requi.fecha_inicio.value.month}}-{{form_requi.fecha_inicio.value.day}}">
+                    {% else %}
+                    <input type="date" class="inp3" value="{{form_requi.fecha_inicio.value.year}}-{{form_requi.fecha_inicio.value.month}}-{{form_requi.fecha_inicio.value.day}}">
+                    {% endif %}
+                {% else %}
+                    <input type="date" class="inp3" value="{{form_requi.fecha_inicio.value.year}}-0{{form_requi.fecha_inicio.value.month}}-{{form_requi.fecha_inicio.value.day}}">
+                {% endif %}
+            {% else %}
+                {{form_requi.fecha_inicio}}
+            {% endif %}
+
 
             <label for="apellido" class="infop" id="ape" style="margin-left: 150px">Fecha final</label>
-            <input type="date" class="inp3" >
-
+            {% if form_requi.instance.id != None %}
+                {%if form_requi.fecha_finalizacion.value.day > 9 %}
+                    {% if form.fecha_finalizacion.value.month < 9  %}
+                    <input type="date" class="inp3" value="{{form_requi.fecha_finalizacion.value.year}}-0{{form_requi.fecha_finalizacion.value.month}}-{{form_requi.fecha_finalizacion.value.day}}">
+                    {% else %}
+                    <input type="date" class="inp3" value="{{form_requi.fecha_finalizacion.value.year}}-{{form_requi.fecha_finalizacion.value.month}}-{{form_requi.fecha_finalizacion.value.day}}">
+                    {% endif %}
+                {% else %}
+                    <input type="date" class="inp3" value="{{form_requi.fecha_finalizacion.value.year}}-0{{form_requi.fecha_finalizacion.value.month}}-{{form_requi.fecha_finalizacion.value.day}}">
+                {% endif %}
+            {% else %}
+                {{form_requi.fecha_finalizacion}}
+            {% endif %}
             <p class="titulod">Datos de la Empresa</p>
 
             <label for="direccion" class="infop" style="margin-left: 100px;">Nombre</label>
-            <input type="text" class="inp2">
+            {{form_name.name.value}}
 
             <label for="cel" class="infop">Dirección</label>
-            <input type="text" class="inp2">
+            {{form_requi.direccion}}
+            
 
             <label for="email" class="infop">Nit</label>
-            <input type="email" class="inp3">
+            {{form_company.nit.value}}
+            
 
             <br>
             <br>
-            <label for="fechan" class="infop" id="fecha" style="margin-left:50px;">Ubicación</label>
-            <input type="text" class="inp2">
+            <label for="fechan" class="infop" id="fecha" style="margin-left:50px;">Departamento</label>
+            {{form_requi.departamento}}
+
+            <label for="fechan" class="infop" id="fecha" >Ciudad</label>
+            {{form_requi.ciudad}}
 
             <label for="tpod" class="infop">Codigo CNO</label>
-            <input type="text" class="inp3">
+            {{form_requi.codigo_cno}}
 
 
             <label for="ncc" class="infop" id="doc">Telefono</label>
-            <input type="tel" class="inp3">
+            {{form_requi.telefono}}
 
             <p class="titulod">Datos de la oferta</p>
 
             <label for="genero" class="infop" style="margin-left: 140px;">Nombre del cargo</label>
-            <input type="text" class="inp2">
+            {{form_requi.nombre_cargo}}
 
             <label for="edad" class="infop" id="ed" style="margin-left: 120px;">Educación</label>
-            <input type="text" class="inp2">
+            {{form_requi.educacion}}
 
             <br>
             <br>
             <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Tipo de contrato</label>
-            <input type="text" class="inp3">
+            {{form_requi.tipo_contrato}}
 
             <label for="civil" class="infop" id="estado">Experiencia</label>
-            <input type="text" class="inp3">
+            {{form_requi.experiencia_laboral}}
+
+            <label for="civil" class="infop" id="estado">Profesion</label>
+            {{form_requi.profesion}}
 
             <label for="civil" class="infop" id="estado">Tipo de salario</label>
-            <input type="text" class="inp3">
-
+            {{form_requi.forma_pago}}
             <br>
             <br>
-            <label for="civil" class="infop" id="estado" style="margin-left:  100px;">Habilidades</label>
-            <input type="text" class="inp3">
-
+            
             <label for="civil" class="infop" id="estado">Salario</label>
-            <input type="number" class="inp3">
+            {{form_requi.salario}}
 
             <label for="civil" class="infop" id="estado">Jornada laboral</label>
-            <input type="text" class="inp3">
+            {{form_requi.jornada_laboral}}
 
-            <p class="titulod">Descripción</p>
+            <p class="titulod2">Descripcion</p>
+            {{form_requi.descripcion}}
 
-            <textarea name="information_adi" cols="40" rows="10" id="infoa" required="" style="height: 300px;width: 35%; margin-left:33%; border-radius:5%;"></textarea>
-
+            <p class="titulod1" class="inth">habilidades</p>
+            {{form_requi.habilidades}}
             <br>
             <br>
 
                 <p class="titulo2">No olvide guardar los cambios de tu oferta</p>
-                <button class="titulo1" id="#" style="margin: 2%  0 0 38%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;" onclick="window.location.href = '{% url 'edit_info_requi' %}'">Guardar</button>
-                <button class="titulo1" id="#" style="margin: 2%  0 0 5%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</button>
-        </form>
+                <button class="titulo1" id="open" style="margin: 2%  0 0 38%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                <button class="titulo1" id="open" style="margin: 2%  0 0 5%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;"onclick="window.location.href = '{% url 'delete_info_requi' form_requi.instance.id %}'">Eliminar</button>
+            </form>
+        {%else%}
+                
+                <p class="titulo1">Datos de la oferta</p>
+
+                <p class="titulod">Fechas de la oferta</p>
+            
+                <label for="finicio" class="infop" style="margin-left: 140px" >Fecha de inicio</label>
+                <input type="date" class="inp3" value="" disabled>
+
+                <label for="apellido" class="infop" id="ape" style="margin-left: 150px">Fecha final</label>
+                <input type="date" class="inp3" value="" disabled >
+        
+                <p class="titulod">Datos de la Empresa</p>
+
+                <label for="direccion" class="infop" style="margin-left: 100px;">Nombre</label>
+                <input type="text" class="inp2" value="" disabled>
+
+                <label for="cel" class="infop">Dirrecion</label>
+                <input type="text" class="inp2" value="" disabled>
+
+                <label for="email" class="infop">Nit</label>
+                <input type="number" class="inp3" value="" disabled>
+                <br>
+                <br>
+                <label for="fechan" class="infop" id="fecha" style="margin-left:50px;">Departamento</label>
+                <input type="text" class="inp2" value="" disabled>
+
+                <label for="fechan" class="infop" id="fecha" style="margin-left:50px;">Ciudad</label>
+                <input type="text" class="inp2" value="" disabled>
+
+                <label for="tpod" class="infop">Codigo CNO</label>
+                <input type="text" class="inp3" value="" disabled>
+                
+                <label for="ncc" class="infop" id="doc">Telefono</label>
+                <input type="tel" class="inp3" value="" disabled>
+
+                <p class="titulod">Datos de la oferta</p>
+
+                <label for="genero" class="infop" style="margin-left: 140px;">Nombre del cargo</label>
+                <input type="text" class="inp2" value="" disabled>
+
+                <label for="edad" class="infop" id="ed" style="margin-left: 120px;">Educación</label>
+                <input type="text" class="inp2" value="" disabled>
+
+                <br>
+                <br>
+                <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Tipo de contrato</label>
+                <input type="text" class="inp3" value="" disabled>
+
+                <label for="civil" class="infop" id="estado">Experiencia</label>
+                <input type="text" class="inp3" value="" disabled>
+
+                <label for="civil" class="infop" id="estado">Profesion</label>
+                <input type="text" class="inp2" value="" disabled>
+
+                <label for="civil" class="infop" id="estado">Tipo de salario</label>
+                <input type="text" class="inp3" value="" disabled>
+
+                <br>
+                <br>
+
+                <label for="civil" class="infop" id="estado">salario</label>
+                <input type="number" class="inp3" value="" disabled>
+
+                <label for="civil" class="infop" id="estado">Jornada laboral</label>
+                <input type="text" class="inp3" value="" disabled>
+
+                <p class="titulod2">Descripcion</p>
+                {{form_requi.descripcion.value}}
+
+                <p class="titulod1">habilidades</p>
+                {{form_requi.habilidades.value}}
+
+                <br>
+                <br>
+
+                <p class="titulo2">No olvide guardar tu nueva oferta</p>
+                <button class="titulo1" id="open" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Editar</button>
+                <button class="titulo1" id="open" style="margin: 2%  0 0 5%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;"onclick="window.location.href = '{% url 'delete_info_requi'%}'">Eliminar</button>
+        
+        {% endif %}    
     </div>
 
     </dialog>
@@ -215,7 +336,7 @@
     <button  id="cancelaras" >✖️</button>
     <div class="info">
         <form action="#" method="#">
-                <p class="titulo2">No olvide guardar los cambios de tu oferta</p>
+                <p class="titulo2">No olvide guard1ar los cambios de tu oferta</p>
                 <button class="titulo1" id="#" style="margin: 2%  0 0 38%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
                 <button class="titulo1" id="#" style="margin: 2%  0 0 5%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</button>
         </form>
