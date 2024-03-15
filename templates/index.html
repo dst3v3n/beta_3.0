@@ -51,16 +51,16 @@
             <nav>
                 <a href="{% url 'view_perfil' %}">Perfil</a>
                 {% if request.COOKIES.type_user == "Company" %}
-                <a href="{% url 'create_oferta' %}">Crear ofertas</a>
-                <a href="{% url 'consultar_ofer' request.COOKIES.User_id %}">Ver ofertas creadas</a>
+                <a href="{% url 'create_oferta' %}">Crear Ofertas</a>
+                <a href="{% url 'consultar_ofer' request.COOKIES.User_id %}">Ver Ofertas Creadas</a>
                 {% else %}
                 <a href="#">Empresas</a>
-                <a href="{% url 'visualizar_ofertas' %}">Mirar ofertas</a>
-                <a href="{% url 'create_hoja' %}">Crear hoja de vida</a>
-                <a href="{% url 'view_hoja' %}">Ver hoja de vida</a>
-                <a href="#">Ofertas guardadas</a>
+                <a href="{% url 'visualizar_ofertas' %}">Visualizar Ofertas</a>
+                <a href="{% url 'create_hoja' %}">Crear Hoja De Vida</a>
+                <a href="{% url 'view_hoja' %}">Ver Hoja De Vida</a>
+                <a href="#">Ofertas Guardadas</a>
                 {% endif %}
-                <a href="{% url 'logout' %}">Cerrar sesion</a>
+                <a href="{% url 'logout' %}">Cerrar Sesion</a>
             </nav>
             <label for="btn-menu">✖️</label>
         </div>
