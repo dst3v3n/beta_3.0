@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'HojaVida.apps.HojavidaConfig',
     'perfil_user.apps.PerfilUserConfig',
     'requisicion.apps.RequisicionConfig',
-    'Ponderacion.apps.PonderacionConfig',
     'axes',
     'sweetify',
 ]
@@ -95,7 +94,7 @@ DATABASES = {
         "USER": "root",
         "PASSWORD": "",
         "HOST": "localhost",
-        "PORT": "3307",
+        "PORT": "3306",
     }
 }
 # Password validation

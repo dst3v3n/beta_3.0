@@ -30,3 +30,20 @@ class Requisicion (models.Model):
 
     def _str_(self):
         return f"{self.nombre_cargo}"
+
+class Ponderacion (models.Model):
+    educacion = models.IntegerField()
+    experiencia = models.IntegerField()
+    habilidades = models.IntegerField()
+    ubicacion = models.IntegerField()
+    total = models.IntegerField()
+    id_oferta = models.ForeignKey(Requisicion , on_delete = models.CASCADE)
+    id_myuser = models.ForeignKey(Myuser , on_delete = models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Ponderacion'
+        verbose_name_plural = 'Ponderaciones'
+        db_table = 'Ponderacion'
+
+    def _str_(self):
+        return f"{self.nombre_cargo}"
