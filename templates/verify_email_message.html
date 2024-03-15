@@ -2,7 +2,7 @@
     <h2 style="margin: 0; padding: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; background-color: #005B8F; color: #ffffff;">Verify Email</h2>
     <div style="margin: 0; padding: 15px; background-color: #ffffff;">
         <p>Hola {{ user.name }},</p>
-        <p>Has creado una cuenta en HumanTalent.com, necesitas verificar tu email. Por favor, haga clic en el botón de abajo para verificar su correo electrónico.</p>
+        <p>Has creado una cuenta en HumanTalent.com, necesitas verificar tu email. Por favor, haz clic en el botón de abajo para verificar tu correo electrónico.</p>
         <a href="{{ request.scheme }}://{{ domain }}{% url 'verify-email-confirm' uidb64=uid token=token %}" style="border: 0; color: #ffffff; background-color: #005B8F; padding: 15px; font-weight: bold; text-decoration: none; border-radius: 5px;">
             Verificar Email
         </a>
