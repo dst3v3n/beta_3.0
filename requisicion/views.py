@@ -10,6 +10,8 @@ from django.shortcuts import redirect
 from HojaVida.mixin import EmailVerificadoMixin
 from django.views.generic import TemplateView , ListView
 from .models import Requisicion
+from django.views.generic import TemplateView , ListView
+from .models import Requisicion
 
 # Create your views here.
 
@@ -50,20 +52,7 @@ class save_requi:
                 info.save ()
                 alertas.save (request , 'Informacion Personal')
                 return redirect ('create_oferta')
-            
-            
-    def edit_requi (request , id):
-        if request.method == 'POST':
-            usuario = Requisicion.objects.get (pk = id)
-            form = Form_Requi (request.POST , instance= usuario)
-            if form.is_valid ():
-                form.save ()
-                return redirect ('ver_requi')        
-            
-    def delete_requi (request , id):
-        Requisicion.objects.get (pk = id).delete ()
-        return redirect ('ver_requi')
-
+                return redirect ('create_oferta')
 class consultar_ofer (LoginRequiredMixin , EmailVerificadoMixin, ListView):
     model = Requisicion
     template_name = 'veroferta.html'
@@ -71,7 +60,5 @@ class consultar_ofer (LoginRequiredMixin , EmailVerificadoMixin, ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs = qs.filter(id_myuser_id=self.kwargs['id_myuser'])
+        qs = qs.filter(id_company__id=self.kwargs['company_id'])
         return qs
-    
-
