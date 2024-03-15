@@ -32,6 +32,7 @@ urlpatterns = [
     path('admins/' , include('admins.urls')),
     path('curriculum/' , include('HojaVida.urls')),
     path('requisicion/' , include('requisicion.urls')),
+    path('ponderacion/' , include('Ponderacion.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = pag_404_not_found
