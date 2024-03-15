@@ -9,6 +9,3 @@ urlpatterns = [
     path('edit/oferta/', save_requi.edit_requi ,  name='edit_info_requi'),
     path('delete/oferta/', save_requi.delete_requi ,  name='delete_info_requi'),
 ]
-
-
-

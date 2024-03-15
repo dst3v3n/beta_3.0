@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'HojaVida.apps.HojavidaConfig',
     'perfil_user.apps.PerfilUserConfig',
     'requisicion.apps.RequisicionConfig',
+    'Ponderacion.apps.PonderacionConfig',
     'axes',
     'sweetify',
 ]
