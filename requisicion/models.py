@@ -1,7 +1,6 @@
 # Create your models here.
 from django.db import models
 from admins.models import Myuser
-from company.models import Company
 from . select import Selec_requi
 
 # Create your models here.
@@ -9,7 +8,7 @@ from . select import Selec_requi
 class Requisicion (models.Model):
     fecha_inicio = models.DateField()
     fecha_finalizacion = models.DateField()
-    id_company = models.ForeignKey(Company, on_delete = models.CASCADE, null=True)
+    id_myuser = models.ForeignKey(Myuser, on_delete = models.CASCADE, null=True)
     direccion = models.CharField(max_length = 30)
     departamento = models.CharField(max_length = 20)
     telefono = models.CharField(max_length = 10)

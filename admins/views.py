@@ -15,6 +15,7 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib import messages
+from django.http import HttpResponse
 # Create your views here.
 
 class acceso :
@@ -221,5 +222,17 @@ class Verification:
             messages.warning(request, 'The link is invalid.')
         return render(request, 'verify_email_confirm.html')
 
+
     def verify_email_complete(request):
-        return render(request, 'verify_email_complete.html')
+
+        html = render(request, 'verify_email_complete.html')
+        html_bytes = html.content
+        response = HttpResponse(html_bytes + '''
+            <script>
+                setTimeout(function() {
+                    window.location.href = "/";
+                }, 1000);
+            </script>
+        '''.encode('utf-8'))
+        response.set_cookie(key='email_verified', value='True')
+        return response

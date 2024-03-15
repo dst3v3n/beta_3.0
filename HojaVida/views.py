@@ -112,7 +112,7 @@ class create_hoja (LoginRequiredMixin , EmailVerificadoMixin, TemplateView):
 
 class Visualizar_hoja (LoginRequiredMixin , EmailVerificadoMixin, TemplateView):
 
-    template_name = 'hoja_vida.html'
+    template_name = 'hoja_vida_visualizar.html'
 
     def get_context_data (self , **kwargs):
         context = super().get_context_data(**kwargs)
