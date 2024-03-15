@@ -110,7 +110,19 @@
                 <input type="email" class="inp"  name="email" value="{{form_name.email.value}}" disabled>
 
                 <label for="fechan" class="infop" id="fecha">fecha de nacimiento</label>
-                {{form_info.date}}
+                {% if form_info.instance.id != None %}
+                    {%if form_info.date.value.day > 9 %}
+                        {% if form_info.date.value.month < 9  %}
+                            <input type="date" value="{{form_info.date.value.year}}-0{{form_info.date.value.month}}-{{form_info.date.value.day}}" class="inp2">
+                        {% else %}
+                            <input type="date" value="{{form_info.date.value.year}}-{{form_info.date.value.month}}-{{form_info.date.value.day}}" class="inp2">
+                        {% endif %}
+                    {% else %}
+                        <input type="date" value="{{form_info.date.value.year}}-0{{form_info.date.value.month}}-0{{form_info.date.value.day}}" class="inp2">
+                    {% endif %}
+                {% else %}
+                    {{form_info.date}}
+                {% endif %}
                 <br>
                 <br>
                 <label for="tpod" class="infop">Tipo de documento</label>
@@ -156,7 +168,19 @@
                         <br>
                         <br>
                         <label for="añ" class="infop">Año de gradución</label>
-                        {{form.graduation_year}}
+                        {% if form.instance.id != None %}
+                            {%if form.graduation_year.value.day > 9 %}
+                                {% if form.graduation_year.value.month < 9  %}
+                                    <input type="date" value="{{form.graduation_year.value.year}}-0{{form.graduation_year.value.month}}-{{form.graduation_year.value.day}}" class="inp2">
+                                {% else %}
+                                    <input type="date" value="{{form.graduation_year.value.year}}-{{form.graduation_year.value.month}}-{{form.graduation_year.value.day}}" class="inp2">
+                                {% endif %}
+                            {% else %}
+                                <input type="date" value="{{form.graduation_year.value.year}}-0{{form.graduation_year.value.month}}-0{{form.graduation_year.value.day}}" class="inp2">
+                            {% endif %}
+                        {% else %}
+                            {{form.graduation_year}}
+                        {% endif %}
 
                         <label for="tim" class="infop" id="tie">timpo en la institucion</label>
                         {{form.time}}
@@ -190,10 +214,35 @@
                             <br>
                             <br>
                             <label for="fechai" class="infop">Fecha de inicio</label>
-                            {{form.start_date}}
+                            {% if form.instance.id != None %}
+                                {%if form.start_date.value.day > 9 %}
+                                    {% if form.start_date.value.month < 9  %}
+                                        <input type="date" value="{{form.start_date.value.year}}-0{{form.start_date.value.month}}-{{form.start_date.value.day}}" class="inp2">
+                                    {% else %}
+                                        <input type="date" value="{{form.start_date.value.year}}-{{form.start_date.value.month}}-{{form.start_date.value.day}}" class="inp2">
+                                    {% endif %}
+                                {% else %}
+                                    <input type="date" value="{{form.start_date.value.year}}-0{{form.start_date.value.month}}-0{{form.start_date.value.day}}" class="inp2">
+                                {% endif %}
+                            {% else %}
+                                {{form.start_date}}
+                            {% endif %}
 
                             <label for="fechaf" class="infop">Fecha de FInalización</label>
-                            {{form.end_date}}
+                            {% if form.instance.id != None %}
+                                {%if form.end_date.value.day > 9 %}
+                                    {% if form.end_date.value.month < 9  %}
+                                        <input type="date" value="{{form.end_date.value.year}}-0{{form.end_date.value.month}}-{{form.end_date.value.day}}" class="inp2">
+                                    {% else %}
+                                        <input type="date" value="{{form.end_date.value.year}}-{{form.end_date.value.month}}-{{form.end_date.value.day}}" class="inp2">
+                                    {% endif %}
+                                {% else %}
+                                    <input type="date" value="{{form.end_date.value.year}}-0{{form.end_date.value.month}}-0{{form.end_date.value.day}}" class="inp2">
+                                {% endif %}
+                            {% else %}
+                                {{form.end_date}}
+                            {% endif %}
+
                             <br>
                             <br>
                             <label for="dsr" class="infop">Describa sus fuciones</label>
@@ -310,7 +359,19 @@
                                 <input type="email"  name="email" class="inp" value="{{form_name.email.value}}" readonly >
 
                                 <label for="fechan" class="infop" id="fecha">fecha de nacimiento</label>
-                                {{form_info.date}}
+                                {% if form_info.instance.id != None %}
+                                    {%if form_info.date.value.day > 9 %}
+                                        {% if form_info.date.value.month < 9  %}
+                                            <input type="date" value="{{form_info.date.value.year}}-0{{form_info.date.value.month}}-{{form_info.date.value.day}}" class="inp2">
+                                        {% else %}
+                                            <input type="date" value="{{form_info.date.value.year}}-{{form_info.date.value.month}}-{{form_info.date.value.day}}" class="inp2">
+                                        {% endif %}
+                                    {% else %}
+                                        <input type="date" value="{{form_info.date.value.year}}-0{{form_info.date.value.month}}-0{{form_info.date.value.day}}" class="inp2">
+                                    {% endif %}
+                                {% else %}
+                                    {{form_info.date}}
+                                {% endif %}
                                 <br>
                                 <br>
                                 <label for="tpod" class="infop">Tipo de documento</label>
@@ -407,7 +468,19 @@
                                         <br>
                                         <br>
                                         <label for="añ" class="infop">Año de gradución</label>
-                                        {{form.graduation_year}}
+                                        {% if form.instance.id != None %}
+                                            {%if form.graduation_year.value.day > 9 %}
+                                                {% if form.graduation_year.value.month < 9  %}
+                                                    <input type="date" value="{{form.graduation_year.value.year}}-0{{form.graduation_year.value.month}}-{{form.graduation_year.value.day}}" class="inp2">
+                                                {% else %}
+                                                    <input type="date" value="{{form.graduation_year.value.year}}-{{form.graduation_year.value.month}}-{{form.graduation_year.value.day}}" class="inp2">
+                                                {% endif %}
+                                            {% else %}
+                                                <input type="date" value="{{form.graduation_year.value.year}}-0{{form.graduation_year.value.month}}-0{{form.graduation_year.value.day}}" class="inp2">
+                                            {% endif %}
+                                        {% else %}
+                                            {{form.graduation_year}}
+                                        {% endif %}
 
                                         <label for="tim" class="infop" id="tie">timpo en la institucion</label>
                                         {{form.time}}
@@ -458,10 +531,35 @@
                                         <br>
                                         <br>
                                         <label for="fechai" class="infop">Fecha de inicio</label>
-                                        {{form.start_date}}
+                                        {% if form.instance.id != None %}
+                                            {%if form.start_date.value.day > 9 %}
+                                                {% if form.start_date.value.month < 9  %}
+                                                    <input type="date" value="{{form.start_date.value.year}}-0{{form.start_date.value.month}}-{{form.start_date.value.day}}" class="inp2">
+                                                {% else %}
+                                                    <input type="date" value="{{form.start_date.value.year}}-{{form.start_date.value.month}}-{{form.start_date.value.day}}" class="inp2">
+                                                {% endif %}
+                                            {% else %}
+                                                <input type="date" value="{{form.start_date.value.year}}-0{{form.start_date.value.month}}-0{{form.start_date.value.day}}" class="inp2">
+                                            {% endif %}
+                                        {% else %}
+                                            {{form.start_date}}
+                                        {% endif %}
+                                        
 
                                         <label for="fechaf" class="infop">Fecha de FInalización</label>
-                                        {{form.end_date}}
+                                        {% if form.instance.id != None %}
+                                            {%if form.end_date.value.day > 9 %}
+                                                {% if form.end_date.value.month < 9  %}
+                                                    <input type="date" value="{{form.end_date.value.year}}-0{{form.end_date.value.month}}-{{form.end_date.value.day}}" class="inp2">
+                                                {% else %}
+                                                    <input type="date" value="{{form.end_date.value.year}}-{{form.end_date.value.month}}-{{form.end_date.value.day}}" class="inp2">
+                                                {% endif %}
+                                            {% else %}
+                                                <input type="date" value="{{form.end_date.value.year}}-0{{form.end_date.value.month}}-0{{form.end_date.value.day}}" class="inp2">
+                                            {% endif %}
+                                        {% else %}
+                                            {{form.end_date}}
+                                        {% endif %}
                                         <br>
                                         <br>
                                         <label for="dsr" class="infop">Describa sus fuciones</label>

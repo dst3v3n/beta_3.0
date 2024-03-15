@@ -1,6 +1,6 @@
 from django import forms
 from . models import Requisicion
-from datetime import date, timedelta , datetime
+from datetime import date, timedelta
 
 fecha_hoy = date.today()
 
@@ -9,6 +9,7 @@ fecha_maxima = fecha_hoy + timedelta(days=31)
 
 fecha_minima.strftime('%Y-%m-%d')
 fecha_maxima.strftime('%Y-%m-%d')
+
 class Date (forms.DateInput):
     input_type = 'date'
 

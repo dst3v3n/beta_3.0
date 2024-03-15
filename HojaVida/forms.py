@@ -1,5 +1,8 @@
 from django import forms
 from . models import Personal_information , Education , Experience , Personal_references , Business_references , Additional_information
+from datetime import date
+
+fecha_hoy = date.today()
 
 class Date (forms.DateInput):
     input_type = 'date'
@@ -13,11 +16,12 @@ class Form_Person_Info (forms.ModelForm):
         widgets = {
             'address': forms.TextInput(attrs={'class': 'inp'}),
             'cell_phone' : forms.TextInput (attrs={'class': 'inp1'}),
-            'date' : Date (attrs={'class': 'inp2'}),
+            'date' : Date (attrs={'class': 'inp2',
+                                  'max' : fecha_hoy}),
             'type_d': forms.Select(attrs={'class': 'inp2'}),
             'n_document' : forms.TextInput (attrs={'class': 'inp1'}),
             'gender': forms.Select(attrs={'class': 'inp2'}),
-            'age': forms.NumberInput(attrs={'class': 'inp1'}),
+            'age': forms.NumberInput(attrs={'class': 'inp1',}),
             'civil': forms.Select(attrs={'class': 'inp2'}),
         }
 
@@ -32,7 +36,8 @@ class Form_Education (forms.ModelForm):
                                                 'required' : False
                                                 }),
             'name_institution' : forms.TextInput (attrs={'class' : 'inp'}),
-            'graduation_year' : Date (attrs={'class': 'inp2'}),
+            'graduation_year' : Date (attrs={'class': 'inp2',
+                                             'max': fecha_hoy}),
             'time' : forms.NumberInput (attrs= {'class' : 'inp1',
                                                 'Placeholder' : 'Introduzca el número de meses',}),
         }
@@ -44,8 +49,10 @@ class Form_Experience (forms.ModelForm):
         widgets = {
             'company_name' : forms.TextInput (attrs={'class': 'inp',}),
             'company_position' : forms.TextInput (attrs={'class' : 'inp'}),
-            'start_date' : Date (attrs={'class': 'inp2'}),
-            'end_date' : Date (attrs={'class': 'inp2'}),
+            'start_date' : Date (attrs={'class': 'inp2',
+                                        'max': fecha_hoy}),
+            'end_date' : Date (attrs={'class': 'inp2',
+                                    'max': fecha_hoy}),
             'functions' : forms.Textarea (attrs= {'id' : 'dsr'}),
         }
 

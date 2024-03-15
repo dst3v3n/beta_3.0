@@ -339,7 +339,8 @@ class save_hj:
     def delete_education (request , id_usuario):
         pdf = Education.objects.get(pk = id_usuario)
         url = pdf.archive.url
-        filePath = Path(f'D:\\Steven\Git_Steven\\beta_3.0{url}')
+        # filePath = Path(f'D:\\Steven\Git_Steven\\beta_3.0{url}')
+        filePath = Path(f'C:\\beta_3.0\\{url}')
         if filePath.exists () :
             filePath.unlink ()
             Education.objects.get (pk = id_usuario).delete ()
