@@ -292,6 +292,19 @@ class save_hj:
                 form2.save ()
             return redirect ('create_hoja')
 
+    def edit_personal (request):
+        if request.method == 'POST':
+            informacion2 = User_normal.objects.get (id_myuser_id  = request.COOKIES.get ('User_id'))
+            form1 = Form_Name (request.POST , instance = Myuser.objects.get(pk = request.COOKIES.get ('User_id')))
+            form2 = forms_user (request.POST , instance = informacion2)
+
+            if form1.is_valid ():
+                form1.save ()
+
+            if form2.is_valid ():
+                form2.save ()
+            return redirect ('create_hoja')
+
     def edit_education (request , id_usuario):
         if request.method == 'POST':
             usuario = Education.objects.get (pk = id_usuario)
@@ -339,8 +352,8 @@ class save_hj:
     def delete_education (request , id_usuario):
         pdf = Education.objects.get(pk = id_usuario)
         url = pdf.archive.url
-        # filePath = Path(f'D:\\Steven\Git_Steven\\beta_3.0{url}')
-        filePath = Path(f'C:\\beta_3.0\\{url}')
+        filePath = Path(f'D:\\Steven\Git_Steven\\beta_3.0{url}')
+        # filePath = Path(f'C:\\beta_3.0\\{url}')
         if filePath.exists () :
             filePath.unlink ()
             Education.objects.get (pk = id_usuario).delete ()

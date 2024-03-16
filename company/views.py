@@ -1,8 +1,11 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import redirect
 from admins.admin import UserCreationForm
 from .forms import forms_company
 from admins.models import Myuser
 import sweetify
+from django.contrib.auth.mixins import LoginRequiredMixin
+from HojaVida.mixin import EmailVerificadoMixin
+from django.views.generic import TemplateView
 
 # Create your views here.
 

@@ -14,6 +14,7 @@ urlpatterns = [
     path('save/aditional/', save_hj.save_aditional ,  name='save_aditional_hoja'),
 
     path('edit/personal_information/', save_hj.edit_information ,  name='edit_info_hoja'),
+    path('edit/personal/', save_hj.edit_personal ,  name='edit_personal_hoja'),
     path('edit/education/<int:id_usuario>/' , save_hj.edit_education , name='edit_education_hoja'),
     path('edit/experience/<int:id_usuario>/' , save_hj.edit_experience , name='edit_experince_hoja'),
     path('edit/persona_reference/<int:id_usuario>/' , save_hj.edit_personal_reference , name='edit_personal_reference_hoja'),

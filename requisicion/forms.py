@@ -22,10 +22,10 @@ class Form_Requi (forms.ModelForm):
         # fields = "__all__"
 
         widgets = {
-            'fecha_inicio': Date (attrs={'class': 'inp3',
+            'fecha_inicio': Date (format='%Y-%m-%d' , attrs={'class': 'inp3',
                                          'max' : fecha_minima.strftime('%Y-%m-%d'),
                                          'min' : fecha_hoy.strftime('%Y-%m-%d')}),
-            'fecha_finalizacion': Date (attrs={'class': 'inp3',
+            'fecha_finalizacion': Date (format='%Y-%m-%d' , attrs={'class': 'inp3',
                                                'max' : fecha_maxima.strftime('%Y-%m-%d'),
                                                'min' : fecha_hoy.strftime('%Y-%m-%d')
                                             }),

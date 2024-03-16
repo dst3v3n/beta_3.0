@@ -16,7 +16,7 @@ class Form_Person_Info (forms.ModelForm):
         widgets = {
             'address': forms.TextInput(attrs={'class': 'inp'}),
             'cell_phone' : forms.TextInput (attrs={'class': 'inp1'}),
-            'date' : Date (attrs={'class': 'inp2',
+            'date' : Date (format='%Y-%m-%d' , attrs={'class': 'inp2',
                                   'max' : fecha_hoy}),
             'type_d': forms.Select(attrs={'class': 'inp2'}),
             'n_document' : forms.TextInput (attrs={'class': 'inp1'}),
@@ -36,7 +36,7 @@ class Form_Education (forms.ModelForm):
                                                 'required' : False
                                                 }),
             'name_institution' : forms.TextInput (attrs={'class' : 'inp'}),
-            'graduation_year' : Date (attrs={'class': 'inp2',
+            'graduation_year' : Date (format='%Y-%m-%d' , attrs={'class': 'inp2',
                                              'max': fecha_hoy}),
             'time' : forms.NumberInput (attrs= {'class' : 'inp1',
                                                 'Placeholder' : 'Introduzca el número de meses',}),
@@ -49,9 +49,9 @@ class Form_Experience (forms.ModelForm):
         widgets = {
             'company_name' : forms.TextInput (attrs={'class': 'inp',}),
             'company_position' : forms.TextInput (attrs={'class' : 'inp'}),
-            'start_date' : Date (attrs={'class': 'inp2',
+            'start_date' : Date (format='%Y-%m-%d' , attrs={'class': 'inp2',
                                         'max': fecha_hoy}),
-            'end_date' : Date (attrs={'class': 'inp2',
+            'end_date' : Date (format='%Y-%m-%d' , attrs={'class': 'inp2',
                                     'max': fecha_hoy}),
             'functions' : forms.Textarea (attrs= {'id' : 'dsr'}),
         }
