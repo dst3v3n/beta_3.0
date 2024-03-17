@@ -51,11 +51,11 @@ class save_requi:
             form = Form_Requi (request.POST , request.FILES, instance= usuario)
             if form.is_valid ():
                 form.save ()
-                return redirect ('ver_info_requi')
+                return redirect ('ver_oferta')
 
     def delete_requi (request , id):
         Requisicion.objects.get (pk = id).delete ()
-        return redirect ('ver_info_requi')
+        return redirect ('ver_oferta')
 
 class consultar_ofer (LoginRequiredMixin , EmailVerificadoMixin, ListView):
     model = Requisicion
@@ -84,3 +84,4 @@ class ver_requi (LoginRequiredMixin , EmailVerificadoMixin, TemplateView):
             }
         context.update (data)
         return context
+

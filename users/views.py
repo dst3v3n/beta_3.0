@@ -3,12 +3,18 @@ from admins.admin import UserCreationForm
 from .forms import forms_user
 from admins.models import Myuser
 from admins.admin import UserCreationForm
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView
-from HojaVida.mixin import EmailVerificadoMixin
-from requisicion.models import Requisicion
 import sweetify
-
+from requisicion.forms import Form_Requi
+from admins.forms import Form_Name
+from admins.models import Myuser
+from company.forms import forms_company
+from company.models import Company
+from django.contrib.auth.mixins import LoginRequiredMixin
+from HojaVida.mixin import EmailVerificadoMixin
+from django.views.generic import TemplateView , ListView
+from requisicion.models import Requisicion
+from typing import Any
+from requisicion.views import ver_requi
 # Create your views here.
 
 class Acceso_User:
@@ -48,3 +54,17 @@ class visualizar_ofertas (LoginRequiredMixin , EmailVerificadoMixin, ListView):
     model = Requisicion
     template_name = 'ofertazp.html'
     paginate_by = 2
+
+class ver_requi2  (LoginRequiredMixin, ListView):
+    model = Requisicion
+    queryset = Requisicion.objects.all()
+    template_name = 'verrequiusu.html'
+    def get_context_data(self, **kwargs: Any):
+        context = super().get_context_data(**kwargs)
+        form_requi = Form_Requi(instance=Requisicion.objects.get(id_myuser = self.kwargs['id_myuser']))
+        form_admin = Form_Name (instance= Myuser.objects.get(pk=self.request.COOKIES.get('User_id')))
+        form_comp = forms_company (instance= Company.objects.get(id_myuser_id=self.request.COOKIES.get('User_id')))
+        context['form_requi'] = form_requi
+        context['form_name'] = form_admin
+        context['forms_company'] = form_comp
+        return context
