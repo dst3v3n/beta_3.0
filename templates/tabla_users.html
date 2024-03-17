@@ -55,17 +55,17 @@
                 <th>Eliminar</th>
             </tr>
 
-            {%for user in get_usuarios%}
+            {% for Myuser in myusers %}
                 <tr>
-                <td>{{user.name}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.password}}</td>
-                <td>{{user.type_user}}</td>
+                <td>{{Myuser.name}}</td>
+                <td>{{Myuser.email}}</td>
+                <td>{{Myuser.password}}</td>
+                <td>{{Myuser.type_user}}</td>
                 <th> <button class="btn-retornos" type="submit">
-                    <a href="{% url 'edit_user' user.id %}">Editar</a>
+                    <a href="{% url 'edit_user' Myuser.id %}">Editar</a>
                 </button> </th>
                 <th> <button class="btn-retorn" type="submit">
-                    <a href="{% url 'delete_user' user.id %}">Eliminar</a>
+                    <a href="{% url 'delete_user' Myuser.id %}">Eliminar</a>
                 </button> </th>
                 </tr>
             {%endfor%}

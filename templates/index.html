@@ -37,7 +37,11 @@
                     <a href="{%url 'registro'%}">Registrate</a>
                 {% endif %}
                 {% if request.COOKIES.Login_status == "True"%}
-				<a href="#">Ofertas</a>
+                    {% if request.COOKIES.type_user == "Company" %}
+                        <a href="{% url 'consultar_ofer' request.COOKIES.User_id %}">Ofertas</a>
+                    {% else %}
+                        <a href="{% url 'visualizar_ofertas' %}">Ofertas</a>
+                    {% endif %}
                 {% endif %}
 				<a href="#contactos">Contacto</a>
 			</nav>

@@ -1,12 +1,13 @@
-from django.urls import path , include
-from .views import acceso , Edicion , Verification
+from django.urls import path
+from .views import acceso , Edicion , Verification , visualizar_users , visualizar_company
 
 urlpatterns = [
     path('acceso/' , acceso.login , name='acceso'),
     path('acceso/bloqueado/' , acceso.lockout , name='lockout'),
     path('logout/ ', acceso.logout ,  name='logout'),
     path('admins/index/' , acceso.index_admin ,  name='AdminIndex'),
-    path('visualizar_users/' , Edicion.visualizar_users , name='view'),
+    path('visualizar/users/' , visualizar_users.as_view() , name='view_user'),
+    path('visualizar/company/' , visualizar_company.as_view() , name='view_company'),
     path('registro/user/' , Edicion.Form_User , name='registro_user1'),
     path('registro/company/' , Edicion.Form_Company , name='registro_company1'),
     path('registro/admin/' , Edicion.Form_Admin , name='registro_admin1'),

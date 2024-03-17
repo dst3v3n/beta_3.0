@@ -1,5 +1,5 @@
 from typing import Any
-from django.shortcuts import render , redirect
+from django.shortcuts import redirect
 from .forms import Form_Requi
 from admins.forms import Form_Name
 from admins.models import Myuser
