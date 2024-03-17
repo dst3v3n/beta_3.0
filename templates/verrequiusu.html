@@ -146,117 +146,22 @@
 
         <p class="titulod1" class="inth">habilidades</p>
         <textarea name="" class="inth" cols="30" rows="10" disabled>{{form_requi.habilidades.value}}</textarea>
+        <h1>Lista de Verificación</h1>
+            <form id="check-form">
+                <ul class="lista">
+                    <li><input type="checkbox" id="h" name="l1" value="Item 1"><label for="item1">informacion</label></li>
+                    <li><input type="checkbox" id="j" name="l2" value="Item 2"><label for="item2">informacion</label></li>
+                    <li><input type="checkbox" id="k" name="l3" value="Item 3"><label for="item3">informacion</label></li>
+                </ul>
+            </form>
         <div class="info">
             <p class="titulo1">Edita tu Informacion</p>
-            <button class="titulo1" id="open" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Editar</button>
-            <button class="titulo1" id="open" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;" onclick="window.location.href = '{% url 'delete_info_requi' request.COOKIES.User_id %}'">Eliminar</button>
-            <button class="titulo1" id="openas" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Aspirantes</button>
+            
+            <button class="titulo1" id="open" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Postularse</button>
         </div>
 
     </div>
 
-<!-- --------------------------------------------------------------------------------------- -->
-<dialog id="modal" class="info" style="width: auto;">
-    <button  id="cancelar" >✖️</button>
-    <div class="info">
-        {% if form_requi.instance.id != None %}
-            <form action="{% url 'edit_info_requi' form_requi.instance.id %}" method="post">
-                {% csrf_token %}
-                <p class="titulo1">Datos de la oferta</p>
-
-                <p class="titulod">Fechas de la oferta</p>
-
-                <label for="finicio" class="infop" style="margin-left: 140px" >Fecha de inicio</label>
-                {{form_requi.fecha_inicio}}
-
-                <label for="apellido" class="infop" id="ape" style="margin-left: 150px">Fecha final</label>
-                {{form_requi.fecha_finalizacion}}
-
-                <p class="titulod">Datos de la Empresa</p>
-
-                <label for="direccion" class="infop" style="margin-left: 100px;">Nombre</label>
-                <input type="text" class="inp2" value="{{form_name.name.value}}" disabled>
-
-                <label for="cel" class="infop">Dirección</label>
-                {{form_requi.direccion}}
-
-
-                <label for="email" class="infop">Nit</label>
-                <input type="number" class="inp3" value="{{form_company.nit.value}}" disabled>
-
-                <br>
-                <br>
-                <label for="fechan" class="infop" id="fecha" style="margin-left:50px;">Departamento</label>
-                {{form_requi.departamento}}
-
-                <label for="fechan" class="infop" id="fecha" >Ciudad</label>
-                {{form_requi.ciudad}}
-
-                <label for="tpod" class="infop">Codigo CNO</label>
-                {{form_requi.codigo_cno}}
-
-
-                <label for="ncc" class="infop" id="doc">Telefono</label>
-                {{form_requi.telefono}}
-
-                <p class="titulod">Datos de la oferta</p>
-
-                <label for="genero" class="infop" style="margin-left: 140px;">Nombre del cargo</label>
-                {{form_requi.nombre_cargo}}
-
-                <label for="edad" class="infop" id="ed" style="margin-left: 120px;">Educación</label>
-                {{form_requi.educacion}}
-
-                <br>
-                <br>
-                <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Tipo de contrato</label>
-                {{form_requi.tipo_contrato}}
-
-                <label for="civil" class="infop" id="estado">Experiencia</label>
-                {{form_requi.experiencia_laboral}}
-
-                <label for="civil" class="infop" id="estado">Profesion</label>
-                {{form_requi.profesion}}
-
-                <label for="civil" class="infop" id="estado">Tipo de salario</label>
-                {{form_requi.forma_pago}}
-                <br>
-                <br>
-
-                <label for="civil" class="infop" id="estado">Salario</label>
-                {{form_requi.salario}}
-
-                <label for="civil" class="infop" id="estado">Jornada laboral</label>
-                {{form_requi.jornada_laboral}}
-
-                <p class="titulod2">Descripcion</p>
-                {{form_requi.descripcion}}
-
-                <p class="titulod1" class="inth">habilidades</p>
-                {{form_requi.habilidades}}
-                <br>
-                <br>
-                <p class="titulo2">No olvide guardar los cambios de tu oferta</p>
-                <button class="titulo1" id="open" style="margin: 2%  0 0 38%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
-            </form>
-        {% endif %}
-    </div>
-
-    </dialog>
-<!-- --------------------------------------------------------------------------------------- -->
-
-<!-- --------------------------------------------------------------------------------------- -->
-<dialog id="modalas" class="info" style="width: auto;">
-    <button  id="cancelaras" >✖️</button>
-    <div class="info">
-        <form action="#" method="#">
-                <p class="titulo2">No olvide guard1ar los cambios de tu oferta</p>
-                <button class="titulo1" id="#" style="margin: 2%  0 0 38%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
-                <button class="titulo1" id="#" style="margin: 2%  0 0 5%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</button>
-        </form>
-    </div>
-
-    </dialog>
 <!-- --------------------------------------------------------------------------------------- -->
         <script src="/static/js/loader.js"></script>
         <script src="/static/js/modal.js"></script>
