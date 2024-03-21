@@ -221,6 +221,27 @@
                 </form>
             </div>
 
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+            <div class="info" >
+                <div>
+                    <form action="#" method="#" id="hab">
+                        
+                        <p class="titulo1">habilidades</p>
+                        <p class="titulo2">Mis habilidades</p>
+
+                            <label for="emp" class="infop" style="margin-left:40% ;">yo tengo la hablidad de:</label>
+                            <br>
+                            <br>
+                            <input type="text" style="margin-left: 43%;">
+                </div>
+                        <div>
+                            <p class="titulo2">No olvide guardar sus datos </p>
+                            <a href="#" class="titulo1" id="agregar2" style="margin:20px ;  border: 3px solid #fff; border-radius:20px; padding:5px ; ">Agregar</a>
+                            <button type="submit" class="btn-guardar">Guardar</button>
+                        </div>
+                </form>
+            </div>
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
             <div class="info">
                 <form action="{% url 'save_reference_hoja' %}" method="post">
@@ -293,6 +314,7 @@
                 <button  class="titulo1" id="open" style="margin: 2%  0 0 45%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Editar</button>
             </div>
 
+<!-- -----------------/-//////////////////////////////////////----------------------------------/////////////////////////////////////////////-/---------------------- -->
 
             <dialog id="modal" class="info" style="width: auto;">
                 <button  id="cancelar" >✖️</button>
@@ -486,8 +508,25 @@
                                         {{form.start_date}}
 
 
+<<<<<<< HEAD
                                         <label for="fechaf" class="infop">Fecha de FInalización</label>
                                         {{form.end_date}}
+=======
+                                        <label for="fechaf" class="infop">Fecha de Finalización</label>
+                                        {% if form.instance.id != None %}
+                                            {%if form.end_date.value.day > 9 %}
+                                                {% if form.end_date.value.month < 9  %}
+                                                    <input type="date" value="{{form.end_date.value.year}}-0{{form.end_date.value.month}}-{{form.end_date.value.day}}" class="inp2">
+                                                {% else %}
+                                                    <input type="date" value="{{form.end_date.value.year}}-{{form.end_date.value.month}}-{{form.end_date.value.day}}" class="inp2">
+                                                {% endif %}
+                                            {% else %}
+                                                <input type="date" value="{{form.end_date.value.year}}-0{{form.end_date.value.month}}-0{{form.end_date.value.day}}" class="inp2">
+                                            {% endif %}
+                                        {% else %}
+                                            {{form.end_date}}
+                                        {% endif %}
+>>>>>>> d9481019113ab2b5b3cf16d5bb39e2b962c719cc
                                         <br>
                                         <br>
                                         <label for="dsr" class="infop">Describa sus fuciones</label>
@@ -526,6 +565,27 @@
                             {% endfor %}
                         </div>
                     </div>
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+                    <div class="info" >
+                        <div>
+                            <form action="#" method="#" id="edu1">
+
+                                <p class="titulo1">habilidades</p>
+                                <p class="titulo2">Mis habilidades</p>
+
+                            <label for="emp" class="infop" style="margin-left:40% ;">yo tengo la hablidad de:</label>
+                                    <br>
+                                    <br>
+                                    <input type="text" style="margin-left: 43%;">
+                        </div>
+                                <div>
+                                    <p class="titulo2">No olvide guardar sus datos </p>
+                                    <button type="submit" class="btn-guardar">Guardar</button>
+                                    
+                                </div>
+                        </form>
+                    </div>
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
                     <div class="info">
                         <p class="titulo1">Otros datos</p>
@@ -773,6 +833,65 @@
             };
 
         </script>
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+        <script>
+            const contenedor2 = document.querySelector('#hab');
+            const btnAgregar2 = document.querySelector('#agregar2');
+
+            // Counter variable
+            let total2 = 1;
+
+            // Function to add new form
+            btnAgregar2.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            const newForm = document.createElement('div');
+            newForm.innerHTML = `
+            
+            <p class="titulo2">Mis habilidades</p>
+            <label for="emp" class="infop" style="margin-left:40% ;">yo tengo la hablidad de:</label>
+            <br>
+            <br>
+            <input type="text" style="margin-left: 43%;">
+            </div>
+            <div>
+            <br>
+            <br>
+            <br>
+            <button onclick="eliminar2(this)" style="
+                background-color: red;
+                border-color: black;
+                border-radius: 15px;
+                font-size: 16px;
+                font-weight: bold;
+                color: white;
+                padding: 10px;
+                cursor: pointer;
+                ">Eliminar</button>
+            `;
+
+            contenedor2.appendChild(newForm);
+            });
+
+            // Function to remove form
+            function eliminar2(element) {
+            const parentNode = element.parentNode;
+            contenedor2.removeChild(parentNode);
+            actualizarContador();
+            };
+
+            // Function to update counter
+            function actualizarContador() {
+            const forms = contenedor1.children;
+            total1 = 1;
+
+            for (let i = 0; i < forms.length; i++) {
+                forms[i].children.innerHTML = total++;
+            }
+            };
+
+        </script>
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
         <script>
             function openForm(index) {
                 document.getElementById("myForm" + index).style.display = "block";
