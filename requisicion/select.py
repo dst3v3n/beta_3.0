@@ -7,8 +7,8 @@ class Selec_requi ():
                       ('Diplomado' , 'Diplomado'),
                       ('Tecnico' , 'Tecnico'),
                       ('Tecnologo' , 'Tecnologo'),
-                      ('Ingeniero' , 'Ingeniero'),
-                      ('Licenciatura' , 'Licenciatura'),
+                      ('Pregrado' , 'Pregrado'),
+                      ('Posgrado' , 'Posgrado'),
                       ('Master' , 'Master'),
                       ('Doctorado' , 'Doctorado'),
                       ]
@@ -32,3 +32,12 @@ class Selec_requi ():
                             ]
 
         return select_pago
+    def causa ():
+
+        select_causa = [('Termino Contrato' , 'Termino Contrato'),
+                            ('Renuncia' , 'Renuncia'),
+                            ('Licencias' , 'Semanal'),
+                            ('Temporada' , 'Temporada')
+                            ]
+
+        return select_causa
