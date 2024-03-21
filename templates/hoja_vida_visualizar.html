@@ -73,6 +73,9 @@
                 <p class="titulo1">Educación</p>
                 {% for form in form_edu %}
                     <p class="titulo2">Institucion</p>
+                    <label for="titulo" class="infop">Nombre del titulo</label>
+                    <br>
+                    <br>
                     <label for="titulo" class="infop">Titulo obtenido</label>
                     {% if form.instance.id != None%}
                         <a href="{{form.archive.value.url}}" target="_blank">Ver</a>
