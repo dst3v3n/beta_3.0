@@ -16,7 +16,7 @@ class Requisicion (models.Model):
     codigo_cno = models.IntegerField()
     nombre_cargo = models.CharField(max_length = 50)
     educacion = models.CharField (max_length = 50 , choices=Selec_requi.educacion() , default = 'Basica primaria')
-    experiencia_laboral = models.CharField(max_length = 100)
+    experiencia_laboral = models.CharField(max_length = 100, choices=Selec_requi.expe() , default = '0 meses')
     profesion = models.CharField(max_length = 50)
     habilidades = models.CharField(max_length = 120)
     salario = models.DecimalField(max_digits=20, decimal_places=2)
@@ -24,6 +24,7 @@ class Requisicion (models.Model):
     jornada_laboral = models.CharField(max_length = 20)
     tipo_contrato = models.CharField (max_length = 50 , choices=Selec_requi.contrato() , default = 'Indefinido')
     descripcion = models.TextField()
+    causa_requi= models.CharField (max_length = 50 , choices=Selec_requi.causa() , default = 'Termino Contrato')
 
     class Meta:
         verbose_name = 'Requisicion'

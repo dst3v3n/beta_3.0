@@ -5,6 +5,6 @@ urlpatterns = [
     path('registro/usuario/', Acceso_User.registrar , name='registro_user'),
     path('view/perfil/', view_user.perfil , name='view_perfil'),
     path('visualizar/ofertas/', visualizar_ofertas.as_view() ,  name='visualizar_ofertas'),
-    path('visualizar/requi/<int:id_oferta>/<int:id_myuser>/', ver_requi2.as_view() ,  name='ver_ofertas'),
+    path('visualizar/requi/<int:id_oferta>/<int:id_myuser>/', ver_requi2.as_view() ,  name='ver_info_ofertas'),
     path('oferta/postulacion/', postulacion.as_view() ,  name='postulacion'),
 ]

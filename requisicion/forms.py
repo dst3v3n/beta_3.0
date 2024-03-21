@@ -18,7 +18,7 @@ class Form_Requi (forms.ModelForm):
         model = Requisicion
         fields = ['fecha_inicio','fecha_finalizacion','direccion','departamento','ciudad','telefono','codigo_cno',
                   'nombre_cargo','educacion','experiencia_laboral','profesion','habilidades','salario','forma_pago',
-                  'jornada_laboral','tipo_contrato','descripcion']
+                  'jornada_laboral','tipo_contrato','descripcion','causa_requi']
         # fields = "__all__"
 
         widgets = {
@@ -36,7 +36,7 @@ class Form_Requi (forms.ModelForm):
             'codigo_cno': forms.NumberInput (attrs={'class' : 'inp3'}),
             'nombre_cargo':forms.TextInput (attrs={'class': 'inp2',}),
             'educacion':forms.Select(attrs={'class': 'inp2'}),
-            'experiencia_laboral': forms.TextInput (attrs={'class': 'inp3',}),
+            'experiencia_laboral': forms.Select (attrs={'class': 'inp3',}),
             'profesion':forms.TextInput (attrs={'class': 'inp2',}),
             'salario':forms.NumberInput (attrs={'class': 'inp3',
                                               'step': 0.50}),
@@ -45,4 +45,5 @@ class Form_Requi (forms.ModelForm):
             'tipo_contrato':forms.Select(attrs={'class': 'inp3'}),
             'descripcion': forms.Textarea (attrs={'id': 'infoa'}),
             'habilidades': forms.Textarea (attrs={'class': 'inth',}),
+            'causa_requi': forms.Select (attrs={'class': 'inp3',}),
         }
