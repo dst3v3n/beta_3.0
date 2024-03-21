@@ -51,7 +51,7 @@ class save_requi:
             form = Form_Requi (request.POST , request.FILES, instance= usuario)
             if form.is_valid ():
                 form.save ()
-                return redirect ('ver_oferta')
+                return redirect ('ver_oferta' , id_myuser = request.user.id)
 
     def delete_requi (request , id):
         Requisicion.objects.get (pk = id).delete ()
@@ -84,4 +84,3 @@ class ver_requi (LoginRequiredMixin , EmailVerificadoMixin, TemplateView):
             }
         context.update (data)
         return context
-

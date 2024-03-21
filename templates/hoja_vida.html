@@ -101,6 +101,11 @@
                 <br>
                 <label for="direccion" class="infop">Direccion</label>
                 {{form_info.address}}
+                <br>
+                <br>
+
+                <label for="direccion" class="infop">Ciudad</label>
+                {{form_info.city}}
 
                 <label for="cel" class="infop">Nºcelular</label>
                 {{form_info.cell_phone}}
@@ -151,8 +156,12 @@
                         {% else %}
                             <a href="{{form.archive.value.url}}" target="_blank">Ver</a>
                         {% endif %}
+                        <label for="cole" class="infop" id="col">Nombre Curso</label>
+                        {{form.name_course}}
                         <label for="cole" class="infop" id="col">Institución</label>
                         {{form.name_institution}}
+                        <label for="cole" class="infop" id="col">Nivel Educativo</label>
+                        {{form.educational_level}}
                         <br>
                         <br>
                         <label for="añ" class="infop">Año de gradución</label>
@@ -303,6 +312,9 @@
                                 <label for="direccion" class="infop">Direccion</label>
                                 {{form_info.address}}
 
+                                <label for="direccion" class="infop">Ciudad</label>
+                                {{form_info.city}}
+
                                 <label for="cel" class="infop">Nºcelular</label>
                                 {{form_info.cell_phone}}
                                 <br>
@@ -350,6 +362,9 @@
                                 <br>
                                 <br>
                                 <label for="direccion" class="infop">Direccion</label>
+                                <input type="text" class="inp" value="" disabled>
+
+                                <label for="direccion" class="infop">Ciudad</label>
                                 <input type="text" class="inp" value="" disabled>
 
                                 <label for="cel" class="infop">Nºcelular</label>
@@ -403,8 +418,12 @@
                                             {{ form.archive }}
                                             <input type="button" value="Cancelar" onclick="closeForm({{ forloop.counter }}),mostrar({{ forloop.counter }} , true);" id="cancelarpdf{{ forloop.counter }}" class="cancelarpdf">
                                         </div>
+                                        <label for="cole" class="infop" id="col">Nombre Curso</label>
+                                        {{form.name_course}}
                                         <label for="cole" class="infop" id="col">Institución</label>
                                         {{form.name_institution}}
+                                        <label for="cole" class="infop" id="col">Nivel Educativo</label>
+                                        {{form.educational_level}}
                                         <br>
                                         <br>
                                         <label for="añ" class="infop">Año de gradución</label>
@@ -426,7 +445,12 @@
                                     <label for="titulo" class="infop">Titulo obtenido</label>
                                     <input type="file" class="inp3" value="" disabled>
 
+                                    <label for="cole" class="infop" id="col">Nombre Curso</label>
+                                    <input type="file" class="inp3" value="" disabled>
+
                                     <label for="cole" class="infop" id="col">Institución</label>
+                                    <input type="text" class="inp" value="" disabled>
+                                    <label for="cole" class="infop" id="col">Nivel Educativo</label>
                                     <input type="text" class="inp" value="" disabled>
                                     <br>
                                     <br>
@@ -635,8 +659,12 @@
                 <p class="titulo2">Institución</p>
                 <label for="titulo" class="infop">Titulo obtenido</label>
                 {{in_edu.archive }}
+                <label for="cole" class="infop" id="col">Nombre Curso</label>
+                {{in_edu.name_course}}
                 <label for="cole" class="infop" id="col">Institución</label>
                 {{in_edu.name_institution}}
+                <label for="cole" class="infop" id="col">Nivel Educativo</label>
+                {{in_edu.educational_level}}
                 <br>
                 <br>
                 <label for="añ" class="infop">Año de gradución</label>

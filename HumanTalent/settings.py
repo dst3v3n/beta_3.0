@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -190,3 +191,5 @@ JAZZMIN_UI_TWEAKS = {
 MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
+
+os.environ['GOOGLE_MAPS_API_KEY'] = 'AIzaSyCX3GsAsIOhJ-ep6SDE2USeLhXiTOaXeXw'

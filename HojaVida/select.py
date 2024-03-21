@@ -26,3 +26,19 @@ class Informacion_Per ():
                         ]
 
         return select_civil
+
+    def educacion ():
+
+        select_edu = [('Basica primaria' , 'Basica primaria'),
+                      ('Basica secundaria' , 'Basica secundaria'),
+                      ('Bachillerato' , 'Bachillerato'),
+                      ('Diplomado' , 'Diplomado'),
+                      ('Tecnico' , 'Tecnico'),
+                      ('Tecnologo' , 'Tecnologo'),
+                      ('Ingenieria' , 'Ingenieria'),
+                      ('Licenciatura' , 'Licenciatura'),
+                      ('Master' , 'Master'),
+                      ('Doctorado' , 'Doctorado'),
+                      ]
+
+        return select_edu

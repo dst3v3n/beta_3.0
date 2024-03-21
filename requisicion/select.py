@@ -2,12 +2,16 @@ class Selec_requi ():
     def educacion ():
 
         select_edu = [('Basica primaria' , 'Basica primaria'),
-                            ('Basica secundaria' , 'Basica secundaria'),
-                            ('Tecnico' , 'Tecnico'),
-                            ('Tecnologo' , 'Tecnologo'),
-                            ('Pregrado' , 'Pregrado'),
-                            ('Posgrado' , 'Posgrado')
-                            ]
+                      ('Basica secundaria' , 'Basica secundaria'),
+                      ('Bachillerato' , 'Bachillerato'),
+                      ('Diplomado' , 'Diplomado'),
+                      ('Tecnico' , 'Tecnico'),
+                      ('Tecnologo' , 'Tecnologo'),
+                      ('Ingeniero' , 'Ingeniero'),
+                      ('Licenciatura' , 'Licenciatura'),
+                      ('Master' , 'Master'),
+                      ('Doctorado' , 'Doctorado'),
+                      ]
 
         return select_edu
     def contrato ():

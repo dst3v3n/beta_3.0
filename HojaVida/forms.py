@@ -11,10 +11,11 @@ class Form_Person_Info (forms.ModelForm):
 
     class Meta:
         model = Personal_information
-        fields = ['address' , 'cell_phone' , 'date' , 'type_d' , 'n_document' , 'gender' , 'age' , 'civil']
+        fields = ['address' , 'city' , 'cell_phone' , 'date' , 'type_d' , 'n_document' , 'gender' , 'age' , 'civil']
 
         widgets = {
             'address': forms.TextInput(attrs={'class': 'inp'}),
+            'city': forms.TextInput(attrs={'class': 'inp'}),
             'cell_phone' : forms.TextInput (attrs={'class': 'inp1'}),
             'date' : Date (format='%Y-%m-%d' , attrs={'class': 'inp2',
                                   'max' : fecha_hoy}),
@@ -28,13 +29,15 @@ class Form_Person_Info (forms.ModelForm):
 class Form_Education (forms.ModelForm):
     class Meta:
         model = Education
-        fields = ['archive' , 'name_institution' , 'graduation_year' , 'time' ]
+        fields = ['archive' , 'educational_level' ,'name_institution' , 'name_course' , 'graduation_year' , 'time' ]
         widgets = {
             'archive' : forms.FileInput (attrs={'class': 'inp3',
                                                 'accept' : '.pdf',
                                                 'id' : 'img',
                                                 'required' : False
                                                 }),
+            'educational_level': forms.Select(attrs={'class': 'inp2'}),
+            'name_course' : forms.TextInput(attrs={'class' : 'inp'}),
             'name_institution' : forms.TextInput (attrs={'class' : 'inp'}),
             'graduation_year' : Date (format='%Y-%m-%d' , attrs={'class': 'inp2',
                                              'max': fecha_hoy}),

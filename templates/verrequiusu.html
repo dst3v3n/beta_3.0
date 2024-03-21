@@ -154,18 +154,19 @@
                     <li><input type="checkbox" id="k" name="l3" value="Item 3"><label for="item3">informacion</label></li>
                 </ul>
             </form>
-        <div class="info">
-            <p class="titulo1">Edita tu Informacion</p>
-            
-            <button class="titulo1" id="open" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Postularse</button>
-        </div>
 
+        <div class="info">
+            <form action="{% url 'postulacion' %}" method="get">
+                <p class="titulo1">Deseas postularse ?</p>
+                <input type='hidden' name='oferta' value='{{form_requi.instance.id}}' />
+                <input type='hidden' name='compañia' value='{{form_company.instance.id}}' />
+                <button class="titulo1" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Postularse</button>
+            </form>
+        </div>
     </div>
 
 <!-- --------------------------------------------------------------------------------------- -->
         <script src="/static/js/loader.js"></script>
-        <script src="/static/js/modal.js"></script>
-        <script src="/static/js/modalas.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     </main>
