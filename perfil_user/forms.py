@@ -18,6 +18,14 @@ class Form_Info_Perfil (forms.ModelForm):
             'Fecha_nacimiento' : forms.DateInput (attrs={'class': 'perf2'}),
             'Registro' : forms.DateTimeInput (attrs={'class': 'perf2'}),
             'Redes_sociales': forms.URLInput(attrs={'class': 'perf3'}),
-            'Fondo': forms.FileInput(attrs={'class': 'fondo_per4'}),
-            'Foto_perfil': forms.FileInput(attrs={'class': 'foto_per4'}),
+            'Fondo': forms.FileInput(attrs={'class': 'inp3',
+                                                'accept' : '.jpg , .png',
+                                                'id' : 'img',
+                                                'required' : False
+                                                }),
+            'Foto_perfil': forms.FileInput(attrs={'class': 'inp3',
+                                                'accept' : '.jpg , .png',
+                                                'id' : 'img',
+                                                'required' : False
+                                                }),
         }

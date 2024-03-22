@@ -17,9 +17,7 @@ from django.views.generic import TemplateView , ListView
 from .alerta import alertas
 
 @login_required
-def mostrar_perfil(request):
-    perfil_user = request.User_normal.Perfil  
-    return render(request, 'perfiluser.html', {'perfil_user': perfil_user})
+
 
 
 def usuarioFoto(request):
@@ -42,11 +40,11 @@ class ver_perfil (LoginRequiredMixin , EmailVerificadoMixin, TemplateView):
 
     def get_context_data(self, **kwargs: Any):
         context = super().get_context_data(**kwargs)
-        form_requi = Form_Info_Perfil(instance=Perfil.objects.get(id= self.kwargs['id']))
+        form_perfil = Form_Info_Perfil(instance=Perfil.objects.get(id_myuser_id= self.request.user.id))
         form_admin = Form_Name (instance= Myuser.objects.get(pk=self.request.COOKIES.get('User_id')))
         form_hoja = Form_Person_Info(instance= Personal_information.objects.get(id_myuser=self.request.COOKIES.get('User_id')))
         data = {
-            'form_requi' : form_requi,
+            'form_info_perfil' : form_perfil,
             'form_name' : form_admin,
             'form_person_info' : form_hoja,
             }
@@ -59,6 +57,7 @@ class save_perfil:
         if request.method == 'POST':
             form = Form_Info_Perfil (request.POST)
             if form.is_valid() :
+                print('hola')
                 info = form.save(commit = False)
                 info.id_myuser_id = request.COOKIES.get('User_id')
                 info.save ()
@@ -72,7 +71,7 @@ class save_perfil:
             form = Form_Info_Perfil (request.POST , request.FILES, instance= usuario)
             if form.is_valid ():
                 form.save ()
-                return redirect ('info_perfi')
+                return redirect ('info_perfil')
  # views.py
 
 

@@ -53,7 +53,8 @@
     <div class="container-menu">
         <div class="cont-menu">
             <nav>
-                <a href="{% url 'perfil_usuarios ' %}">Perfil</a>
+from . import views
+                <a href="{% url 'info_perfil' %}">Perfil</a>
                 {% if request.COOKIES.type_user == "Company" %}
                 <a href="{% url 'consultar_ofer' request.COOKIES.User_id %}">Ver Ofertas Creadas</a>
                 {% else %}
