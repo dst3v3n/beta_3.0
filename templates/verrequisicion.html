@@ -140,12 +140,14 @@
 
         <label for="civil" class="infop" id="estado">Jornada laboral</label>
         <input type="text" class="inp3" value="{{form_requi.jornada_laboral.value}}" disabled>
-
+        
         <p class="titulod2">Descripción</p>
         <textarea name="" id="infoa" cols="30" rows="10" disabled>{{form_requi.descripcion.value}}</textarea>
         <br>
         <br>
         <br>
+        <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Causa Requisición</label>
+        <input type="text" class="inp3" value="{{form_requi.causa_requi.value}}" disabled>
 
         <label for="civil" class="infop" id="estado">Habilidades</label>
         <br>
@@ -241,6 +243,9 @@
                 <p class="titulod2">Descripción</p>
                 {{form_requi.descripcion}}
 
+                <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Causa Requisición</label>
+                {{form_requi.causa_requi}}
+
                 <p class="titulod1" class="inth">Habilidades</p>
                 {% for form in form_habi %}
                     {% if form_habi.instance.id != None %}
@@ -284,6 +289,26 @@
             <br>
         {% endfor %}
     </div>
+    <div class="pagination">
+        
+        <div class="container">
+            <img src="/static/img/logo.png" alt="foto de perfil" class="imagen" style="width: 40px; height:40px; margin-left:20px;" >
+            <h2 class="tex" style="margin-left:70px ;">sebastian sebastian</h2>
+            <h2 class="tex" style="margin-left:70px ;">diaz lache</h2>
+            <h2 class="tex" style="margin-left:70px ;">10</h2>
+            <h2 class="tex" style="margin-left:70px ;">8</h2>
+            <h2 class="tex" style="margin-left:70px ;">6</h2>
+            <h2 class="tex" style="margin-left:70px ;">4</h2>
+            <h2 class="tex" style="margin-left:70px ;">50%</h2>
+
+            <button style="width: 130px;margin-left:150px;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;color: #fff; font-weight: bold; font-size:large;" >Hoja de vida</button>
+            <button style="width: 130px;margin-left:30px;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;color: #fff; font-weight: bold; font-size:large;" >Preseleccionar</button>
+            <button style="width: 130px;margin-left:30px;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;color: #fff; font-weight: bold; font-size:large;" >Rechazar</button>
+        </div>
+        
+
+    </div>
+    
 
     </dialog>
 <!-- --------------------------------------------------------------------------------------- -->
