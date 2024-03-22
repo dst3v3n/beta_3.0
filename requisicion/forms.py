@@ -43,7 +43,7 @@ class Form_Requi (forms.ModelForm):
             'jornada_laboral': forms.TextInput (attrs={'class': 'inp3',}),
             'tipo_contrato':forms.Select(attrs={'class': 'inp3'}),
             'descripcion': forms.Textarea (attrs={'id': 'infoa'}),
-            'causa_requi': forms.Select (attrs={'class': 'inp3',}),
+            'causa_requi': forms.Select (attrs={'class': 'inp3','style':'margin-left:42%;'}),
         }
 
 class Form_Habi_Requi(forms.ModelForm):

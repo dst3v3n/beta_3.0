@@ -88,6 +88,7 @@ class ver_requi (LoginRequiredMixin , EmailVerificadoMixin, TemplateView):
             'form_company' : form_comp,
             'form_habi' : list_habi,
             'ponderacion' : self.get_queryset(),
+            'in_habi' : (Form_Habi_Requi (prefix = 'formulario1'))
             }
         context.update (data)
         return context
