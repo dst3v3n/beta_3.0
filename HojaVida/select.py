@@ -32,13 +32,12 @@ class Informacion_Per ():
         select_edu = [('Basica primaria' , 'Basica primaria'),
                       ('Basica secundaria' , 'Basica secundaria'),
                       ('Bachillerato' , 'Bachillerato'),
-                      ('Diplomado' , 'Diplomado'),
                       ('Tecnico' , 'Tecnico'),
                       ('Tecnologo' , 'Tecnologo'),
-                      ('Ingenieria' , 'Ingenieria'),
-                      ('Licenciatura' , 'Licenciatura'),
+                      ('Pregrado' , 'Pregrado'),
+                      ('Posgrado' , 'Posgrado'),
                       ('Master' , 'Master'),
-                      ('Doctorado' , 'Doctorado'),
+                      ('Doctorado' , 'Doctorado')
                       ]
 
         return select_edu

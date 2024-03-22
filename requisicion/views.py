@@ -48,7 +48,7 @@ class save_requi:
     def edit_requi (request , id):
         if request.method == 'POST':
             usuario = Requisicion.objects.get (pk = id)
-            form = Form_Requi (request.POST , request.FILES, instance= usuario)
+            form = Form_Requi (request.POST , instance= usuario)
             if form.is_valid ():
                 form.save ()
                 return redirect ('ver_oferta' , id_myuser = request.user.id)

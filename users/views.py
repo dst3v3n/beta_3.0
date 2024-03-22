@@ -6,7 +6,7 @@ from .forms import forms_user
 from admins.models import Myuser
 from admins.admin import UserCreationForm
 import sweetify
-#from .ponderacion import ubicacion , experiencia , educacion
+from .ponderacion import ubicacion , experiencia , educacion
 from requisicion.forms import Form_Requi
 from admins.forms import Form_Name
 from admins.models import Myuser
@@ -83,8 +83,8 @@ class ver_requi2  (LoginRequiredMixin , EmailVerificadoMixin , TemplateView):
 
         # distancia = ubicacion(distancia_user , distancia_company)
 
-        # meses_experiencia = experiencia(self.request.user.id)
-        # educacion1 = educacion(self.kwargs['id_oferta'] , self.request.user.id )
+        # meses_experiencia = experiencia(self.request.user.id , self.kwargs['id_oferta'])
+        educacion1 = educacion(self.kwargs['id_oferta'] , self.request.user.id )
 
         return render(request, self.template_name, data)
 
