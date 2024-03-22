@@ -149,7 +149,10 @@
                     {% csrf_token %}
                     <p class="titulo1">Educación</p>
                     {% for form in form_edu %}
-                        <p class="titulo2">Institución</p>
+                        <p class="titulo2">Institucion</p>
+                        <label for="titulo" class="infop">Nombre del titulo</label>
+                        <br>
+                        <br>
                         <label for="titulo" class="infop">Titulo obtenido</label>
                         {% if form.instance.id == None %}
                             {{form.archive}}
@@ -437,7 +440,10 @@
                                 {% if form.instance.id != None %}
                                     <form action="{% url 'edit_education_hoja' form.instance.id %}" method="post" enctype="multipart/form-data">
                                         {% csrf_token %}
-                                        <p class="titulo2">Institución</p>
+                                        <p class="titulo2">Institucion</p>
+                                        <label for="titulo" class="infop">Nombre del titulo</label>
+                                        <br>
+                                        <br>
                                         <label for="titulo" class="infop">Titulo obtenido</label>
                                         <a href="{{form.archive.value.url}}" target="_blank" id="verpdf">Ver</a>
                                         <a href="#" onclick="openForm({{ forloop.counter }}),ocultar({{ forloop.counter }}), {{ forloop.counter }};" id="eliminarpdf{{ forloop.counter }}" class="eliminarpdf">Eliminar</a>
