@@ -225,7 +225,7 @@
             <div class="info" >
                 <div>
                     <form action="#" method="#" id="hab">
-                        
+
                         <p class="titulo1">habilidades</p>
                         <p class="titulo2">Mis habilidades</p>
 
@@ -508,25 +508,8 @@
                                         {{form.start_date}}
 
 
-<<<<<<< HEAD
                                         <label for="fechaf" class="infop">Fecha de FInalización</label>
                                         {{form.end_date}}
-=======
-                                        <label for="fechaf" class="infop">Fecha de Finalización</label>
-                                        {% if form.instance.id != None %}
-                                            {%if form.end_date.value.day > 9 %}
-                                                {% if form.end_date.value.month < 9  %}
-                                                    <input type="date" value="{{form.end_date.value.year}}-0{{form.end_date.value.month}}-{{form.end_date.value.day}}" class="inp2">
-                                                {% else %}
-                                                    <input type="date" value="{{form.end_date.value.year}}-{{form.end_date.value.month}}-{{form.end_date.value.day}}" class="inp2">
-                                                {% endif %}
-                                            {% else %}
-                                                <input type="date" value="{{form.end_date.value.year}}-0{{form.end_date.value.month}}-0{{form.end_date.value.day}}" class="inp2">
-                                            {% endif %}
-                                        {% else %}
-                                            {{form.end_date}}
-                                        {% endif %}
->>>>>>> d9481019113ab2b5b3cf16d5bb39e2b962c719cc
                                         <br>
                                         <br>
                                         <label for="dsr" class="infop">Describa sus fuciones</label>
@@ -581,7 +564,7 @@
                                 <div>
                                     <p class="titulo2">No olvide guardar sus datos </p>
                                     <button type="submit" class="btn-guardar">Guardar</button>
-                                    
+
                                 </div>
                         </form>
                     </div>
@@ -847,7 +830,7 @@
 
             const newForm = document.createElement('div');
             newForm.innerHTML = `
-            
+
             <p class="titulo2">Mis habilidades</p>
             <label for="emp" class="infop" style="margin-left:40% ;">yo tengo la hablidad de:</label>
             <br>
