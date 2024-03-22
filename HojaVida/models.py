@@ -98,3 +98,15 @@ class Additional_information (models.Model):
 
     def __str__(self):
         return f"{self.information_adi}"
+
+class Habilidades (models.Model):
+    habilidades = models.CharField (max_length = 50)
+    id_myuser = models.ForeignKey (Myuser , null=True , on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'habilidad'
+        verbose_name_plural = 'habilidades'
+        db_table = 'habilidad'
+
+    def __str__(self):
+        return f"{self.habilidades}"

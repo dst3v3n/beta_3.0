@@ -104,21 +104,81 @@
             <p class="titulod2">Descripción</p>
             {{form_requi.descripcion}}
 
-            <p class="titulod1" class="inth">Habilidades</p>
-            {{form_requi.habilidades}}
-
             <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Causa Requisición</label>
             {{form_requi.causa_requi}}
 
             <br>
             <br>
+            <div id="hab">
+            <p class="titulo1">Habilidades</p>
+            <p class="titulo2">Mis habilidades</p>
 
-                <p class="titulo2">No olvides guardar tu nueva oferta</p>
-                <button class="titulo1" id="#" style="margin: 2%  0 0 38%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
-                <button class="titulo1" id="open" style="margin: 2%  0 0 5%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;" onclick="window.location.href = '{% url 'consultar_ofer' request.COOKIES.User_id %}'">Cancelar</button>
+            <label for="emp" class="infop" style="margin-left:40% ;">Yo tengo la hablidad de:</label>
+            <br>
+            <br>
+            {% for form in form_habi %}
+            {{form.habilidades_requi}}
+            {% endfor %}
+            <br>
+            <br>
+            <br>
+            </div>
+
+            <p class="titulo2">No olvides guardar tu nueva oferta</p>
+            <button class="titulo1" id="#" style="margin: 2%  0 0 38%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+            <button class="titulo1" id="open" style="margin: 2%  0 0 5%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;" onclick="window.location.href = '{% url 'consultar_ofer' request.COOKIES.User_id %}'">Cancelar</button>
+            <a href="#" class="titulo1" id="agregar2" style="margin:20px ;  border: 3px solid #fff; border-radius:20px; padding:5px ; ">Agregar</a>
         </form>
-    </div>
         <script src="/static/js/loader.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+        <script>
+            const contenedor2 = document.querySelector('#hab');
+            const btnAgregar2 = document.querySelector('#agregar2');
+            // Counter variable
+            let totalForms = 1;
+            // Function to add new form
+            btnAgregar2.addEventListener('click', (event) => {
+            event.preventDefault();
+            const newForm = document.createElement('div');
+            newForm.id = `form-${totalForms}`;
+            newForm.innerHTML = `
+            <label for="emp" class="infop" style="margin-left:40% ;">yo tengo la hablidad de:</label>
+            <br>
+            <br>
+            {{in_habi.habilidades_requi}}
+            </div>
+            <div>
+            <br>
+            <br>
+            <br>
+            <button onclick="eliminar2(this)" style="
+                background-color: red;
+                border-color: black;
+                border-radius: 15px;
+                font-size: 16px;
+                font-weight: bold;
+                color: white;
+                padding: 10px;
+                cursor: pointer;
+                ">Eliminar</button>
+            `;
+            contenedor2.appendChild(newForm);
+            totalForms++;
+            });
+            // Function to remove form
+            function eliminar2(element) {
+            const parentNode = element.closest('div[id^="form-"]');
+            contenedor2.removeChild(parentNode);
+            actualizarContador();
+            };
+            // Function to update counter
+            function actualizarContador() {
+            const forms = contenedor2.querySelectorAll('div[id^="form-"]');
+            for (let i = 0; i < forms.length; i++) {
+                forms[i].children[0].children[1].innerHTML = i + 1;
+            }
+            };
+            </script>
     </main>
 </body>

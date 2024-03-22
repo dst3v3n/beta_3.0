@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect
-from . forms import Form_Person_Info , Form_Education , Form_Experience , Form_Person_Refe , Form_Business_Refe , Form_Aditional
-from .models import Personal_information , Education , Experience , Personal_references , Business_references , Additional_information
+from . forms import Form_Person_Info , Form_Education , Form_Experience , Form_Person_Refe , Form_Business_Refe , Form_Aditional , Form_Habilidades
+from .models import Personal_information , Education , Experience , Personal_references , Business_references , Additional_information , Habilidades
 from admins.models import Myuser
 from admins.forms import Form_Name
 from users.models import User_normal
@@ -44,6 +44,18 @@ class create_hoja (LoginRequiredMixin , EmailVerificadoMixin, TemplateView):
 
         else:
             list_empresa.append (Form_Experience (prefix = 'formulario0'))
+
+        list_habi = []
+        instancia_0 = Habilidades.objects.filter(id_myuser_id  = self.request.COOKIES.get('User_id')).values ()
+        if len(instancia_0) >= 1:
+            for i in instancia_0:
+                id_habilidades = i['id']
+                x =Habilidades.objects.get(id = id_habilidades)
+                form_habi_instance = Form_Habilidades (instance= x)
+                list_habi.append(form_habi_instance)
+
+        else:
+            list_habi.append (Form_Habilidades (prefix = 'formulario0'))
 
         list_personales = []
         instancia_2 = Personal_references.objects.filter(id_myuser_id  = self.request.COOKIES.get('User_id')).values ()
@@ -102,9 +114,11 @@ class create_hoja (LoginRequiredMixin , EmailVerificadoMixin, TemplateView):
             'form_empresa': list_empresa,
             'form_person_refe': list_personales,
             'form_empresarial_refe': list_empresariales,
+            'form_habi': list_habi,
             'form_adicio': form_aditional,
             'in_edu': Form_Education(prefix='formulario1'),
             'in_exp': Form_Experience(prefix='formulario1'),
+            'in_habi': Form_Habilidades(prefix='formulario1'),
         }
 
         context.update(data)
@@ -160,6 +174,18 @@ class Visualizar_hoja (LoginRequiredMixin , EmailVerificadoMixin, TemplateView):
         else:
             list_empresariales = [Form_Business_Refe (prefix = 'formulario1') , Form_Business_Refe (prefix = 'formulario2')]
 
+        list_habi = []
+        instancia_0 = Habilidades.objects.filter(id_myuser_id  = self.request.COOKIES.get('User_id')).values ()
+        if len(instancia_0) >= 1:
+            for i in instancia_0:
+                id_habilidades = i['id']
+                x =Habilidades.objects.get(id = id_habilidades)
+                form_habi_instance = Form_Habilidades (instance= x)
+                list_habi.append(form_habi_instance)
+
+        else:
+            list_habi.append (Form_Habilidades (prefix = 'formulario0'))
+
         try:
             form_person = Form_Person_Info (instance = Personal_information.objects.get (id_myuser_id  = self.request.COOKIES.get ('User_id')))
         except:
@@ -176,6 +202,7 @@ class Visualizar_hoja (LoginRequiredMixin , EmailVerificadoMixin, TemplateView):
                 'form_edu' : list_educacion,
                 'form_empresa' : list_empresa,
                 'form_person' : list_personales,
+                'form_habi' : list_habi,
                 'form_empresarial' : list_empresariales,
                 'form_adicio' : form_aditional,
                 }
@@ -264,6 +291,21 @@ class save_hj:
                     info4.save ()
             return redirect ('create_hoja')
 
+    def save_habilidades (request):
+        if request.method == 'POST':
+            for i in range (20):
+                form = Form_Habilidades(request.POST , prefix = f'formulario{i}')
+                if form.is_valid():
+                    info = form.save(commit=False)
+                    info.id_myuser_id  = request.COOKIES.get('User_id')
+                    info.save()
+                else:
+                    if i > 0:
+                        alertas.save (request , 'Habilidades')
+                        return redirect ('create_hoja')
+            alertas.save (request , 'Habilidades')
+            return redirect ('create_hoja')
+
     def save_aditional (request):
         if request.method == 'POST':
             form1 = Form_Aditional (request.POST)
@@ -321,6 +363,14 @@ class save_hj:
                 form.save ()
                 return redirect ('create_hoja')
 
+    def edit_habilidad (request , id_usuario):
+        if request.method == 'POST':
+            usuario = Habilidades.objects.get (pk = id_usuario)
+            form = Form_Habilidades (request.POST, request.FILES, instance= usuario)
+            if form.is_valid ():
+                form.save ()
+                return redirect ('create_hoja')
+
     def edit_personal_reference (request , id_usuario):
         if request.method == 'POST':
             usuario = Personal_references.objects.get (pk = id_usuario)
@@ -361,6 +411,10 @@ class save_hj:
 
     def delete_experience (request , id_usuario):
         Experience.objects.get (pk = id_usuario).delete ()
+        return redirect ('create_hoja')
+
+    def delete_habilidades (request , id_usuario):
+        Habilidades.objects.get (pk = id_usuario).delete ()
         return redirect ('create_hoja')
 
     def delete_personal_reference (request , id_usuario):

@@ -1,5 +1,5 @@
 from django import forms
-from . models import Personal_information , Education , Experience , Personal_references , Business_references , Additional_information
+from . models import Personal_information , Education , Experience , Personal_references , Business_references , Additional_information , Habilidades
 from datetime import date
 
 fecha_hoy = date.today()
@@ -87,4 +87,13 @@ class Form_Aditional (forms.ModelForm):
         fields = ['information_adi']
         widgets = {
             'information_adi' : forms.Textarea (attrs= {'id' : 'infoa'}),
+        }
+
+
+class Form_Habilidades (forms.ModelForm):
+    class Meta:
+        model= Habilidades
+        fields = ['habilidades']
+        widgets = {
+            'habilidades' : forms.TextInput (attrs={'class': 'inp',}),
         }

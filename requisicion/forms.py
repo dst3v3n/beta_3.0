@@ -1,5 +1,5 @@
 from django import forms
-from . models import Requisicion
+from . models import Requisicion , Habilidades_requi
 from datetime import date, timedelta
 
 fecha_hoy = date.today()
@@ -17,9 +17,8 @@ class Form_Requi (forms.ModelForm):
     class Meta:
         model = Requisicion
         fields = ['fecha_inicio','fecha_finalizacion','direccion','departamento','ciudad','telefono','codigo_cno',
-                  'nombre_cargo','educacion','experiencia_laboral','profesion','habilidades','salario','forma_pago',
+                  'nombre_cargo','educacion','experiencia_laboral','profesion','salario','forma_pago',
                   'jornada_laboral','tipo_contrato','descripcion','causa_requi']
-        # fields = "__all__"
 
         widgets = {
             'fecha_inicio': Date (format='%Y-%m-%d' , attrs={'class': 'inp3',
@@ -44,6 +43,14 @@ class Form_Requi (forms.ModelForm):
             'jornada_laboral': forms.TextInput (attrs={'class': 'inp3',}),
             'tipo_contrato':forms.Select(attrs={'class': 'inp3'}),
             'descripcion': forms.Textarea (attrs={'id': 'infoa'}),
-            'habilidades': forms.Textarea (attrs={'class': 'inth',}),
             'causa_requi': forms.Select (attrs={'class': 'inp3',}),
+        }
+
+class Form_Habi_Requi(forms.ModelForm):
+
+    class Meta:
+        model = Habilidades_requi
+        fields = ['habilidades_requi']
+        widgets = {
+            'habilidades_requi': forms.TextInput (attrs={'class' : 'inp2'}),
         }

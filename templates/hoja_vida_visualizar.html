@@ -125,6 +125,22 @@
             </div>
         </div>
 
+        <div class="info" >
+            {% csrf_token %}
+            <p class="titulo1">Habilidades</p>
+            {% for form in form_habi %}
+                <p class="titulo2">Mis habilidades</p>
+
+                <label for="emp" class="infop" style="margin-left:40% ;">Yo tengo la hablidad de:</label>
+                <br>
+                <br>
+                <input type="text" value="{{form.habilidades.value}}" class="inp" disabled>
+                <br>
+                <br>
+                <br>
+                {% endfor %}
+            </div>
+
 
         <div class="info">
             <p class="titulo1">Otros datos</p>

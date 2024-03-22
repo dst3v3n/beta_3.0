@@ -18,7 +18,6 @@ class Requisicion (models.Model):
     educacion = models.CharField (max_length = 50 , choices=Selec_requi.educacion() , default = 'Basica primaria')
     experiencia_laboral = models.CharField(max_length = 100, choices=Selec_requi.expe() , default = '0 meses')
     profesion = models.CharField(max_length = 50)
-    habilidades = models.CharField(max_length = 120)
     salario = models.DecimalField(max_digits=20, decimal_places=2)
     forma_pago = models.CharField(max_length = 20, choices=Selec_requi.pago() , default = 'Mensual')
     jornada_laboral = models.CharField(max_length = 20)
@@ -33,6 +32,18 @@ class Requisicion (models.Model):
 
     def _str_(self):
         return f"{self.nombre_cargo}"
+
+class Habilidades_requi (models.Model):
+    habilidades_requi = models.CharField (max_length = 50)
+    id_requi = models.ForeignKey (Requisicion , null=True , on_delete=models.CASCADE)
+    id_myuser = models.ForeignKey (Myuser , null=True , on_delete=models.CASCADE)
+    class Meta:
+        verbose_name = 'habilidad_requi'
+        verbose_name_plural = 'habilidades_requi'
+        db_table = 'habilidad_requi'
+
+    def __str__(self):
+        return f"{self.habilidades}"
 
 class Ponderacion (models.Model):
     educacion = models.IntegerField()

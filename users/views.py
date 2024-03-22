@@ -7,7 +7,7 @@ from admins.models import Myuser
 from admins.admin import UserCreationForm
 import sweetify
 from .ponderacion import ubicacion , experiencia , educacion
-from requisicion.forms import Form_Requi
+from requisicion.forms import Form_Requi , Form_Habi_Requi
 from admins.forms import Form_Name
 from admins.models import Myuser
 from company.forms import forms_company
@@ -15,7 +15,7 @@ from company.models import Company
 from django.contrib.auth.mixins import LoginRequiredMixin
 from HojaVida.mixin import EmailVerificadoMixin
 from django.views.generic import TemplateView , ListView
-from requisicion.models import Requisicion , Ponderacion
+from requisicion.models import Requisicion , Ponderacion , Habilidades_requi
 from HojaVida.models import Personal_information , Education , Experience
 from typing import Any
 # Create your views here.
@@ -67,11 +67,16 @@ class ver_requi2  (LoginRequiredMixin , EmailVerificadoMixin , TemplateView):
         form_admin = Form_Name (instance = Myuser.objects.get(pk = self.request.COOKIES.get('User_id')))
         form_comp = forms_company (instance = Company.objects.get(id_myuser_id = self.kwargs['id_myuser']))
 
-        data = {
-            'form_requi' : form_requi,
-            'form_name' : form_admin,
-            'form_company' : form_comp
-        }
+        list_habi = []
+        instancia_0 = Habilidades_requi.objects.filter(id_requi_id  = self.kwargs['id_oferta']).values ()
+        if len(instancia_0) >= 1:
+            for i in instancia_0:
+                id_habilidades = i['id']
+                x =Habilidades_requi.objects.get(id = id_habilidades)
+                form_habi_instance = Form_Habi_Requi (instance= x)
+                list_habi.append(form_habi_instance)
+        else:
+            list_habi.append (Form_Habi_Requi (prefix = 'formulario0'))
 
         if not Personal_information.objects.filter(id_myuser_id = self.request.user.id).exists():
             return redirect ("create_hoja")
@@ -83,16 +88,36 @@ class ver_requi2  (LoginRequiredMixin , EmailVerificadoMixin , TemplateView):
 
         # distancia = ubicacion(distancia_user , distancia_company)
 
-        # meses_experiencia = experiencia(self.request.user.id , self.kwargs['id_oferta'])
-        educacion1 = educacion(self.kwargs['id_oferta'] , self.request.user.id )
+        meses_experiencia = experiencia(self.request.user.id , self.kwargs['id_oferta'])
+        # educacion1 = educacion(self.kwargs['id_oferta'] , self.request.user.id )
+        data = {
+            'form_requi' : form_requi,
+            'form_name' : form_admin,
+            'form_company' : form_comp,
+            'distancia' : 30,
+            'educacion' : 30,
+            'habilidades' : 30,
+            'id_myuser_oferta' : self.kwargs['id_myuser'],
+            'form_habi' : list_habi,
+            'experiencia' : meses_experiencia,
+        }
 
         return render(request, self.template_name, data)
+
+
 
 class postulacion (LoginRequiredMixin , EmailVerificadoMixin , TemplateView):
 
     template_name = 'verrequiusu.html'
 
     def dispatch(self, request: HttpRequest, *args: Any, **kwargs: Any):
-        oferta = self.request.GET['oferta']
-        company = self.request.GET['compañia']
-        return reverse ('ver_ofertas' , args = (1 , 1))
+        if self.request.method == 'POST':
+            educacion =  float(self.request.POST["educacion"].replace(',', '.'))
+            experiencia = float(self.request.POST["experiencia"].replace(',', '.'))
+            distancia = float(self.request.POST["distancia"].replace(',', '.'))
+            habilidades = float(self.request.POST["habilidades"].replace(',', '.'))
+            oferta = self.request.POST["id_oferta"]
+            id_myuser_oferta = self.request.POST["id_oferta_myuser"]
+            total = (educacion+experiencia+distancia+habilidades)*30/10
+            Ponderacion(educacion=educacion , experiencia=experiencia , habilidades=habilidades , ubicacion=distancia , total=total , id_oferta_id= oferta , id_myuser_id=self.request.user.id).save()
+        return redirect ('ver_info_ofertas' , id_oferta = oferta , id_myuser = id_myuser_oferta)

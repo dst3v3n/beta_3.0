@@ -224,24 +224,29 @@
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
             <div class="info" >
                 <div>
-                    <form action="#" method="#" id="hab">
-
-                        <p class="titulo1">habilidades</p>
-                        <p class="titulo2">Mis habilidades</p>
+                    <form action="{% url 'save_habilidades_hoja' %}" method="post" id="hab">
+                        {% csrf_token %}
+                        <p class="titulo1">Habilidades</p>
+                        {% for form in form_habi %}
+                            <p class="titulo2">Mis habilidades</p>
 
                             <label for="emp" class="infop" style="margin-left:40% ;">Yo tengo la hablidad de:</label>
                             <br>
                             <br>
-                            <input type="text" style="margin-left: 43%;">
+                            {{form.habilidades}}
+                            <br>
+                            <br>
+                            <br>
+                            {% endfor %}
                 </div>
                         <div>
                             <p class="titulo2">No olvides guardar sus datos </p>
                             <a href="#" class="titulo1" id="agregar2" style="margin:20px ;  border: 3px solid #fff; border-radius:20px; padding:5px ; ">Agregar</a>
                             <button type="submit" class="btn-guardar">Guardar</button>
                         </div>
-                </form>
-            </div>
-<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+                    </form>
+                </div>
+<!------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
             <div class="info">
                 <form action="{% url 'save_reference_hoja' %}" method="post">
@@ -550,23 +555,31 @@
                     </div>
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
                     <div class="info" >
-                        <div>
-                            <form action="#" method="#" id="edu1">
-
-                                <p class="titulo1">Habilidades</p>
-                                <p class="titulo2">Mis habilidades</p>
-
-                            <label for="emp" class="infop" style="margin-left:40% ;">Yo tengo la hablidad de:</label>
+                            <p class="titulo1">Habilidades</p>
+                            <p class="titulo2">Mis habilidades</p>
+                            {% for form in form_habi %}
+                                {% if form.instance.id != None %}
+                                <form action="{% url 'edit_habilidades_hoja' form.instance.id%}" method="post" id="edu1">
+                                    {% csrf_token %}
+                                    <label for="emp" class="infop" style="margin-left:40% ;">Yo tengo la hablidad de:</label>
                                     <br>
                                     <br>
-                                    <input type="text" style="margin-left: 43%;">
-                        </div>
-                                <div>
-                                    <p class="titulo2">No olvides guardar sus datos </p>
-                                    <button type="submit" class="btn-guardar">Guardar</button>
+                                    {{form.habilidades}}
+                                    <div>
+                                        <p class="titulo2">No olvides guardar sus datos </p>
+                                        <button  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                                        <a href="{% url 'delete_habilidades_hoja' form.instance.id %}"  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</a>
+                                    </div>
+                                </form>
 
-                                </div>
-                        </form>
+                            {% else %}
+                                <label for="emp" class="infop" style="margin-left:40% ;">Yo tengo la hablidad de:</label>
+                                <br>
+                                <br>
+                                <input type="text" class="inp" value="" disabled>
+                                <br>
+                            {% endif %}
+                        {% endfor %}
                     </div>
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
@@ -820,22 +833,18 @@
         <script>
             const contenedor2 = document.querySelector('#hab');
             const btnAgregar2 = document.querySelector('#agregar2');
-
             // Counter variable
-            let total2 = 1;
-
+            let totalForms = 1;
             // Function to add new form
             btnAgregar2.addEventListener('click', (event) => {
             event.preventDefault();
-
             const newForm = document.createElement('div');
+            newForm.id = `form-${totalForms}`;
             newForm.innerHTML = `
-
-            <p class="titulo2">Mis habilidades</p>
             <label for="emp" class="infop" style="margin-left:40% ;">yo tengo la hablidad de:</label>
             <br>
             <br>
-            <input type="text" style="margin-left: 43%;">
+            {{in_habi.habilidades}}
             </div>
             <div>
             <br>
@@ -852,28 +861,23 @@
                 cursor: pointer;
                 ">Eliminar</button>
             `;
-
             contenedor2.appendChild(newForm);
+            totalForms++;
             });
-
             // Function to remove form
             function eliminar2(element) {
-            const parentNode = element.parentNode;
+            const parentNode = element.closest('div[id^="form-"]');
             contenedor2.removeChild(parentNode);
             actualizarContador();
             };
-
             // Function to update counter
             function actualizarContador() {
-            const forms = contenedor1.children;
-            total1 = 1;
-
+            const forms = contenedor2.querySelectorAll('div[id^="form-"]');
             for (let i = 0; i < forms.length; i++) {
-                forms[i].children.innerHTML = total++;
+                forms[i].children[0].children[1].innerHTML = i + 1;
             }
             };
-
-        </script>
+            </script>
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
         <script>
             function openForm(index) {

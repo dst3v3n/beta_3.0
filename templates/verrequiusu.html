@@ -145,21 +145,45 @@
         <textarea name="" id="infoa" cols="30" rows="10" disabled>{{form_requi.descripcion.value}}</textarea>
 
         <p class="titulod1" class="inth">Habilidades</p>
-        <textarea name="" class="inth" cols="30" rows="10" disabled>{{form_requi.habilidades.value}}</textarea>
+        {% for form in form_habi %}
+            <input type="text" class="inp3" value="{{form.habilidades_requi.value}}" disabled>
+            <br>
+        {% endfor %}
         <h1>Lista de Verificación</h1>
             <form id="check-form">
                 <ul class="lista">
-                    <li><input type="checkbox" id="h" name="l1" value="Item 1"><label for="item1">informacion</label></li>
-                    <li><input type="checkbox" id="j" name="l2" value="Item 2"><label for="item2">informacion</label></li>
-                    <li><input type="checkbox" id="k" name="l3" value="Item 3"><label for="item3">informacion</label></li>
+                    {% if educacion >= 5 %}
+                    <li><input type="checkbox" id="h" name="l1" value="Item 1" disabled checked><label for="item1">Educacion</label></li>
+                    {% else %}
+                    <li><input type="checkbox" id="h" name="l1" value="Item 1" disabled><label for="item1">Educacion</label></li>
+                    {% endif %}
+                    {% if experiencia >= 5 %}
+                    <li><input type="checkbox" id="j" name="l2" value="Item 2" disabled checked><label for="item2">Experiencia</label></li>
+                    {% else %}
+                    <li><input type="checkbox" id="j" name="l2" value="Item 2" disabled><label for="item2">Experiencia</label></li>
+                    {% endif %}
+                    {% if distancia >= 5 %}
+                    <li><input type="checkbox" id="k" name="l3" value="Item 3" disabled checked><label for="item3">Distancia</label></li>
+                    {% else %}
+                    <li><input type="checkbox" id="k" name="l3" value="Item 3" disabled><label for="item3">Distancia</label></li>
+                    {% endif %}
+                    {% if habilidades >= 5 %}
+                    <li><input type="checkbox" id="m" name="l4" value="Item 4" disabled checked><label for="item4">Habilidades</label></li>
+                    {% else %}
+                    <li><input type="checkbox" id="m" name="l4" value="Item 4" disabled><label for="item4">Habilidades</label></li>
+                    {% endif %}
                 </ul>
             </form>
-
-        <div class="info">
-            <form action="{% url 'postulacion' %}" method="get">
+            <div class="info">
+                <form action="{% url 'postulacion' %}" method="post">
+                {% csrf_token %}
                 <p class="titulo1">Deseas postularse ?</p>
-                <input type='hidden' name='oferta' value='{{form_requi.instance.id}}' />
-                <input type='hidden' name='compañia' value='{{form_company.instance.id}}' />
+                <input type="text" name="educacion" id="educacion" value="{{educacion}}" hidden >
+                <input type="text" name="experiencia" id="experiencia" value="{{experiencia}}" hidden >
+                <input type="text" name="distancia" id="distancia" value="{{distancia}}" hidden >
+                <input type="text" name="habilidades" id="habilidades" value="{{habilidades}}" hidden >
+                <input type="text" name="id_oferta" value="{{form_requi.instance.id}}" hidden>
+                <input type="text" name="id_oferta_myuser" value="{{id_myuser_oferta}}" hidden>
                 <button class="titulo1" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Postularse</button>
             </form>
         </div>
