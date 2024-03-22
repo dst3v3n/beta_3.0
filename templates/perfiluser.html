@@ -1,4 +1,5 @@
 {% load static %}
+{% load sweetify %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,21 +99,48 @@
                 <div class="perfil-usuario-body">
                     {% csrf_token %}
                     <div class="perfil-usuario-bio">
-                        <h3 class="titulo">{{form_name.name.value}}</h3>
+                        <h3 class="titulo">{{ name }}</h3>
+                        
                     </div>
                     <div class="perfil-usuario-footer">
-                        <ul class="lista-datos">
-                            <li><i class="icono fas fa-map-signs"></i> Dirección de usuario:</li>
-                            <li><i class="icono fas fa-phone-alt"></i> Teléfono:</li>
-                            <li><i class="icono fas fa-briefcase"></i> Trabaja en.</li>
-                            <li><i class="icono fas fa-building"></i> Cargo</li>
-                        </ul>
-                        <ul class="lista-datos">
-                            <li><i class="icono fas fa-map-marker-alt"></i> Ubicacion.</li>
-                            <li><i class="icono fas fa-calendar-alt"></i> Fecha nacimiento.</li>
-                            <li><i class="icono fas fa-user-check"></i> Registro.</li>
-                            <li><i class="icono fas fa-share-alt"></i> Redes sociales.</li>
-                        </ul>
+                        <label>
+                            <i class="icono fas fa-map-signs"></i> Dirección de usuario:
+                            <input type="text" name="direccion" placeholder="Dirección de usuario" class="input-datos" value="{{form_person_info.address.value}}" disabled>
+                        </label>
+                        <label>
+                            
+                <i class="icono fas fa-phone-alt"></i> Teléfono:
+                            <input type="tel" name="telefono" placeholder="Teléfono" class="input-datos" value="{{form_info_perfil.Telefono.value}}" disabled>
+                        </label>
+                        <label>
+                            <i class="icono fas fa-briefcase"></i> Profesión:
+                            <input type="text" name="trabajo" placeholder="Trabaja en" class="input-datos" value="{{form_info_perfil.Profesion.value}}" disabled>
+                        
+                        </label>
+                        <label>
+                            <i class="icono fas fa-building"></i> Cargo:
+                <input type="text" name="cargo" placeholder="Cargo" class="input-datos" value="{{form_info_perfil.Cargo.value}}" disabled>
+                        </label>
+                    </form>
+                    <form class="lista-datos">
+                        <label>
+                            
+                <i class="icono fas fa-map-marker-alt"></i> Ubicación:
+                            <input type="text" name="ubicacion" placeholder="Ubicación" class="input-datos" value="{{form_info_perfil.Ubicacion.value}}" disabled>
+                        </label>
+                        <label>
+                            
+                <i class="icono fas fa-calendar-alt"></i> Fecha nacimiento:
+                            <input type="date" name="fecha_nacimiento" class="input-datos" value="{{form_info_perfil.Fecha_nacimiento.value}}" disabled>
+                        </label>
+                        
+                            <i class="icono fas fa-user-check"></i> Registro:
+                            <input type="text" name="registro" placeholder="Registro" class="input-datos" value="{{form_info_perfil.Registro.value}}" disabled>
+                        
+                        <label>
+                            <i class="icono fas fa-share-alt"></i> Redes sociales:
+                            
+                <input type="text" name="redes_sociales" placeholder="Redes sociales" class="input-datos" value="{{form_info_perfil.Redes_sociales.value}}" disabled>
                     </div>
                     <div class="redes-sociales">
                         <a href="" class="boton-redes facebook fab fa-facebook-f"><i class="icon-facebook"></i></a>
@@ -125,25 +153,55 @@
 
     <dialog id="modal">
         <section class="seccion-perfil-usuario">
-                <div class="perfil-usuario-footer">
-                    <ul class="lista-datos">
-                        <li><i class="icono fas fa-map-signs"></i> Dirección de usuario:</li>
-                        <li><i class="icono fas fa-phone-alt"></i> Teléfono:</li>
-                        <li><i class="icono fas fa-briefcase"></i> Trabaja en.</li>
-                        <li><i class="icono fas fa-building"></i> Cargo</li>
-                    </ul>
-                    <ul class="lista-datos">
-                        <li><i class="icono fas fa-map-marker-alt"></i> Ubicación.</li>
-                        <li><i class="icono fas fa-calendar-alt"></i> Fecha nacimiento.</li>
-                        <li><i class="icono fas fa-user-check"></i> Registro.</li>
-                        <li><i class="icono fas fa-share-alt"></i> Redes sociales.</li>
-                    </ul>
-                </div>
+            <div class="perfil-usuario-footer">
+                <form class="lista-datos" action="{% url 'save_info_perfil' %}" method="post">
+                    <label>
+                        <i class="icono fas fa-map-signs"></i> Dirección de usuario:
+                        <input type="text" name="direccion" placeholder="Dirección de usuario" class="input-datos">
+                    </label>
+                    <label>
+                        
+            <i class="icono fas fa-phone-alt"></i> Teléfono:
+                        <input type="tel" name="telefono" placeholder="Teléfono" class="input-datos">
+                    </label>
+                    <label>
+                        <i class="icono fas fa-briefcase"></i> Trabaja en:
+                        <input type="text" name="trabajo" placeholder="Trabaja en" class="input-datos">
+                    
+                    </label>
+                    <label>
+                        <i class="icono fas fa-building"></i> Cargo:
+            <input type="text" name="cargo" placeholder="Cargo" class="input-datos">
+                    </label>
+                </form>
+                <form class="lista-datos">
+                    <label>
+                        
+            <i class="icono fas fa-map-marker-alt"></i> Ubicación:
+                        <input type="text" name="ubicacion" placeholder="Ubicación" class="input-datos">
+                    </label>
+                    <label>
+                        
+            <i class="icono fas fa-calendar-alt"></i> Fecha nacimiento:
+                        <input type="date" name="fecha_nacimiento" class="input-datos">
+                    </label>
+                    <label>
+                        <i class="icono fas fa-user-check"></i> Registro:
+                        <input type="text" name="registro" placeholder="Registro" class="input-datos">
+                    </label>
+                    <label>
+                        <i class="icono fas fa-share-alt"></i> Redes sociales:
+                        
+            <input type="text" name="redes_sociales" placeholder="Redes sociales" class="input-datos">
+                    </label>
+                    <button class="titulo1" id="open" type="submit">Guardar</button>
+                    <button type="submit" class="btn-modal" id="cancelar">Cancelar</button>
+                </form>
+            </div>
             </div>
         </section>
 
-        <button type="submit" class="btn-modal" id="guardar">Guardar</button>
-        <button type="submit" class="btn-modal" id="cancelar">Cancelar</button>
+        
 
     </dialog>
 

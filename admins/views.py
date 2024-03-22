@@ -16,6 +16,9 @@ from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from HojaVida.mixin import EmailVerificadoMixin
+from django.views.generic import TemplateView , ListView
 # Create your views here.
 
 class acceso :
@@ -107,13 +110,6 @@ class Edicion :
             'user' : True ,
         }
         return render (request , 'registro_admin.html' , data)
-
-    def visualizar_users (request):
-        get_usuarios = Myuser.objects.all()
-        data = {
-            'get_usuarios' : get_usuarios ,
-        }
-        return render (request , 'tabla_users.html' , data)
 
     def edit_users (request , id_usuario):
         usuario = Myuser.objects.filter(id=id_usuario).first()
@@ -236,3 +232,26 @@ class Verification:
         '''.encode('utf-8'))
         response.set_cookie(key='email_verified', value='True')
         return response
+
+class visualizar_users (LoginRequiredMixin , EmailVerificadoMixin , ListView):
+
+    model = Myuser
+    template_name = "tabla_users.html"
+    context_object_name = "myusers"
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        qs = qs.filter(type_user='User')
+        return qs
+
+class visualizar_company (LoginRequiredMixin , EmailVerificadoMixin , ListView):
+
+    model = Myuser
+    template_name = "tabla_users.html"
+    context_object_name = "myusers"
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        qs = qs.filter(type_user='Company')
+        print(qs)
+        return qs

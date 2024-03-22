@@ -4,11 +4,10 @@ from django.db import models
 from django.db import models
 from users.models import User_normal
 from admins.models import Myuser
-
+from HojaVida.models import Personal_information
 class Perfil(models.Model):
     id_myuser = models.ForeignKey(Myuser, on_delete = models.CASCADE, null=True)
-    Direccion = models.CharField(max_length=255, blank=True, null=True)
-    Telefono = models.CharField(max_length=20, blank=True, null=True)
+    id_direc = models.ForeignKey(Personal_information, on_delete = models.CASCADE, null=True)
     Profesion = models.CharField(max_length=100, blank=True, null=True)
     Cargo = models.CharField(max_length=100, blank=True, null=True)
     Ubicacion = models.CharField(max_length=100, blank=True, null=True)

@@ -1,5 +1,5 @@
 from django import forms
-from . models import Personal_information , Education , Experience , Personal_references , Business_references , Additional_information
+from . models import Personal_information , Education , Experience , Personal_references , Business_references , Additional_information , Habilidades
 from datetime import date
 
 fecha_hoy = date.today()
@@ -11,12 +11,13 @@ class Form_Person_Info (forms.ModelForm):
 
     class Meta:
         model = Personal_information
-        fields = ['address' , 'cell_phone' , 'date' , 'type_d' , 'n_document' , 'gender' , 'age' , 'civil']
+        fields = ['address' , 'city' , 'cell_phone' , 'date' , 'type_d' , 'n_document' , 'gender' , 'age' , 'civil']
 
         widgets = {
             'address': forms.TextInput(attrs={'class': 'inp'}),
+            'city': forms.TextInput(attrs={'class': 'inp'}),
             'cell_phone' : forms.TextInput (attrs={'class': 'inp1'}),
-            'date' : Date (attrs={'class': 'inp2',
+            'date' : Date (format='%Y-%m-%d' , attrs={'class': 'inp2',
                                   'max' : fecha_hoy}),
             'type_d': forms.Select(attrs={'class': 'inp2'}),
             'n_document' : forms.TextInput (attrs={'class': 'inp1'}),
@@ -28,15 +29,17 @@ class Form_Person_Info (forms.ModelForm):
 class Form_Education (forms.ModelForm):
     class Meta:
         model = Education
-        fields = ['archive' , 'name_institution' , 'graduation_year' , 'time' ]
+        fields = ['archive' , 'educational_level' ,'name_institution' , 'name_course' , 'graduation_year' , 'time' ]
         widgets = {
             'archive' : forms.FileInput (attrs={'class': 'inp3',
                                                 'accept' : '.pdf',
                                                 'id' : 'img',
                                                 'required' : False
                                                 }),
+            'educational_level': forms.Select(attrs={'class': 'inp2'}),
+            'name_course' : forms.TextInput(attrs={'class' : 'inp'}),
             'name_institution' : forms.TextInput (attrs={'class' : 'inp'}),
-            'graduation_year' : Date (attrs={'class': 'inp2',
+            'graduation_year' : Date (format='%Y-%m-%d' , attrs={'class': 'inp2',
                                              'max': fecha_hoy}),
             'time' : forms.NumberInput (attrs= {'class' : 'inp1',
                                                 'Placeholder' : 'Introduzca el número de meses',}),
@@ -49,9 +52,9 @@ class Form_Experience (forms.ModelForm):
         widgets = {
             'company_name' : forms.TextInput (attrs={'class': 'inp',}),
             'company_position' : forms.TextInput (attrs={'class' : 'inp'}),
-            'start_date' : Date (attrs={'class': 'inp2',
+            'start_date' : Date (format='%Y-%m-%d' , attrs={'class': 'inp2',
                                         'max': fecha_hoy}),
-            'end_date' : Date (attrs={'class': 'inp2',
+            'end_date' : Date (format='%Y-%m-%d' , attrs={'class': 'inp2',
                                     'max': fecha_hoy}),
             'functions' : forms.Textarea (attrs= {'id' : 'dsr'}),
         }
@@ -84,4 +87,13 @@ class Form_Aditional (forms.ModelForm):
         fields = ['information_adi']
         widgets = {
             'information_adi' : forms.Textarea (attrs= {'id' : 'infoa'}),
+        }
+
+
+class Form_Habilidades (forms.ModelForm):
+    class Meta:
+        model= Habilidades
+        fields = ['habilidades']
+        widgets = {
+            'habilidades' : forms.TextInput (attrs={'class': 'inp',}),
         }

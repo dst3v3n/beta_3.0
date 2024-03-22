@@ -6,6 +6,7 @@ from admins.models import Myuser
 
 class Personal_information (models.Model):
     address = models.CharField (max_length = 100)
+    city = models.CharField(max_length = 50)
     cell_phone = models.CharField (max_length = 11)
     date = models.DateField ()
     type_d = models.CharField (max_length = 50 , choices=Informacion_Per.documento() , default = 'Cedula Ciudadania')
@@ -26,6 +27,8 @@ class Personal_information (models.Model):
 class Education (models.Model):
     archive = models.FileField (upload_to='Archivo_Educacion')
     name_institution = models.CharField (max_length = 50)
+    educational_level = models.CharField(max_length = 50 , choices=Informacion_Per.educacion() , default = 'Bachillerato')
+    name_course = models.CharField (max_length = 70)
     graduation_year = models.DateField ()
     time = models.IntegerField ()
     id_myuser = models.ForeignKey (Myuser , null=True , on_delete=models.CASCADE)
@@ -95,3 +98,15 @@ class Additional_information (models.Model):
 
     def __str__(self):
         return f"{self.information_adi}"
+
+class Habilidades (models.Model):
+    habilidades = models.CharField (max_length = 50)
+    id_myuser = models.ForeignKey (Myuser , null=True , on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'habilidad'
+        verbose_name_plural = 'habilidades'
+        db_table = 'habilidad'
+
+    def __str__(self):
+        return f"{self.habilidades}"

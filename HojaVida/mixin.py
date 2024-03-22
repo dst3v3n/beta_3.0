@@ -1,5 +1,4 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from admins.models import Myuser
 from django.shortcuts import redirect
 
 class EmailVerificadoMixin(PermissionRequiredMixin):

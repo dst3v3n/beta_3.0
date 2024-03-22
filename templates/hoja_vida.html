@@ -41,7 +41,7 @@
             cursor: pointer;
     }
 
-    #eliminarpdf{
+    .eliminarpdf{
             background-color: #1D405C;
             color: #fff;
             font-size: large;
@@ -54,7 +54,7 @@
             display:block;
             cursor: pointer;
     }
-    #cancelarpdf{
+    .cancelarpdf{
             background-color: #1D405C;
             color: #fff;
             font-size: large;
@@ -99,41 +99,34 @@
                 {{form_last.last_name}}
                 <br>
                 <br>
-                <label for="direccion" class="infop">Direccion</label>
+                <label for="direccion" class="infop">Dirección</label>
                 {{form_info.address}}
+                <br>
+                <br>
 
-                <label for="cel" class="infop">Nºcelular</label>
+                <label for="direccion" class="infop">Ciudad</label>
+                {{form_info.city}}
+
+                <label for="cel" class="infop">Nº Celular</label>
                 {{form_info.cell_phone}}
                 <br>
                 <br>
                 <label for="email" class="infop">Correo</label>
                 <input type="email" class="inp"  name="email" value="{{form_name.email.value}}" disabled>
 
-                <label for="fechan" class="infop" id="fecha">fecha de nacimiento</label>
-                {% if form_info.instance.id != None %}
-                    {%if form_info.date.value.day > 9 %}
-                        {% if form_info.date.value.month < 9  %}
-                            <input type="date" value="{{form_info.date.value.year}}-0{{form_info.date.value.month}}-{{form_info.date.value.day}}" class="inp2">
-                        {% else %}
-                            <input type="date" value="{{form_info.date.value.year}}-{{form_info.date.value.month}}-{{form_info.date.value.day}}" class="inp2">
-                        {% endif %}
-                    {% else %}
-                        <input type="date" value="{{form_info.date.value.year}}-0{{form_info.date.value.month}}-0{{form_info.date.value.day}}" class="inp2">
-                    {% endif %}
-                {% else %}
-                    {{form_info.date}}
-                {% endif %}
+                <label for="fechan" class="infop" id="fecha">Fecha de nacimiento</label>
+                {{form_info.date}}
                 <br>
                 <br>
                 <label for="tpod" class="infop">Tipo de documento</label>
                 {{form_info.type_d}}
 
 
-                <label for="ncc" class="infop" id="doc">Nº de documento</label>
+                <label for="ncc" class="infop" id="doc">Nº Documento</label>
                 {{form_info.n_document}}
                 <br>
                 <br>
-                <label for="genero" class="infop">Genero</label>
+                <label for="genero" class="infop">Género</label>
                 {{form_info.gender}}
 
                 <label for="edad" class="infop" id="ed">Edad</label>
@@ -144,7 +137,7 @@
                 <br>
                 <br>
                 {% if form_info.instance.id == None %}
-                    <p class="titulo2">No olvide guardar sus datos </p>
+                    <p class="titulo2">No olvides guardar sus datos </p>
                     <button type="submit" class="btn-guardar">Guardar</button>
                 {% endif %}
             </form>
@@ -166,33 +159,25 @@
                         {% else %}
                             <a href="{{form.archive.value.url}}" target="_blank">Ver</a>
                         {% endif %}
+                        <label for="cole" class="infop" id="col">Nombre Curso</label>
+                        {{form.name_course}}
                         <label for="cole" class="infop" id="col">Institución</label>
                         {{form.name_institution}}
+                        <label for="cole" class="infop" id="col">Nivel Educativo</label>
+                        {{form.educational_level}}
                         <br>
                         <br>
                         <label for="añ" class="infop">Año de gradución</label>
-                        {% if form.instance.id != None %}
-                            {%if form.graduation_year.value.day > 9 %}
-                                {% if form.graduation_year.value.month < 9  %}
-                                    <input type="date" value="{{form.graduation_year.value.year}}-0{{form.graduation_year.value.month}}-{{form.graduation_year.value.day}}" class="inp2">
-                                {% else %}
-                                    <input type="date" value="{{form.graduation_year.value.year}}-{{form.graduation_year.value.month}}-{{form.graduation_year.value.day}}" class="inp2">
-                                {% endif %}
-                            {% else %}
-                                <input type="date" value="{{form.graduation_year.value.year}}-0{{form.graduation_year.value.month}}-0{{form.graduation_year.value.day}}" class="inp2">
-                            {% endif %}
-                        {% else %}
-                            {{form.graduation_year}}
-                        {% endif %}
+                        {{ form.graduation_year }}
 
-                        <label for="tim" class="infop" id="tie">timpo en la institucion</label>
+                        <label for="tim" class="infop" id="tie">Tiempo en la institución</label>
                         {{form.time}}
                         <br>
                         <br>
                         <br>
                     {% endfor %}
             </div>
-                        <p class="titulo2">No olvide guardar sus datos </p>
+                        <p class="titulo2">No olvides guardar sus datos </p>
                         <a href="#" class="titulo1" id="agregar" style="margin:20px ;  border: 3px solid #fff; border-radius:20px; padding:5px ; ">Agregar</a>
                         <button type="submit" class="btn-guardar">Guardar</button>
                     <div>
@@ -217,38 +202,14 @@
                             <br>
                             <br>
                             <label for="fechai" class="infop">Fecha de inicio</label>
-                            {% if form.instance.id != None %}
-                                {%if form.start_date.value.day > 9 %}
-                                    {% if form.start_date.value.month < 9  %}
-                                        <input type="date" value="{{form.start_date.value.year}}-0{{form.start_date.value.month}}-{{form.start_date.value.day}}" class="inp2">
-                                    {% else %}
-                                        <input type="date" value="{{form.start_date.value.year}}-{{form.start_date.value.month}}-{{form.start_date.value.day}}" class="inp2">
-                                    {% endif %}
-                                {% else %}
-                                    <input type="date" value="{{form.start_date.value.year}}-0{{form.start_date.value.month}}-0{{form.start_date.value.day}}" class="inp2">
-                                {% endif %}
-                            {% else %}
-                                {{form.start_date}}
-                            {% endif %}
+                            {{form.start_date}}
 
                             <label for="fechaf" class="infop">Fecha de FInalización</label>
-                            {% if form.instance.id != None %}
-                                {%if form.end_date.value.day > 9 %}
-                                    {% if form.end_date.value.month < 9  %}
-                                        <input type="date" value="{{form.end_date.value.year}}-0{{form.end_date.value.month}}-{{form.end_date.value.day}}" class="inp2">
-                                    {% else %}
-                                        <input type="date" value="{{form.end_date.value.year}}-{{form.end_date.value.month}}-{{form.end_date.value.day}}" class="inp2">
-                                    {% endif %}
-                                {% else %}
-                                    <input type="date" value="{{form.end_date.value.year}}-0{{form.end_date.value.month}}-0{{form.end_date.value.day}}" class="inp2">
-                                {% endif %}
-                            {% else %}
-                                {{form.end_date}}
-                            {% endif %}
+                            {{form.end_date}}
 
                             <br>
                             <br>
-                            <label for="dsr" class="infop">Describa sus fuciones</label>
+                            <label for="dsr" class="infop">Describa sus funciones</label>
                             {{form.functions}}
                             <br>
                             <br>
@@ -256,7 +217,7 @@
                         {% endfor %}
                 </div>
                         <div>
-                            <p class="titulo2">No olvide guardar sus datos </p>
+                            <p class="titulo2">No olvides guardar sus datos </p>
                             <a href="#" class="titulo1" id="agregar1" style="margin:20px ;  border: 3px solid #fff; border-radius:20px; padding:5px ; ">Agregar</a>
                             <button type="submit" class="btn-guardar">Guardar</button>
                         </div>
@@ -266,24 +227,29 @@
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
             <div class="info" >
                 <div>
-                    <form action="#" method="#" id="hab">
-                        
-                        <p class="titulo1">habilidades</p>
-                        <p class="titulo2">Mis habilidades</p>
+                    <form action="{% url 'save_habilidades_hoja' %}" method="post" id="hab">
+                        {% csrf_token %}
+                        <p class="titulo1">Habilidades</p>
+                        {% for form in form_habi %}
+                            <p class="titulo2">Mis habilidades</p>
 
-                            <label for="emp" class="infop" style="margin-left:40% ;">yo tengo la hablidad de:</label>
+                            <label for="emp" class="infop" style="margin-left:40% ;">Yo tengo la hablidad de:</label>
                             <br>
                             <br>
-                            <input type="text" style="margin-left: 43%;">
+                            {{form.habilidades}}
+                            <br>
+                            <br>
+                            <br>
+                            {% endfor %}
                 </div>
                         <div>
-                            <p class="titulo2">No olvide guardar sus datos </p>
+                            <p class="titulo2">No olvides guardar sus datos </p>
                             <a href="#" class="titulo1" id="agregar2" style="margin:20px ;  border: 3px solid #fff; border-radius:20px; padding:5px ; ">Agregar</a>
                             <button type="submit" class="btn-guardar">Guardar</button>
                         </div>
-                </form>
-            </div>
-<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+                    </form>
+                </div>
+<!------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
             <div class="info">
                 <form action="{% url 'save_reference_hoja' %}" method="post">
@@ -299,10 +265,10 @@
                         {{form.last_person_name}}
                         <br>
                         <br>
-                        <label for="direccion" class="infop">Direccion</label>
+                        <label for="direccion" class="infop">Dirección</label>
                         {{form.address}}
 
-                        <label for="cel" class="infop">Nºcelular</label>
+                        <label for="cel" class="infop">Nº Celular</label>
                         {{form.cell_number}}
                         <br>
                         <br>
@@ -320,17 +286,17 @@
 
                         <br>
                         <br>
-                        <label for="direccion" class="infop">Direccion</label>
+                        <label for="direccion" class="infop">Dirección</label>
                         {{form.address_company}}
 
-                        <label for="tel" class="infop" id="telf">Nºtelefono</label>
+                        <label for="tel" class="infop" id="telf">Nº Telefono</label>
                         {{form.cell_number_busi}}
                         <br>
                         <br>
                         <br>
                         {% endfor %}
                     {% if form_empresarial_refe.0.instance.id == None or form_empresarial_refe.1.instance.id == None%}
-                        <p class="titulo2">No olvide guardar sus datos </p>
+                        <p class="titulo2">No olvides guardar sus datos </p>
                         <button type="submit" class="btn-guardar">Guardar</button>
                     {% endif %}
                 </form>
@@ -339,20 +305,20 @@
             <div class="info">
                 <form action="{% url 'save_aditional_hoja' %}" method="post">
                     {% csrf_token %}
-                    <p class="titulo1">Informacion adicional</p>
+                    <p class="titulo1">Información adicional</p>
                     <br>
                     {{form_adicio.information_adi}}
                     <br>
                     <br>
                     {% if  form_adicio.instance.id == None %}
-                        <p class="titulo2">No olvide guardar sus datos </p>
+                        <p class="titulo2">No olvides guardar sus datos </p>
                         <button type="submit" class="btn-guardar">Guardar</button>
                     {% endif %}
                 </form>
             </div>
 
             <div class="info">
-                <p class="titulo1">Edita tu Informacion</p>
+                <p class="titulo1">Edita tu Información</p>
                 <button  class="titulo1" id="open" style="margin: 2%  0 0 45%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Editar</button>
             </div>
 
@@ -373,41 +339,32 @@
                                 {{form_last.last_name}}
                                 <br>
                                 <br>
-                                <label for="direccion" class="infop">Direccion</label>
+                                <label for="direccion" class="infop">Dirección</label>
                                 {{form_info.address}}
 
-                                <label for="cel" class="infop">Nºcelular</label>
+                                <label for="direccion" class="infop">Ciudad</label>
+                                {{form_info.city}}
+
+                                <label for="cel" class="infop">Nº Celular</label>
                                 {{form_info.cell_phone}}
                                 <br>
                                 <br>
                                 <label for="email" class="infop">Correo</label>
                                 <input type="email"  name="email" class="inp" value="{{form_name.email.value}}" readonly >
 
-                                <label for="fechan" class="infop" id="fecha">fecha de nacimiento</label>
-                                {% if form_info.instance.id != None %}
-                                    {%if form_info.date.value.day > 9 %}
-                                        {% if form_info.date.value.month < 9  %}
-                                            <input type="date" value="{{form_info.date.value.year}}-0{{form_info.date.value.month}}-{{form_info.date.value.day}}" class="inp2">
-                                        {% else %}
-                                            <input type="date" value="{{form_info.date.value.year}}-{{form_info.date.value.month}}-{{form_info.date.value.day}}" class="inp2">
-                                        {% endif %}
-                                    {% else %}
-                                        <input type="date" value="{{form_info.date.value.year}}-0{{form_info.date.value.month}}-0{{form_info.date.value.day}}" class="inp2">
-                                    {% endif %}
-                                {% else %}
-                                    {{form_info.date}}
-                                {% endif %}
+                                <label for="fechan" class="infop" id="fecha">Fecha de nacimiento</label>
+                                {{form_info.date}}
                                 <br>
                                 <br>
                                 <label for="tpod" class="infop">Tipo de documento</label>
                                 {{form_info.type_d}}
 
 
-                                <label for="ncc" class="infop" id="doc">Nºdocumento</label>
+                                <label for="ncc" class="infop" id="doc">Nº Documento</label>
                                 {{form_info.n_document}}
                                 <br>
                                 <br>
-                                <label for="genero" class="infop">Genero</label>
+                                <label for="genero" class="infop">Género</label>
                                 {{form_info.gender}}
 
                                 <label for="edad" class="infop" id="ed">Edad</label>
@@ -418,12 +375,12 @@
                                 {{form_info.civil}}
                                 <br>
                                 <br>
-                                <p class="titulo2">No olvide guardar sus datos </p>
+                                <p class="titulo2">No olvides guardar sus datos </p>
                                 <button  class="titulo1" id="open" type="submit" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
                                 <a href="{% url 'delete_info_hoja' %}" class="titulo1" id="open" style="margin: 2% 0 0 4%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;" >Eliminar</a>
                             </form>
                         {% else %}
-                            <form action="{% url 'edit_info_hoja' %}" method="post">
+                            <form action="{% url 'edit_personal_hoja' %}" method="post">
                                 {% csrf_token %}
                                 <p class="titulo1">Información Personal</p>
 
@@ -434,17 +391,20 @@
                                 {{form_last.last_name}}
                                 <br>
                                 <br>
-                                <label for="direccion" class="infop">Direccion</label>
+                                <label for="direccion" class="infop">Dirección</label>
                                 <input type="text" class="inp" value="" disabled>
 
-                                <label for="cel" class="infop">Nºcelular</label>
+                                <label for="direccion" class="infop">Ciudad</label>
+                                <input type="text" class="inp" value="" disabled>
+
+                                <label for="cel" class="infop">Nº Celular</label>
                                 <input type="text" class="inp1" value="" disabled>
                                 <br>
                                 <br>
                                 <label for="email" class="infop">Correo</label>
                                 <input type="email"  name="email" class="inp" value="{{form_name.email.value}}" readonly >
 
-                                <label for="fechan" class="infop" id="fecha">fecha de nacimiento</label>
+                                <label for="fechan" class="infop" id="fecha">Fecha de nacimiento</label>
                                 <input type="date" class="inp2" value="" disabled>
                                 <br>
                                 <br>
@@ -452,11 +412,11 @@
                                 <input type="text" class="inp2" value="" disabled>
 
 
-                                <label for="ncc" class="infop" id="doc">Nºdocumento</label>
+                                <label for="ncc" class="infop" id="doc">Nº Documento</label>
                                 <input type="text" class="inp1" value="" disabled>
                                 <br>
                                 <br>
-                                <label for="genero" class="infop">Genero</label>
+                                <label for="genero" class="infop">Género</label>
                                 <input type="text" class="inp2" value="{{form_info.gender.value}}" disabled>
 
                                 <label for="edad" class="infop" id="ed">Edad</label>
@@ -467,7 +427,7 @@
                                 <input type="text" class="inp2" value="{{form_info.civil.value}}" disabled>
                                 <br>
                                 <br>
-                                <p class="titulo2">No olvide guardar sus datos </p>
+                                <p class="titulo2">No olvides guardar sus datos </p>
                                 <button  class="titulo1" id="open" type="submit" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
                             </form>
                         {% endif %}
@@ -478,7 +438,7 @@
                             <p class="titulo1">Educación</p>
                             {% for form in form_edu %}
                                 {% if form.instance.id != None %}
-                                    <form action="{% url 'edit_education_hoja' form.instance.id %}" method="post" enctype="multipart/form-data" id="edu">
+                                    <form action="{% url 'edit_education_hoja' form.instance.id %}" method="post" enctype="multipart/form-data">
                                         {% csrf_token %}
                                         <p class="titulo2">Institucion</p>
                                         <label for="titulo" class="infop">Nombre del titulo</label>
@@ -486,54 +446,51 @@
                                         <br>
                                         <label for="titulo" class="infop">Titulo obtenido</label>
                                         <a href="{{form.archive.value.url}}" target="_blank" id="verpdf">Ver</a>
-                                        <a href="#" onclick="openForm(),ocultar();" id="eliminarpdf">Eliminar</a>
-                                        <div id="myForm" style="display: none;">
-                                                {{in_edu.archive}}
-                                                <input type="button" value="Cancelar" onclick="closeForm(),mostrar();" id="cancelarpdf">
+                                        <a href="#" onclick="openForm({{ forloop.counter }}),ocultar({{ forloop.counter }}), {{ forloop.counter }};" id="eliminarpdf{{ forloop.counter }}" class="eliminarpdf">Eliminar</a>
+                                        <div id="myForm{{ forloop.counter }}" style="display: none;">
+                                            {{ form.archive }}
+                                            <input type="button" value="Cancelar" onclick="closeForm({{ forloop.counter }}),mostrar({{ forloop.counter }} , true);" id="cancelarpdf{{ forloop.counter }}" class="cancelarpdf">
                                         </div>
+                                        <label for="cole" class="infop" id="col">Nombre Curso</label>
+                                        {{form.name_course}}
                                         <label for="cole" class="infop" id="col">Institución</label>
                                         {{form.name_institution}}
+                                        <label for="cole" class="infop" id="col">Nivel Educativo</label>
+                                        {{form.educational_level}}
                                         <br>
                                         <br>
                                         <label for="añ" class="infop">Año de gradución</label>
-                                        {% if form.instance.id != None %}
-                                            {%if form.graduation_year.value.day > 9 %}
-                                                {% if form.graduation_year.value.month < 9  %}
-                                                    <input type="date" value="{{form.graduation_year.value.year}}-0{{form.graduation_year.value.month}}-{{form.graduation_year.value.day}}" class="inp2">
-                                                {% else %}
-                                                    <input type="date" value="{{form.graduation_year.value.year}}-{{form.graduation_year.value.month}}-{{form.graduation_year.value.day}}" class="inp2">
-                                                {% endif %}
-                                            {% else %}
-                                                <input type="date" value="{{form.graduation_year.value.year}}-0{{form.graduation_year.value.month}}-0{{form.graduation_year.value.day}}" class="inp2">
-                                            {% endif %}
-                                        {% else %}
-                                            {{form.graduation_year}}
-                                        {% endif %}
+                                        {{ form.graduation_year.as_widget }}
 
-                                        <label for="tim" class="infop" id="tie">timpo en la institucion</label>
+                                        <label for="tim" class="infop" id="tie">Tiempo en la institución</label>
                                         {{form.time}}
                                         <br>
                                         <br>
                                         <br>
                                         <div>
-                                            <p class="titulo2">No olvide guardar sus datos </p>
-                                            <button class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                                            <p class="titulo2">No olvides guardar sus datos </p>
+                                            <button type="submit" class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
                                             <a href="{% url 'delete_education_hoja' form.instance.id %}" class="titulo1" id="open" style="margin: 2% 0 0 4%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</a>
                                         </div>
                                     </form>
                                 {% else %}
-                                    <p class="titulo2">Institucion</p>
+                                    <p class="titulo2">Institución</p>
                                     <label for="titulo" class="infop">Titulo obtenido</label>
                                     <input type="file" class="inp3" value="" disabled>
 
+                                    <label for="cole" class="infop" id="col">Nombre Curso</label>
+                                    <input type="file" class="inp3" value="" disabled>
+
                                     <label for="cole" class="infop" id="col">Institución</label>
+                                    <input type="text" class="inp" value="" disabled>
+                                    <label for="cole" class="infop" id="col">Nivel Educativo</label>
                                     <input type="text" class="inp" value="" disabled>
                                     <br>
                                     <br>
                                     <label for="añ" class="infop">Año de gradución</label>
                                     <input type="text" class="inp2" value="" disabled>
 
-                                    <label for="tim" class="infop" id="tie">timpo en la institucion</label>
+                                    <label for="tim" class="infop" id="tie">Tiempo en la institución</label>
                                     <input type="number" class="inp1" value="" disabled>
                                     <br>
                                     <br>
@@ -559,44 +516,20 @@
                                         <br>
                                         <br>
                                         <label for="fechai" class="infop">Fecha de inicio</label>
-                                        {% if form.instance.id != None %}
-                                            {%if form.start_date.value.day > 9 %}
-                                                {% if form.start_date.value.month < 9  %}
-                                                    <input type="date" value="{{form.start_date.value.year}}-0{{form.start_date.value.month}}-{{form.start_date.value.day}}" class="inp2">
-                                                {% else %}
-                                                    <input type="date" value="{{form.start_date.value.year}}-{{form.start_date.value.month}}-{{form.start_date.value.day}}" class="inp2">
-                                                {% endif %}
-                                            {% else %}
-                                                <input type="date" value="{{form.start_date.value.year}}-0{{form.start_date.value.month}}-0{{form.start_date.value.day}}" class="inp2">
-                                            {% endif %}
-                                        {% else %}
-                                            {{form.start_date}}
-                                        {% endif %}
-                                        
+                                        {{form.start_date}}
 
-                                        <label for="fechaf" class="infop">Fecha de Finalización</label>
-                                        {% if form.instance.id != None %}
-                                            {%if form.end_date.value.day > 9 %}
-                                                {% if form.end_date.value.month < 9  %}
-                                                    <input type="date" value="{{form.end_date.value.year}}-0{{form.end_date.value.month}}-{{form.end_date.value.day}}" class="inp2">
-                                                {% else %}
-                                                    <input type="date" value="{{form.end_date.value.year}}-{{form.end_date.value.month}}-{{form.end_date.value.day}}" class="inp2">
-                                                {% endif %}
-                                            {% else %}
-                                                <input type="date" value="{{form.end_date.value.year}}-0{{form.end_date.value.month}}-0{{form.end_date.value.day}}" class="inp2">
-                                            {% endif %}
-                                        {% else %}
-                                            {{form.end_date}}
-                                        {% endif %}
+
+                                        <label for="fechaf" class="infop">Fecha de FInalización</label>
+                                        {{form.end_date}}
                                         <br>
                                         <br>
-                                        <label for="dsr" class="infop">Describa sus fuciones</label>
+                                        <label for="dsr" class="infop">Describa sus funciones</label>
                                         {{form.functions}}
                                         <br>
                                         <br>
                                         <br>
                                         <div>
-                                            <p class="titulo2">No olvide guardar sus datos </p>
+                                            <p class="titulo2">No olvides guardar sus datos </p>
                                             <button  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
                                             <a href="{% url 'delete_experience_hoja' form.instance.id %}"  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</a>
                                         </div>
@@ -617,7 +550,7 @@
                                     <input type="text" class="inp2" value="" disabled>
                                     <br>
                                     <br>
-                                    <label for="dsr" class="infop">Describa sus fuciones</label>
+                                    <label for="dsr" class="infop">Describa sus funciones</label>
                                     <textarea type="text" id="dsr" value="" disabled></textarea>
                                     <br>
                                     <br>
@@ -628,23 +561,31 @@
                     </div>
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
                     <div class="info" >
-                        <div>
-                            <form action="#" method="#" id="edu1">
-
-                                <p class="titulo1">habilidades</p>
-                                <p class="titulo2">Mis habilidades</p>
-
-                            <label for="emp" class="infop" style="margin-left:40% ;">yo tengo la hablidad de:</label>
+                            <p class="titulo1">Habilidades</p>
+                            <p class="titulo2">Mis habilidades</p>
+                            {% for form in form_habi %}
+                                {% if form.instance.id != None %}
+                                <form action="{% url 'edit_habilidades_hoja' form.instance.id%}" method="post" id="edu1">
+                                    {% csrf_token %}
+                                    <label for="emp" class="infop" style="margin-left:40% ;">Yo tengo la hablidad de:</label>
                                     <br>
                                     <br>
-                                    <input type="text" style="margin-left: 43%;">
-                        </div>
-                                <div>
-                                    <p class="titulo2">No olvide guardar sus datos </p>
-                                    <button type="submit" class="btn-guardar">Guardar</button>
-                                    
-                                </div>
-                        </form>
+                                    {{form.habilidades}}
+                                    <div>
+                                        <p class="titulo2">No olvides guardar sus datos </p>
+                                        <button  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                                        <a href="{% url 'delete_habilidades_hoja' form.instance.id %}"  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</a>
+                                    </div>
+                                </form>
+
+                            {% else %}
+                                <label for="emp" class="infop" style="margin-left:40% ;">Yo tengo la hablidad de:</label>
+                                <br>
+                                <br>
+                                <input type="text" class="inp" value="" disabled>
+                                <br>
+                            {% endif %}
+                        {% endfor %}
                     </div>
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
@@ -663,10 +604,10 @@
                                     {{form.last_person_name}}
                                     <br>
                                     <br>
-                                    <label for="direccion" class="infop">Direccion</label>
+                                    <label for="direccion" class="infop">Dirección</label>
                                     {{form.address}}
 
-                                    <label for="cel" class="infop">Nºcelular</label>
+                                    <label for="cel" class="infop">Nº Celular</label>
                                     {{form.cell_number}}
                                     <br>
                                     <button  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
@@ -682,10 +623,10 @@
                                 <input type="text" class="inp" value="" disabled>
                                 <br>
                                 <br>
-                                <label for="direccion" class="infop">Direccion</label>
+                                <label for="direccion" class="infop">Dirección</label>
                                 <input type="text" class="inp" value="" disabled>
 
-                                <label for="cel" class="infop">Nºcelular</label>
+                                <label for="cel" class="infop">Nº Celular</label>
                                 <input type="text" class="inp1" value="" disabled>
                             {% endif %}
                         {% endfor %}
@@ -706,10 +647,10 @@
 
                                     <br>
                                     <br>
-                                    <label for="direccion" class="infop">Direccion</label>
+                                    <label for="direccion" class="infop">Dirección</label>
                                     {{form.address_company}}
 
-                                    <label for="tel" class="infop" id="telf">Nºtelefono</label>
+                                    <label for="tel" class="infop" id="telf">Nº Teléfono</label>
                                     {{form.cell_number_busi}}
                                     <br>
                                     <button  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
@@ -726,10 +667,10 @@
 
                                 <br>
                                 <br>
-                                <label for="direccion" class="infop">Direccion</label>
+                                <label for="direccion" class="infop">Dirección</label>
                                 <input type="text" class="inp" value="" disabled>
 
-                                <label for="tel" class="infop" id="telf">Nºtelefono</label>
+                                <label for="tel" class="infop" id="telf">Nº Teléfono</label>
                                 <input type="text" class="inp1" value="" disabled>
                                 <br>
                             {% endif %}
@@ -740,7 +681,7 @@
                         <div class="info">
                             <form action="{% url 'edit_aditional_hoja' %}" method="post">
                             {% csrf_token %}
-                            <p class="titulo1">Informacion adicional</p>
+                            <p class="titulo1">Información adicional</p>
                             <br>
                             {{form_adicio.information_adi}}
                             <br>
@@ -750,7 +691,7 @@
                         </div>
                     {% else %}
                         <div class="info">
-                            <p class="titulo1">Informacion adicional</p>
+                            <p class="titulo1">Información adicional</p>
                             <br>
                             <textarea id="infoa" disabled></textarea>
                             <br>
@@ -780,8 +721,12 @@
                 <p class="titulo2">Institución</p>
                 <label for="titulo" class="infop">Titulo obtenido</label>
                 {{in_edu.archive }}
+                <label for="cole" class="infop" id="col">Nombre Curso</label>
+                {{in_edu.name_course}}
                 <label for="cole" class="infop" id="col">Institución</label>
                 {{in_edu.name_institution}}
+                <label for="cole" class="infop" id="col">Nivel Educativo</label>
+                {{in_edu.educational_level}}
                 <br>
                 <br>
                 <label for="añ" class="infop">Año de gradución</label>
@@ -894,22 +839,18 @@
         <script>
             const contenedor2 = document.querySelector('#hab');
             const btnAgregar2 = document.querySelector('#agregar2');
-
             // Counter variable
-            let total2 = 1;
-
+            let totalForms = 1;
             // Function to add new form
             btnAgregar2.addEventListener('click', (event) => {
             event.preventDefault();
-
             const newForm = document.createElement('div');
+            newForm.id = `form-${totalForms}`;
             newForm.innerHTML = `
-            
-            <p class="titulo2">Mis habilidades</p>
             <label for="emp" class="infop" style="margin-left:40% ;">yo tengo la hablidad de:</label>
             <br>
             <br>
-            <input type="text" style="margin-left: 43%;">
+            {{in_habi.habilidades}}
             </div>
             <div>
             <br>
@@ -926,49 +867,50 @@
                 cursor: pointer;
                 ">Eliminar</button>
             `;
-
             contenedor2.appendChild(newForm);
+            totalForms++;
             });
-
             // Function to remove form
             function eliminar2(element) {
-            const parentNode = element.parentNode;
+            const parentNode = element.closest('div[id^="form-"]');
             contenedor2.removeChild(parentNode);
             actualizarContador();
             };
-
             // Function to update counter
             function actualizarContador() {
-            const forms = contenedor1.children;
-            total1 = 1;
-
+            const forms = contenedor2.querySelectorAll('div[id^="form-"]');
             for (let i = 0; i < forms.length; i++) {
-                forms[i].children.innerHTML = total++;
+                forms[i].children[0].children[1].innerHTML = i + 1;
             }
             };
-
-        </script>
+            </script>
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
         <script>
-            function openForm() {
-                document.getElementById('myForm').style.display = 'block';
+            function openForm(index) {
+                document.getElementById("myForm" + index).style.display = "block";
             }
-            function closeForm() {
-                document.getElementById('myForm').style.display = 'none';
+
+            function closeForm(index) {
+                document.getElementById("myForm" + index).style.display = "none";
             }
 
         </script>
         <script>
-            function ocultar(){
-                document.getElementById("eliminarpdf").style.display = 'none'
-                document.getElementById("verpdf").style.display = 'none'
+            function ocultar(index, showVerPdf) {
+
+            document.getElementById("eliminarpdf" + index).style.display = 'none';
+            if (showVerPdf) {
+                document.getElementById("verpdf" + index).style.display = 'block';
+            } else {
+                document.getElementById("verpdf" + index).style.display = 'none';
+            }
             }
 
-            function mostrar(){
-                document.getElementById("eliminarpdf").style.display = 'block'
-                document.getElementById("verpdf").style.display = 'block'
-            }
+            function mostrar(index, showEliminarPdf) {
 
+            document.getElementById("eliminarpdf" + index).style.display = showEliminarPdf ? 'block' : 'none';
+            document.getElementById("verpdf" + index).style.display = 'block';
+            }
         </script>
         <script src="/static/js/modal.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
