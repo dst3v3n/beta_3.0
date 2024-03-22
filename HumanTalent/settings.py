@@ -156,9 +156,9 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_SSL = False
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "haroldsabogal48@gmail.com"
-EMAIL_HOST_PASSWORD = "ypad bcfq hkuy ndda"
-DEFAULT_FROM_EMAIL = "haroldsabogal48@gmail.com"
+EMAIL_HOST_USER = "humantalentsena1@gmail.com"
+EMAIL_HOST_PASSWORD = "wvwl erev mcrl rwnf"
+DEFAULT_FROM_EMAIL = "humantalentsena1@gmail.com"
 
 AXES_FAILURE_LIMIT: 3 # INTENTOS PERMITIDOS
 AXES_COOLOFF_TIME: 0.02 # TIEMPO DE BLOQUE EN HORAS

@@ -1,7 +1,7 @@
 from googlemaps import Client
 import os
-from HojaVida.models import Experience , Education
-from requisicion.models import Requisicion
+from HojaVida.models import Experience , Education , Habilidades
+from requisicion.models import Requisicion , Habilidades_requi
 from datetime import datetime
 
 def ubicacion (origen , destino):
@@ -108,3 +108,7 @@ def puntaje_experiencia(experiencia:int , id_oferta:int):
                 break
             if puntaje == 0:
                 return (puntaje*30)/10
+
+def habilidades (id_usuario , id_oferta):
+    Habilidades_requi.objects.filter(id_requi_id = id_oferta). values("habilidades_requi")
+    print(habilidades)
