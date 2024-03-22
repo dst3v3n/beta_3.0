@@ -34,17 +34,17 @@
                 <input type="text" class="inp" value="{{form_last.last_name.value}}" disabled>
                 <br>
                 <br>
-                <label for="direccion" class="infop">Direccion</label>
+                <label for="direccion" class="infop">Dirección</label>
                 <input type="text" class="inp" value="{{form_info.address.value}}" disabled>
 
-                <label for="cel" class="infop">Nºcelular</label>
+                <label for="cel" class="infop">Nº Celular</label>
                 <input type="text" class="inp1" value="{{form_info.cell_phone.value}}" disabled>
                 <br>
                 <br>
                 <label for="email" class="infop">Correo</label>
                 <input type="text" class="inp" value="{{form_name.email.value}}" disabled>
 
-                <label for="fechan" class="infop" id="fecha">fecha de nacimiento</label>
+                <label for="fechan" class="infop" id="fecha">Fecha de nacimiento</label>
                 <input type="text" class="inp2" value="{{form_info.date.value}}" disabled>
                 <br>
                 <br>
@@ -52,7 +52,7 @@
                 <input type="text" class="inp2" value="{{form_info.type_d.value}}" disabled>
 
 
-                <label for="ncc" class="infop" id="doc">Nº de documento</label>
+                <label for="ncc" class="infop" id="doc">Nº Documento</label>
                 <input type="text" class="inp1" value="{{form_info.n_document.value}}" disabled>
                 <br>
                 <br>
@@ -72,7 +72,7 @@
             <div>
                 <p class="titulo1">Educación</p>
                 {% for form in form_edu %}
-                    <p class="titulo2">Institucion</p>
+                    <p class="titulo2">Institución</p>
                     <label for="titulo" class="infop">Titulo obtenido</label>
                     {% if form.instance.id != None%}
                         <a href="{{form.archive.value.url}}" target="_blank">Ver</a>
@@ -86,7 +86,7 @@
                     <label for="añ" class="infop">Año de gradución</label>
                     <input type="text" class="inp2" value="{{form.graduation_year.value}}" disabled>
 
-                    <label for="tim" class="infop" id="tie">timpo en la institucion</label>
+                    <label for="tim" class="infop" id="tie">Tiempo en la institución</label>
                     <input type="number" class="inp1" value="{{form.time.value}}" disabled>
                     <br>
                     <br>
@@ -137,10 +137,10 @@
             <input type="text" class="inp" value="{{form_person.0.last_person_name.value}}" disabled>
             <br>
             <br>
-            <label for="direccion" class="infop">Direccion</label>
+            <label for="direccion" class="infop">Dirección</label>
             <input type="text" class="inp" value="{{form_person.0.address.value}}" disabled>
 
-            <label for="cel" class="infop">Nºcelular</label>
+            <label for="cel" class="infop">Nº Celular</label>
             <input type="text" class="inp1" value="{{form_person.0.cell_number.value}}" disabled>
             <br>
             <br>
@@ -155,10 +155,10 @@
             <input type="text" class="inp" value="{{form_person.1.last_person_name.value}}" disabled>
             <br>
             <br>
-            <label for="direccion" class="infop">Direccion</label>
+            <label for="direccion" class="infop">Dirección</label>
             <input type="text" class="inp" value="{{form_person.1.address.value}}" disabled>
 
-            <label for="cel" class="infop">Nºcelular</label>
+            <label for="cel" class="infop">Nº Celular</label>
             <input type="text" class="inp1" value="{{form_person.1.cell_number.value}}" disabled>
             <br>
             <br>
@@ -173,10 +173,10 @@
 
             <br>
             <br>
-            <label for="direccion" class="infop">Direccion</label>
+            <label for="direccion" class="infop">Dirección</label>
             <input type="text" class="inp" value="{{form_empresarial.0.address.value}}" disabled>
 
-            <label for="tel" class="infop" id="telf">Nºtelefono</label>
+            <label for="tel" class="infop" id="telf">Nº Teléfono</label>
             <input type="text" class="inp1" value="{{form_empresarial.0.cell_number.value}}" disabled>
             <br>
             <br>
@@ -192,10 +192,10 @@
 
             <br>
             <br>
-            <label for="direccion" class="infop">Direccion</label>
+            <label for="direccion" class="infop">Dirección</label>
             <input type="text" class="inp" value="{{form_empresarial.1.address.value}}" disabled>
 
-            <label for="tel" class="infop" id="telf">Nºtelefono</label>
+            <label for="tel" class="infop" id="telf">Nº Teléfono</label>
             <input type="text" class="inp1" value="{{form_empresarial.1.cell_number.value}}" disabled>
             <br>
             <br>
@@ -203,7 +203,7 @@
         </div>
 
         <div class="info">
-            <p class="titulo1">Informacion adicional</p>
+            <p class="titulo1">Información adicional</p>
             <br>
             <textarea id="infoa" disabled>{{form_adicio.information_adi.value}}</textarea>
             <br>

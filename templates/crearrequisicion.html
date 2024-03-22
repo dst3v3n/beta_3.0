@@ -48,7 +48,7 @@
             <label for="direccion" class="infop" style="margin-left: 100px;">Nombre</label>
             <input type="text" class="inp2" value="{{form_name.name.value}}" disabled>
 
-            <label for="cel" class="infop">Dirrecion</label>
+            <label for="cel" class="infop">Dirección</label>
             {{form_requi.direccion}}
 
             <label for="email" class="infop">Nit</label>
@@ -67,7 +67,7 @@
 
             <br>
             <br>
-            <label for="ncc" class="infop" id="doc" style="margin-left: 39%;">Telefono</label>
+            <label for="ncc" class="infop" id="doc" style="margin-left: 39%;">Teléfono</label>
             {{form_requi.telefono}}
 
             <p class="titulod">Datos de la oferta</p>
@@ -87,7 +87,7 @@
             <label for="civil" class="infop" id="estado">Experiencia</label>
             {{form_requi.experiencia_laboral}}
 
-            <label for="civil" class="infop" id="estado">Profesion</label>
+            <label for="civil" class="infop" id="estado">Profesión</label>
             {{form_requi.profesion}}
 
             <br>
@@ -95,25 +95,25 @@
             <label for="civil" class="infop" id="estado" style="margin-left:  80px;">Tipo de salario</label>
             {{form_requi.forma_pago}}
 
-            <label for="civil" class="infop" id="estado">salario</label>
+            <label for="civil" class="infop" id="estado">Salario</label>
             {{form_requi.salario}}
 
             <label for="civil" class="infop" id="estado">Jornada laboral</label>
             {{form_requi.jornada_laboral}}
 
-            <p class="titulod2">Descripcion</p>
+            <p class="titulod2">Descripción</p>
             {{form_requi.descripcion}}
 
-            <p class="titulod1" class="inth">habilidades</p>
+            <p class="titulod1" class="inth">Habilidades</p>
             {{form_requi.habilidades}}
 
-            <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Causa Requisicion</label>
+            <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Causa Requisición</label>
             {{form_requi.causa_requi}}
 
             <br>
             <br>
 
-                <p class="titulo2">No olvide guardar tu nueva oferta</p>
+                <p class="titulo2">No olvides guardar tu nueva oferta</p>
                 <button class="titulo1" id="#" style="margin: 2%  0 0 38%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
                 <button class="titulo1" id="open" style="margin: 2%  0 0 5%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;" onclick="window.location.href = '{% url 'consultar_ofer' request.COOKIES.User_id %}'">Cancelar</button>
         </form>

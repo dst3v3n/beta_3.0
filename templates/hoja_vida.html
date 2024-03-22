@@ -99,7 +99,7 @@
                 {{form_last.last_name}}
                 <br>
                 <br>
-                <label for="direccion" class="infop">Direccion</label>
+                <label for="direccion" class="infop">Dirección</label>
                 {{form_info.address}}
                 <br>
                 <br>
@@ -107,14 +107,14 @@
                 <label for="direccion" class="infop">Ciudad</label>
                 {{form_info.city}}
 
-                <label for="cel" class="infop">Nºcelular</label>
+                <label for="cel" class="infop">Nº Celular</label>
                 {{form_info.cell_phone}}
                 <br>
                 <br>
                 <label for="email" class="infop">Correo</label>
                 <input type="email" class="inp"  name="email" value="{{form_name.email.value}}" disabled>
 
-                <label for="fechan" class="infop" id="fecha">fecha de nacimiento</label>
+                <label for="fechan" class="infop" id="fecha">Fecha de nacimiento</label>
                 {{form_info.date}}
                 <br>
                 <br>
@@ -122,11 +122,11 @@
                 {{form_info.type_d}}
 
 
-                <label for="ncc" class="infop" id="doc">Nº de documento</label>
+                <label for="ncc" class="infop" id="doc">Nº Documento</label>
                 {{form_info.n_document}}
                 <br>
                 <br>
-                <label for="genero" class="infop">Genero</label>
+                <label for="genero" class="infop">Género</label>
                 {{form_info.gender}}
 
                 <label for="edad" class="infop" id="ed">Edad</label>
@@ -137,7 +137,7 @@
                 <br>
                 <br>
                 {% if form_info.instance.id == None %}
-                    <p class="titulo2">No olvide guardar sus datos </p>
+                    <p class="titulo2">No olvides guardar sus datos </p>
                     <button type="submit" class="btn-guardar">Guardar</button>
                 {% endif %}
             </form>
@@ -149,7 +149,7 @@
                     {% csrf_token %}
                     <p class="titulo1">Educación</p>
                     {% for form in form_edu %}
-                        <p class="titulo2">Institucion</p>
+                        <p class="titulo2">Institución</p>
                         <label for="titulo" class="infop">Titulo obtenido</label>
                         {% if form.instance.id == None %}
                             {{form.archive}}
@@ -167,14 +167,14 @@
                         <label for="añ" class="infop">Año de gradución</label>
                         {{ form.graduation_year }}
 
-                        <label for="tim" class="infop" id="tie">timpo en la institucion</label>
+                        <label for="tim" class="infop" id="tie">Tiempo en la institución</label>
                         {{form.time}}
                         <br>
                         <br>
                         <br>
                     {% endfor %}
             </div>
-                        <p class="titulo2">No olvide guardar sus datos </p>
+                        <p class="titulo2">No olvides guardar sus datos </p>
                         <a href="#" class="titulo1" id="agregar" style="margin:20px ;  border: 3px solid #fff; border-radius:20px; padding:5px ; ">Agregar</a>
                         <button type="submit" class="btn-guardar">Guardar</button>
                     <div>
@@ -206,7 +206,7 @@
 
                             <br>
                             <br>
-                            <label for="dsr" class="infop">Describa sus fuciones</label>
+                            <label for="dsr" class="infop">Describa sus funciones</label>
                             {{form.functions}}
                             <br>
                             <br>
@@ -214,7 +214,7 @@
                         {% endfor %}
                 </div>
                         <div>
-                            <p class="titulo2">No olvide guardar sus datos </p>
+                            <p class="titulo2">No olvides guardar sus datos </p>
                             <a href="#" class="titulo1" id="agregar1" style="margin:20px ;  border: 3px solid #fff; border-radius:20px; padding:5px ; ">Agregar</a>
                             <button type="submit" class="btn-guardar">Guardar</button>
                         </div>
@@ -226,16 +226,16 @@
                 <div>
                     <form action="#" method="#" id="hab">
                         
-                        <p class="titulo1">habilidades</p>
+                        <p class="titulo1">Habilidades</p>
                         <p class="titulo2">Mis habilidades</p>
 
-                            <label for="emp" class="infop" style="margin-left:40% ;">yo tengo la hablidad de:</label>
+                            <label for="emp" class="infop" style="margin-left:40% ;">Yo tengo la hablidad de:</label>
                             <br>
                             <br>
                             <input type="text" style="margin-left: 43%;">
                 </div>
                         <div>
-                            <p class="titulo2">No olvide guardar sus datos </p>
+                            <p class="titulo2">No olvides guardar sus datos </p>
                             <a href="#" class="titulo1" id="agregar2" style="margin:20px ;  border: 3px solid #fff; border-radius:20px; padding:5px ; ">Agregar</a>
                             <button type="submit" class="btn-guardar">Guardar</button>
                         </div>
@@ -257,10 +257,10 @@
                         {{form.last_person_name}}
                         <br>
                         <br>
-                        <label for="direccion" class="infop">Direccion</label>
+                        <label for="direccion" class="infop">Dirección</label>
                         {{form.address}}
 
-                        <label for="cel" class="infop">Nºcelular</label>
+                        <label for="cel" class="infop">Nº Celular</label>
                         {{form.cell_number}}
                         <br>
                         <br>
@@ -278,17 +278,17 @@
 
                         <br>
                         <br>
-                        <label for="direccion" class="infop">Direccion</label>
+                        <label for="direccion" class="infop">Dirección</label>
                         {{form.address_company}}
 
-                        <label for="tel" class="infop" id="telf">Nºtelefono</label>
+                        <label for="tel" class="infop" id="telf">Nº Telefono</label>
                         {{form.cell_number_busi}}
                         <br>
                         <br>
                         <br>
                         {% endfor %}
                     {% if form_empresarial_refe.0.instance.id == None or form_empresarial_refe.1.instance.id == None%}
-                        <p class="titulo2">No olvide guardar sus datos </p>
+                        <p class="titulo2">No olvides guardar sus datos </p>
                         <button type="submit" class="btn-guardar">Guardar</button>
                     {% endif %}
                 </form>
@@ -297,20 +297,20 @@
             <div class="info">
                 <form action="{% url 'save_aditional_hoja' %}" method="post">
                     {% csrf_token %}
-                    <p class="titulo1">Informacion adicional</p>
+                    <p class="titulo1">Información adicional</p>
                     <br>
                     {{form_adicio.information_adi}}
                     <br>
                     <br>
                     {% if  form_adicio.instance.id == None %}
-                        <p class="titulo2">No olvide guardar sus datos </p>
+                        <p class="titulo2">No olvides guardar sus datos </p>
                         <button type="submit" class="btn-guardar">Guardar</button>
                     {% endif %}
                 </form>
             </div>
 
             <div class="info">
-                <p class="titulo1">Edita tu Informacion</p>
+                <p class="titulo1">Edita tu Información</p>
                 <button  class="titulo1" id="open" style="margin: 2%  0 0 45%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Editar</button>
             </div>
 
@@ -331,20 +331,20 @@
                                 {{form_last.last_name}}
                                 <br>
                                 <br>
-                                <label for="direccion" class="infop">Direccion</label>
+                                <label for="direccion" class="infop">Dirección</label>
                                 {{form_info.address}}
 
                                 <label for="direccion" class="infop">Ciudad</label>
                                 {{form_info.city}}
 
-                                <label for="cel" class="infop">Nºcelular</label>
+                                <label for="cel" class="infop">Nº Celular</label>
                                 {{form_info.cell_phone}}
                                 <br>
                                 <br>
                                 <label for="email" class="infop">Correo</label>
                                 <input type="email"  name="email" class="inp" value="{{form_name.email.value}}" readonly >
 
-                                <label for="fechan" class="infop" id="fecha">fecha de nacimiento</label>
+                                <label for="fechan" class="infop" id="fecha">Fecha de nacimiento</label>
                                 {{form_info.date}}
                                 <br>
                                 <br>
@@ -352,11 +352,11 @@
                                 {{form_info.type_d}}
 
 
-                                <label for="ncc" class="infop" id="doc">Nºdocumento</label>
+                                <label for="ncc" class="infop" id="doc">Nº Documento</label>
                                 {{form_info.n_document}}
                                 <br>
                                 <br>
-                                <label for="genero" class="infop">Genero</label>
+                                <label for="genero" class="infop">Género</label>
                                 {{form_info.gender}}
 
                                 <label for="edad" class="infop" id="ed">Edad</label>
@@ -367,7 +367,7 @@
                                 {{form_info.civil}}
                                 <br>
                                 <br>
-                                <p class="titulo2">No olvide guardar sus datos </p>
+                                <p class="titulo2">No olvides guardar sus datos </p>
                                 <button  class="titulo1" id="open" type="submit" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
                                 <a href="{% url 'delete_info_hoja' %}" class="titulo1" id="open" style="margin: 2% 0 0 4%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;" >Eliminar</a>
                             </form>
@@ -383,20 +383,20 @@
                                 {{form_last.last_name}}
                                 <br>
                                 <br>
-                                <label for="direccion" class="infop">Direccion</label>
+                                <label for="direccion" class="infop">Dirección</label>
                                 <input type="text" class="inp" value="" disabled>
 
                                 <label for="direccion" class="infop">Ciudad</label>
                                 <input type="text" class="inp" value="" disabled>
 
-                                <label for="cel" class="infop">Nºcelular</label>
+                                <label for="cel" class="infop">Nº Celular</label>
                                 <input type="text" class="inp1" value="" disabled>
                                 <br>
                                 <br>
                                 <label for="email" class="infop">Correo</label>
                                 <input type="email"  name="email" class="inp" value="{{form_name.email.value}}" readonly >
 
-                                <label for="fechan" class="infop" id="fecha">fecha de nacimiento</label>
+                                <label for="fechan" class="infop" id="fecha">Fecha de nacimiento</label>
                                 <input type="date" class="inp2" value="" disabled>
                                 <br>
                                 <br>
@@ -404,11 +404,11 @@
                                 <input type="text" class="inp2" value="" disabled>
 
 
-                                <label for="ncc" class="infop" id="doc">Nºdocumento</label>
+                                <label for="ncc" class="infop" id="doc">Nº Documento</label>
                                 <input type="text" class="inp1" value="" disabled>
                                 <br>
                                 <br>
-                                <label for="genero" class="infop">Genero</label>
+                                <label for="genero" class="infop">Género</label>
                                 <input type="text" class="inp2" value="{{form_info.gender.value}}" disabled>
 
                                 <label for="edad" class="infop" id="ed">Edad</label>
@@ -419,7 +419,7 @@
                                 <input type="text" class="inp2" value="{{form_info.civil.value}}" disabled>
                                 <br>
                                 <br>
-                                <p class="titulo2">No olvide guardar sus datos </p>
+                                <p class="titulo2">No olvides guardar sus datos </p>
                                 <button  class="titulo1" id="open" type="submit" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
                             </form>
                         {% endif %}
@@ -432,7 +432,7 @@
                                 {% if form.instance.id != None %}
                                     <form action="{% url 'edit_education_hoja' form.instance.id %}" method="post" enctype="multipart/form-data">
                                         {% csrf_token %}
-                                        <p class="titulo2">Institucion</p>
+                                        <p class="titulo2">Institución</p>
                                         <label for="titulo" class="infop">Titulo obtenido</label>
                                         <a href="{{form.archive.value.url}}" target="_blank" id="verpdf">Ver</a>
                                         <a href="#" onclick="openForm({{ forloop.counter }}),ocultar({{ forloop.counter }}), {{ forloop.counter }};" id="eliminarpdf{{ forloop.counter }}" class="eliminarpdf">Eliminar</a>
@@ -451,19 +451,19 @@
                                         <label for="añ" class="infop">Año de gradución</label>
                                         {{ form.graduation_year.as_widget }}
 
-                                        <label for="tim" class="infop" id="tie">timpo en la institucion</label>
+                                        <label for="tim" class="infop" id="tie">Tiempo en la institución</label>
                                         {{form.time}}
                                         <br>
                                         <br>
                                         <br>
                                         <div>
-                                            <p class="titulo2">No olvide guardar sus datos </p>
+                                            <p class="titulo2">No olvides guardar sus datos </p>
                                             <button type="submit" class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
                                             <a href="{% url 'delete_education_hoja' form.instance.id %}" class="titulo1" id="open" style="margin: 2% 0 0 4%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</a>
                                         </div>
                                     </form>
                                 {% else %}
-                                    <p class="titulo2">Institucion</p>
+                                    <p class="titulo2">Institución</p>
                                     <label for="titulo" class="infop">Titulo obtenido</label>
                                     <input type="file" class="inp3" value="" disabled>
 
@@ -479,7 +479,7 @@
                                     <label for="añ" class="infop">Año de gradución</label>
                                     <input type="text" class="inp2" value="" disabled>
 
-                                    <label for="tim" class="infop" id="tie">timpo en la institucion</label>
+                                    <label for="tim" class="infop" id="tie">Tiempo en la institución</label>
                                     <input type="number" class="inp1" value="" disabled>
                                     <br>
                                     <br>
@@ -508,34 +508,17 @@
                                         {{form.start_date}}
 
 
-<<<<<<< HEAD
-                                        <label for="fechaf" class="infop">Fecha de FInalización</label>
-                                        {{form.end_date}}
-=======
                                         <label for="fechaf" class="infop">Fecha de Finalización</label>
-                                        {% if form.instance.id != None %}
-                                            {%if form.end_date.value.day > 9 %}
-                                                {% if form.end_date.value.month < 9  %}
-                                                    <input type="date" value="{{form.end_date.value.year}}-0{{form.end_date.value.month}}-{{form.end_date.value.day}}" class="inp2">
-                                                {% else %}
-                                                    <input type="date" value="{{form.end_date.value.year}}-{{form.end_date.value.month}}-{{form.end_date.value.day}}" class="inp2">
-                                                {% endif %}
-                                            {% else %}
-                                                <input type="date" value="{{form.end_date.value.year}}-0{{form.end_date.value.month}}-0{{form.end_date.value.day}}" class="inp2">
-                                            {% endif %}
-                                        {% else %}
-                                            {{form.end_date}}
-                                        {% endif %}
->>>>>>> d9481019113ab2b5b3cf16d5bb39e2b962c719cc
+                                        {{form.end_date}}
                                         <br>
                                         <br>
-                                        <label for="dsr" class="infop">Describa sus fuciones</label>
+                                        <label for="dsr" class="infop">Describa sus funciones</label>
                                         {{form.functions}}
                                         <br>
                                         <br>
                                         <br>
                                         <div>
-                                            <p class="titulo2">No olvide guardar sus datos </p>
+                                            <p class="titulo2">No olvides guardar sus datos </p>
                                             <button  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
                                             <a href="{% url 'delete_experience_hoja' form.instance.id %}"  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Eliminar</a>
                                         </div>
@@ -556,7 +539,7 @@
                                     <input type="text" class="inp2" value="" disabled>
                                     <br>
                                     <br>
-                                    <label for="dsr" class="infop">Describa sus fuciones</label>
+                                    <label for="dsr" class="infop">Describa sus funciones</label>
                                     <textarea type="text" id="dsr" value="" disabled></textarea>
                                     <br>
                                     <br>
@@ -570,16 +553,16 @@
                         <div>
                             <form action="#" method="#" id="edu1">
 
-                                <p class="titulo1">habilidades</p>
+                                <p class="titulo1">Habilidades</p>
                                 <p class="titulo2">Mis habilidades</p>
 
-                            <label for="emp" class="infop" style="margin-left:40% ;">yo tengo la hablidad de:</label>
+                            <label for="emp" class="infop" style="margin-left:40% ;">Yo tengo la hablidad de:</label>
                                     <br>
                                     <br>
                                     <input type="text" style="margin-left: 43%;">
                         </div>
                                 <div>
-                                    <p class="titulo2">No olvide guardar sus datos </p>
+                                    <p class="titulo2">No olvides guardar sus datos </p>
                                     <button type="submit" class="btn-guardar">Guardar</button>
                                     
                                 </div>
@@ -602,10 +585,10 @@
                                     {{form.last_person_name}}
                                     <br>
                                     <br>
-                                    <label for="direccion" class="infop">Direccion</label>
+                                    <label for="direccion" class="infop">Dirección</label>
                                     {{form.address}}
 
-                                    <label for="cel" class="infop">Nºcelular</label>
+                                    <label for="cel" class="infop">Nº Celular</label>
                                     {{form.cell_number}}
                                     <br>
                                     <button  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
@@ -621,10 +604,10 @@
                                 <input type="text" class="inp" value="" disabled>
                                 <br>
                                 <br>
-                                <label for="direccion" class="infop">Direccion</label>
+                                <label for="direccion" class="infop">Dirección</label>
                                 <input type="text" class="inp" value="" disabled>
 
-                                <label for="cel" class="infop">Nºcelular</label>
+                                <label for="cel" class="infop">Nº Celular</label>
                                 <input type="text" class="inp1" value="" disabled>
                             {% endif %}
                         {% endfor %}
@@ -645,10 +628,10 @@
 
                                     <br>
                                     <br>
-                                    <label for="direccion" class="infop">Direccion</label>
+                                    <label for="direccion" class="infop">Dirección</label>
                                     {{form.address_company}}
 
-                                    <label for="tel" class="infop" id="telf">Nºtelefono</label>
+                                    <label for="tel" class="infop" id="telf">Nº Teléfono</label>
                                     {{form.cell_number_busi}}
                                     <br>
                                     <button  class="titulo1" id="open" style="margin: 2% 0 0 2%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
@@ -665,10 +648,10 @@
 
                                 <br>
                                 <br>
-                                <label for="direccion" class="infop">Direccion</label>
+                                <label for="direccion" class="infop">Dirección</label>
                                 <input type="text" class="inp" value="" disabled>
 
-                                <label for="tel" class="infop" id="telf">Nºtelefono</label>
+                                <label for="tel" class="infop" id="telf">Nº Teléfono</label>
                                 <input type="text" class="inp1" value="" disabled>
                                 <br>
                             {% endif %}
@@ -679,7 +662,7 @@
                         <div class="info">
                             <form action="{% url 'edit_aditional_hoja' %}" method="post">
                             {% csrf_token %}
-                            <p class="titulo1">Informacion adicional</p>
+                            <p class="titulo1">Información adicional</p>
                             <br>
                             {{form_adicio.information_adi}}
                             <br>
@@ -689,7 +672,7 @@
                         </div>
                     {% else %}
                         <div class="info">
-                            <p class="titulo1">Informacion adicional</p>
+                            <p class="titulo1">Información adicional</p>
                             <br>
                             <textarea id="infoa" disabled></textarea>
                             <br>
