@@ -227,7 +227,7 @@ class Verification:
             <script>
                 setTimeout(function() {
                     window.location.href = "/";
-                }, 1000);
+                }, 4000);
             </script>
         '''.encode('utf-8'))
         response.set_cookie(key='email_verified', value='True')

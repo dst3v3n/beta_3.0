@@ -14,8 +14,8 @@ class Perfil(models.Model):
     Fecha_nacimiento = models.DateField(blank=True, null=True)
     Registro = models.DateTimeField(auto_now_add=True)
     Redes_sociales = models.URLField(blank=True, null=True)
-    Fondo = models.ImageField(upload_to='fondos/', blank=True, null=True)
-    Foto_perfil = models.ImageField(upload_to='fotos/', blank=True, null=True)
+    Fondo = models.ImageField(upload_to='fondos', blank=True, null=True)
+    Foto_perfil = models.ImageField(upload_to='fotos', blank=True, null=True)
     
     class Meta:
         verbose_name = 'Perfil'
