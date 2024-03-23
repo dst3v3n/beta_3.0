@@ -140,25 +140,28 @@
 
         <label for="civil" class="infop" id="estado">Jornada laboral</label>
         <input type="text" class="inp3" value="{{form_requi.jornada_laboral.value}}" disabled>
-        
-        <p class="titulod2">Descripción</p>
-        <textarea name="" id="infoa" cols="30" rows="10" disabled>{{form_requi.descripcion.value}}</textarea>
         <br>
         <br>
         <br>
-        <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Causa Requisición</label>
-        <input type="text" class="inp3" value="{{form_requi.causa_requi.value}}" disabled>
-
-        <label for="civil" class="infop" id="estado">Habilidades</label>
-        <br>
-        <br>
+        <label for="emp" class="infop" style="margin-left:28% ;">Habilidades requeridas :</label>
         {% for form in form_habi %}
-            <input type="text" class="inp3" value="{{form.habilidades_requi.value}}" disabled>
-            <br>
+        <input type="text" class="inp3" value="{{form.habilidades_requi.value}}" disabled>
+        <br>
+        <br>
+        <label for="civil" class="infop" id="estado" style="margin-left:32.45% ;">Causa Requisición :</label>
+        <input type="text" class="inp3" value="{{form_requi.causa_requi.value}}" disabled>
+        <br>
+        <br>
+        <br>
         {% endfor %}
+        <p class="titulod2">Descripción</p>
+        <textarea name="" type="text"id="infoa" cols="30" rows="10" disabled>{{form_requi.descripcion.value}}</textarea>
+        <br>
+        <br>
+        <br>
         <div class="info">
             <p class="titulo1">Edita tu Información</p>
-            <button class="titulo1" id="open" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Editar</button>
+            <button class="titulo1" id="open" style="margin: 2%  0 0 15%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Editar</button>
             <button class="titulo1" id="open" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;" onclick="window.location.href = '{% url 'delete_info_requi' form_requi.instance.id  %}'">Eliminar</button>
             <button class="titulo1" id="openas" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Aspirantes</button>
             <button class="titulo1" id="open" style="margin: 2%  0 0 3%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;" onclick="window.location.href = '{% url 'consultar_ofer' request.COOKIES.User_id %}'">Cancelar</button>
@@ -240,25 +243,35 @@
                 <label for="civil" class="infop" id="estado">Jornada laboral</label>
                 {{form_requi.jornada_laboral}}
 
-                <p class="titulod2">Descripción</p>
-                {{form_requi.descripcion}}
-
-                <label for="civil" class="infop" id="estado" style="margin-left:80px ;">Causa Requisición</label>
-                {{form_requi.causa_requi}}
-
-                <p class="titulod1" class="inth">Habilidades</p>
-                {% for form in form_habi %}
-                    {% if form_habi.instance.id != None %}
-                        <input type="text" class="inp3" value="{{form.habilidades_requi.value}}">
-                        <br>
-                    {% else %}
-                        <input type="text" class="inp3" value="{{form.habilidades_requi.value}}">
-                    {% endif %}
-                {% endfor %}
-                <br>
-                <br>
+                <div id="hab">
+            
+                    <p class="titulo2">Habilidades nesesarias</p>
+        
+                    <label for="emp" class="infop" style="margin-left:28% ;">Se requiere la hablidad de:</label>
+                    
+                    {% for form in form_habi %}
+                    {{form.habilidades_requi}}
+                    {% endfor %}
+                    <br>
+                    <br>
+                    <br>
+                    </div>
+                    <a href="#" class="titulo1" id="agregar2" style="margin-left:45% ;  border: 3px solid #fff; border-radius:20px; padding:5px ; ">Agregar</a>
+                    <br>
+                    <br>
+                    <br>
+                    <label for="civil" class="titulod2" id="estado" style="margin-left:40% ;">Causa Requisición</label>
+                    <br>
+                    <br>
+                    {{form_requi.causa_requi}}
+                    
+                    <br>
+                    <br>
+                    <br>
+                    <p class="titulod2">Descripción</p>
+                    {{form_requi.descripcion}}
                 <p class="titulo2">No olvides guardar los cambios de tu oferta</p>
-                <button class="titulo1" id="open" style="margin: 2%  0 0 38%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
+                <button class="titulo1" id="open" style="margin: 2%  0 0 45%;cursor: pointer; background-color: #1D405C; border: 3px solid #fff; border-radius: 20px; padding: 5px;">Guardar</button>
             </form>
         {% endif %}
     </div>
@@ -312,6 +325,55 @@
 
     </dialog>
 <!-- --------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------- -->
+<script>
+    const contenedor2 = document.querySelector('#hab');
+    const btnAgregar2 = document.querySelector('#agregar2');
+    // Counter variable
+    let totalForms = 1;
+    // Function to add new form
+    btnAgregar2.addEventListener('click', (event) => {
+    event.preventDefault();
+    const newForm = document.createElement('div');
+    newForm.id = `form-${totalForms}`;
+    newForm.innerHTML = `
+    <label for="emp" class="infop" style="margin-left:28% ;">Se requiere la hablidad de:</label>
+    {{in_habi.habilidades_requi}}
+    </div>
+    <div>
+    <br>
+    <br>
+    <br>
+    <button onclick="eliminar2(this)" style="
+        background-color: red;
+        border-color: black;
+        border-radius: 15px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+        ">Eliminar</button>
+    `;
+    contenedor2.appendChild(newForm);
+    totalForms++;
+    });
+    // Function to remove form
+    function eliminar2(element) {
+    const parentNode = element.closest('div[id^="form-"]');
+    contenedor2.removeChild(parentNode);
+    actualizarContador();
+    };
+    // Function to update counter
+    function actualizarContador() {
+    const forms = contenedor2.querySelectorAll('div[id^="form-"]');
+    for (let i = 0; i < forms.length; i++) {
+        forms[i].children[0].children[1].innerHTML = i + 1;
+    }
+    };
+    </script>
+<!-- --------------------------------------------------------------------------------------- -->
+        
         <script src="/static/js/loader.js"></script>
         <script src="/static/js/modal.js"></script>
         <script src="/static/js/modalas.js"></script>

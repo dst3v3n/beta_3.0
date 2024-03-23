@@ -246,11 +246,10 @@ body{
 .info .titulod2 {
     color: #fff;
     font-size: xx-large;
-    text-align:left;
+    text-align:center;
     font-weight: bolder;
     margin-top: 3%;
-    margin-bottom: 3%;
-    margin-left: 17%;
+    margin-bottom: 3%;   
 }
 
 .info .titulo2 {
@@ -353,7 +352,7 @@ body{
     height: 300px;
     width: 35%;  
     border-radius:5%;
-    margin-left: 5%;
+    margin-left: 33%;
 }
 
 .info .inth{
@@ -399,6 +398,14 @@ body{
     border: 2px #fff solid;
 }
 
+input[type=text],
+input[type=tel],
+input[type=date],
+textarea[type=text],
+input[type=number]:disabled{
+    background-color: #fff;
+    color: black;
+}
 
 
 input[type=number]::-webkit-inner-spin-button,
